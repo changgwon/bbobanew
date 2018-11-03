@@ -94,4 +94,13 @@ class HomeController < ApplicationController
     # redirect_to home_ownerpage_path
     redirect_back(fallback_location: home_ownerpage_path)
   end
+
+  def index
+    if user_signed_in?
+      redirect_to "/home/main"
+    else
+      redirect_to "/users/sign_in"
+    end
+  end
+
 end
