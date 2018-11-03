@@ -1,0 +1,10 @@
+<% @ongoing_upload.each do |x| %>
+	<p>
+	<%= URI.decode(x.attachment_url.split('/').last) %><br>
+	<%= x.pkupdate %><br>
+	<%= x.pkuptime %><br>
+	<%=x.printer%><br>
+	<%=x.progress%><br>
+	------------------ <br>
+	</p>
+<% end %>

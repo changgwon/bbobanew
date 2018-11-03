@@ -1,0 +1,40 @@
+   <%= form_for @upload, url: home_filecreate_path, html: { multipart: true } do |f| %>
+
+      <%= f.label "복사대" %>
+      <%= f.select(:printer, ["K","J","D"],{}, {})%>
+      <br>
+
+      <%= f.label "픽업날짜" %>
+      <%= f.select(:pkupdate, ["오늘","내일"],{}, {})%>
+      <br>
+
+      <%= f.label "픽업시간" %>
+      <%= f.select(:pkuptime, ["23:58~23:59"],{}, {})%>
+      <br>
+
+      <%= f.label "인쇄페이지" %>
+      <%= f.text_field :pagenum %>
+      <br>
+
+      <%= f.label "가로/세로" %>
+      <%= f.select(:landscape, ["가로","세로"],{}, {})%>
+      <br>
+
+      <%= f.label "양면/단면" %>
+      <%= f.select(:doublepg, ["양면","단면"],{}, {})%>
+      <br>
+
+      <%= f.label "분할" %>
+      <%= f.select(:split, ["2","4","6","8"],{}, {})%>
+      <br>
+
+      <%= f.label "흑백/컬러" %>
+      <%= f.select(:color, ["흑백","컬러"],{}, {})%>
+      <br>
+
+      <%= f.label "첨부파일" %>
+      <%= f.file_field :attachment, accept: 'application/pdf, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/haansofthwp'  %>
+      <br>
+
+      <%= f.submit "Save", class: "btn btn-primary" %>
+   <% end %>
