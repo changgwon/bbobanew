@@ -1,6 +1,7 @@
 <% @ongoing_upload.each do |x| %>
 	<p>
 	<%= URI.decode(x.attachment_url.split('/').last) %><br>
+	<%= x.pagenum %>장 -> <%= x.pagenum*50 %>원 출금<br>
 	<%= x.pkupdate %><br>
 	<%= x.pkuptime %><br>
 	<%=x.printer%><br>

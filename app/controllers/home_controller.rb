@@ -9,6 +9,22 @@ class HomeController < ApplicationController
     @upload = Upload.new
   end
 
+  def filecheck
+    @upload = Upload.new
+
+    pagenum_o = params[:upload][:pagenum]
+    @count = 0
+    pagenum_c = pagenum_o.split(',')
+    pagenum_c.each do |x|
+      if x.include? "-"
+        pagenum_d = x.split('-')
+        @count = @count + (pagenum_d[1].to_i-pagenum_d[0].to_i+1) 
+      else
+        @count = @count +1
+      end
+    end
+
+  end
   def filecreate
     @upload = Upload.new
     # @upload.userid = current_user.id
@@ -93,18 +109,6 @@ class HomeController < ApplicationController
 
     # redirect_to home_ownerpage_path
     redirect_back(fallback_location: home_ownerpage_path)
-  end
-
-  def index
-    if user_signed_in?
-      redirect_to "/home/main"
-    else
-      redirect_to "/users/sign_in"
-    end
-  end
-
-  def filedetail
-    @upload = Upload.find(params[:id])
   end
 
 end
