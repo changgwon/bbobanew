@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'home/main'
   get 'home/fileupload'
   post 'home/filecreate'
+  post 'home/filecheck'
   get 'home/filecurrent'
   get 'home/ownerpage'
   get 'home/changeState/:id'=>'home#changeState'
