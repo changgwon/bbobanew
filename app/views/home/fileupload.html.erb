@@ -1,5 +1,5 @@
 
-   <%= form_for @upload, url: home_filecreate_path, html: { multipart: true } do |f| %>
+   <%= form_for @upload, url: home_filecheck_path, html: { multipart: true } do |f| %>
 
       <%= f.label "복사대" %>
       <%= f.select(:printer, ["K","J","D"],{}, {})%>

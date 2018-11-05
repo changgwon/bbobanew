@@ -1,29 +1,39 @@
-<%= form_for @upload, url: home_filecreate_path, html: { multipart: true } do |f| %>
+<%= form_for @upload_c, url: home_filecreate_path, html: { multipart: true } do |f| %>
 
       <%= f.label "가격" %>
-      <%= @count.to_i*50 %> 원
+      <%= @count*50 %> 원
+      <%= f.hidden_field :totalprice, :value => @count*50 %> <!-- 얘는 캐시 차감할 때 쓸거임 db저장 x -->
+      <%= f.hidden_field :pagenum, :value => params[:upload][:pagenum] %>  
+      <%= f.hidden_field :totalpage, :value => @count %>          
       <br>
 
       <%= f.label "파일명" %>
       <%= params[:upload][:attachment].original_filename %>
-
+      <%= f.hidden_field :attachment, :value => params[:upload][:attachment] %>
       <br>
 
       <%= f.label "복사대" %>
       <%= params[:upload][:printer]%>
+      <%= f.hidden_field :printer, :value => params[:upload][:printer] %>      
       <br>
 
       <%= f.label "픽업날짜" %>
       <%= params[:upload][:pkupdate]%>
+      <%= f.hidden_field :pkupdate, :value => params[:upload][:pkupdate] %>
       <br>
 
       <%= f.label "픽업시간" %>
       <%= params[:upload][:pkuptime]%>
+      <%= f.hidden_field :pkuptime, :value => params[:upload][:pkuptime] %>            
       <br>
 
       <%= f.label "인쇄정보" %>
       <%= params[:upload][:landscape] + "/" +params[:upload][:doublepg] + "/" + params[:upload][:split] + "/" +
       params[:upload][:color]%>
+      <%= f.hidden_field :landscape, :value => params[:upload][:landscape] %>      
+      <%= f.hidden_field :doublepg, :value => params[:upload][:doublepg] %>      
+      <%= f.hidden_field :split, :value => params[:upload][:split] %>            
+      <%= f.hidden_field :color, :value => params[:upload][:color] %>                  
       <br>
 
       <h2>신청한 내용을 확인하시겠습니까?</h2>
