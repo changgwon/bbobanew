@@ -23,7 +23,7 @@ class HomeController < ApplicationController
 
     pagenum_o = params[:upload][:pagenum]
     count = 0
-    pagenum_c = pagenum_o.split(',')
+    pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
     pagenum_c.each do |x|
       if x.include? "-"
         pagenum_d = x.split('-')
@@ -32,7 +32,7 @@ class HomeController < ApplicationController
         count = count +1
       end
     end
-    @upload.pagenum = count
+    @upload.pagenum = count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
 
     pkupdate = params[:upload][:pkupdate]
     if pkupdate == "오늘"
@@ -101,6 +101,10 @@ class HomeController < ApplicationController
     else
       redirect_to "/users/sign_in"
     end
+  end
+
+  def filedetail
+    @upload = Upload.find(params[:id])
   end
 
 end
