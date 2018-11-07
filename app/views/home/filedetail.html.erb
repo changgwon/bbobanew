@@ -2,6 +2,10 @@
 
 [<%=@upload.pkuptime%>, <%=@upload.printer%>]
 <br>
-<%=@upload.attachment%>
+<%=URI.decode(@upload.attachment_url.split('/').last)%>
 <br>
-페이지:  (총 <%=@upload.pagenum %>장)<br>
+페이지: <%=@upload.totalpage%> (총 <%=@upload.pagenum%>장)<br><br>
+
+<a href="/home/filecurrent">신청현황으로 돌아가기</a><br>
+<a href="/">홈으로 돌아가기</a>
+

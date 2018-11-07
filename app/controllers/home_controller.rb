@@ -22,7 +22,7 @@ class HomeController < ApplicationController
       else
         @count = @count +1
       end
-    end
+  end
 
   end
   def filecreate
@@ -37,7 +37,8 @@ class HomeController < ApplicationController
     @upload.attachment = params[:upload][:attachment]
     @upload.printer = params[:upload][:printer]
 
-    pagenum_o = params[:upload][:pagenum]
+    @upload.totalpage = params[:upload][:pagenum]
+    pagenum_o = @upload.totalpage
     count = 0
     pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
     pagenum_c.each do |x|
@@ -109,6 +110,18 @@ class HomeController < ApplicationController
 
     # redirect_to home_ownerpage_path
     redirect_back(fallback_location: home_ownerpage_path)
+  end
+
+  def index
+    if user_signed_in?
+      redirect_to "/home/main"
+    else
+      redirect_to "/users/sign_in"
+    end
+  end
+
+  def filedetail
+    @upload = Upload.find(params[:id])
   end
 
 end
