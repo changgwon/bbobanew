@@ -118,7 +118,6 @@ class HomeController < ApplicationController
       if x.pkupdate == Date.today
         @todayuploads << x
       end
-    end
   end
 
   def changeState
