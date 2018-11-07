@@ -24,6 +24,7 @@ class HomeController < ApplicationController
       end
     end
     @count = @count.to_i
+  end
 
   end
 
@@ -52,6 +53,21 @@ class HomeController < ApplicationController
     # @upload_c.pagenum = count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
 
     pkupdate = params[:upload_c][:pkupdate]
+    @upload.totalpage = params[:upload][:pagenum]
+    pagenum_o = @upload.totalpage
+    count = 0
+    pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
+    pagenum_c.each do |x|
+      if x.include? "-"
+        pagenum_d = x.split('-')
+        count = count + (pagenum_d[1].to_i-pagenum_d[0].to_i+1) 
+      else
+        count = count +1
+      end
+    end
+    @upload.pagenum = count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
+
+    pkupdate = params[:upload][:pkupdate]
     if pkupdate == "오늘"
       pkupdate = Date.today
     else
@@ -112,6 +128,18 @@ class HomeController < ApplicationController
 
     # redirect_to home_ownerpage_path
     redirect_back(fallback_location: home_ownerpage_path)
+  end
+
+  def index
+    if user_signed_in?
+      redirect_to "/home/main"
+    else
+      redirect_to "/users/sign_in"
+    end
+  end
+
+  def filedetail
+    @upload = Upload.find(params[:id])
   end
 
 end

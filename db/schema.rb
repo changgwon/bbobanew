@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_03_195102) do
+ActiveRecord::Schema.define(version: 2018_11_05_120144) do
 
   create_table "uploads", force: :cascade do |t|
     t.string "userid"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_11_03_195102) do
     t.datetime "updated_at", null: false
     t.integer "pagenum"
     t.date "pkupdate"
+    t.string "totalpage"
   end
 
   create_table "users", force: :cascade do |t|
