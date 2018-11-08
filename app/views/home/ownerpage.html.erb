@@ -1,21 +1,19 @@
-<% if @todayuploads == nil %>
-신청 내역이 없습니다.<br>
-<a href="/">홈으로 돌아가기</a>
+<% if @todayuploads.empty? %>
+	신청 내역이 없습니다.<br>
 <% else %>
-<% @todayuploads.each do |x| %>
-   <%= x.stdnum %> <br>
-   <%= x.userid %> <br>
-   <%= x.pkuptime %> <br>
-   <%= x.landscape %> <br>
-   <%= x.doublepg %> <br>
-   <%= x.split %> <br>
-   <%= x.color %> <br>
-   <%= x.pagenum %> <br>
-   <%= link_to "다운로드받기", x.attachment_url, download: "#{URI.decode(x.attachment_url.split('/').last)}" %> <br>
-   <% if x.progress == "인쇄대기" %>
-   <input type="button" value="인쇄완료" onclick="window.location='../home/changeState/<%=x.id%>'"> <br>
-   <% end %>
-   ------------------------<br>
+	<% @todayuploads.each do |x| %>
+	   <%= x.stdnum %> <br>
+	   <%= x.pkuptime %> <br>
+	   <%= x.landscape %> <br>
+	   <%= x.doublepg %> <br>
+	   <%= x.split %> <br>
+	   <%= x.color %> <br>
+	   <%= x.pagenum %> <br>
+	   <%= link_to "다운로드받기", x.attachment_url, download: "#{URI.decode(x.attachment_url.split('/').last)}" %> <br>
+	   <% if x.progress == "인쇄대기" %>
+	   <input type="button" value="인쇄완료" onclick="window.location='../home/changeState/<%=x.id%>'"> <br>
+	   <% end %>
+	   ------------------------<br>
+	<% end %>
 <% end %>
 <a href="/">홈으로 돌아가기</a>
-<% end %>

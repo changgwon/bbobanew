@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_07_121806) do
-
+ActiveRecord::Schema.define(version: 2018_11_07_142055) do
+    
   create_table "uploads", force: :cascade do |t|
     t.string "userid"
     t.integer "stdnum"
@@ -21,13 +21,13 @@ ActiveRecord::Schema.define(version: 2018_11_07_121806) do
     t.string "progress"
     t.string "landscape"
     t.string "doublepg"
-    t.integer "split"
+    t.string "split"
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "pagenum"
+    t.string "pagenum"
     t.date "pkupdate"
-    t.string "totalpage"
+    t.integer "totalpage"
   end
 
   create_table "users", force: :cascade do |t|
