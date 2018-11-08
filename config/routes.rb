@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'home/filecurrent'
   get 'home/ownerpage'
   get 'home/changeState/:id'=>'home#changeState'
-
+  get 'payment/new' => 'payment#new'
   get 'home/filedetail/:id' => 'home#filedetail'
   get 'home/index' => 'home#index'
 
