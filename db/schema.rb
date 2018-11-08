@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_120144) do
     t.string "username"
     t.integer "stdnum"
     t.integer "cur_cash"
-    t.integer "expt_cash" #차감 예정 캐시(잠깐 잡아두는 캐시)
+    t.integer "expt_cash"
     t.string "userid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

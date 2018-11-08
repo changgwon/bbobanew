@@ -26,7 +26,6 @@ class HomeController < ApplicationController
     @count = @count.to_i
   end
 
-  end
 
   def filecreate
     @upload_c = Upload.new
