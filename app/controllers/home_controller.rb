@@ -29,7 +29,7 @@ class HomeController < ApplicationController
       @count = @count / params[:upload][:split].to_i + 1
     end
 
-
+  end
   def filecreate
     @upload = Upload.new
     @upload.userid = current_user.userid
@@ -127,6 +127,7 @@ class HomeController < ApplicationController
       if x.pkupdate == Date.today
         @todayuploads << x
       end
+    end
   end
 
   def changeState
