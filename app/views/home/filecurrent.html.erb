@@ -1,14 +1,19 @@
+<% if @ongoing_upload == nil %>
+신청 내역이 없습니다.<br>
+<a href="/">홈으로 돌아가기</a>
+<% else %>
 <% @ongoing_upload.each do |x| %>
-	<p>
-	<%= URI.decode(x.attachment_url.split('/').last) %><br>
-	<%= x.pagenum %>장 -> <%= x.pagenum*50 %>원 출금<br>
-	<%= x.pkupdate %><br>
-	<%= x.pkuptime %><br>
-	<%=x.printer%><br>
-	<%=x.progress%><br><br>
-	<a href="filedetail/<%=x.id%>">자세히</a><br>
-	------------------ <br>
-	</p>
+   <p>
+   <%= URI.decode(x.attachment_url.split('/').last) %><br>
+   <%= x.pagenum %>장 -> <%= x.pagenum*50 %>원 출금<br>
+   <%= x.pkupdate %><br>
+   <%= x.pkuptime %><br>
+   <%=x.printer%><br>
+   <%=x.progress%><br><br>
+   <a href="filedetail/<%=x.id%>">자세히</a><br>
+   ------------------ <br>
+   </p>
+<% end %>
 <% end %>
 <br>
 <a href="/">홈으로 돌아가기</a>
