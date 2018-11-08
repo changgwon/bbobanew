@@ -27,11 +27,8 @@ class HomeController < ApplicationController
   end
   def filecreate
     @upload = Upload.new
-    # @upload.userid = current_user.id
-    # @upload.stdnum = current_user.stdnum
-
-    @upload.userid = "aa"
-    @upload.stdnum = 1
+    @upload.userid = current_user.userid
+    @upload.stdnum = current_user.stdnum
     @upload.progress = "인쇄대기"
 
     @upload.attachment = params[:upload][:attachment]
