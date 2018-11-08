@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_05_120144) do
+ActiveRecord::Schema.define(version: 2018_11_07_142055) do
 
   create_table "uploads", force: :cascade do |t|
     t.string "userid"
@@ -19,15 +19,15 @@ ActiveRecord::Schema.define(version: 2018_11_05_120144) do
     t.string "printer"
     t.string "pkuptime"
     t.string "progress"
-    t.boolean "landscape"
-    t.boolean "doublepg"
-    t.integer "split"
-    t.boolean "color"
+    t.string "landscape"
+    t.string "doublepg"
+    t.string "split"
+    t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "pagenum"
+    t.string "pagenum"
     t.date "pkupdate"
-    t.string "totalpage"
+    t.integer "totalpage"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_120144) do
     t.string "username"
     t.integer "stdnum"
     t.integer "cur_cash"
-    t.integer "expt_cash" #차감 예정 캐시(잠깐 잡아두는 캐시)
+    t.integer "expt_cash"
     t.string "userid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
