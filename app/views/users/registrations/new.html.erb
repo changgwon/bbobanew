@@ -1,50 +1,63 @@
-<h2>Sign up</h2>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<div class="signup_container">
+  <div class="login-signup">
+    <div class="col-sm-4">
+      <article role="login">
+         <h3 class="text-center"><i class="fa fa-lock"></i>회원가입</h3>
 
-  <div class="field">
-    <%= f.label :아이디 %><br />
-    <%= f.text_field :userid, autofocus: true %>
+<div class="signup">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="field form-group">
+        <%= f.label :아이디 %><br />
+        <%= f.text_field :userid, autofocus: true,class:'form-control' %>
+      </div>
+
+       <div class="field form-group">
+        <%= f.label :비밀번호 %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password",class:'form-control' %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :비밀번호확인 %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",class:'form-control' %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :이메일 %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control' %>
+      </div> 
+
+      <div class="field form-group">
+        <%= f.label :이름 %><br />
+        <%= f.text_field :username, autofocus: true, class:'form-control' %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :핸드폰번호 %><br />
+        <%= f.text_field :phonenum, autofocus: true,class:'form-control' %>
+      </div>
+
+      <div class="field form-group">
+        <%= f.label :학번 %><br />
+        <%= f.text_field :stdnum, autofocus: true, class:'form-control' %>
+      </div>
+
+
+      <div class="actions button form-group btn btn-success btn-block">
+        <%= f.submit "가입하기" %>
+      </div>
+      
+    <% end %>
+
+
   </div>
-
-   <div class="field">
-    <%= f.label :비밀번호 %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :비밀번호확인 %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :이메일 %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div> 
-
-  <div class="field">
-    <%= f.label :이름 %><br />
-    <%= f.text_field :username, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :핸드폰번호 %><br />
-    <%= f.text_field :phonenum, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :학번 %><br />
-    <%= f.text_field :stdnum, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "가입하기" %>
-  </div>
-  
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

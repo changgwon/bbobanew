@@ -1,20 +1,63 @@
-<h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+<div class="login_container">
+  <div class="backbox">
+    <div class="loginMsg">
+      <div class="textcontent">
+        <p class="title">계정이 아직 없으신가요?</p>
+        <p>회원가입을 하여, 시간을 아껴보세요.</p>
+        <a href="/users/sign_up"><button id="signup_button">회원가입</button></a>
+      </div>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
 
-<%= render "users/shared/links" %>
+<div class="frontbox">
+  <div class="login">
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+
+      <h2>로그인</h2>
+      <div class="inputbox">
+        <%= f.input :email,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email", class: "form_input" }
+                    %>
+        <%= f.input :password,
+                    required: false,
+                    input_html: { autocomplete: "current-password", class: "form_input"} %>
+
+                    <!-- <input type="text" name="email" placeholder="  EMAIL">
+          <input type="password" name="password" placeholder="  PASSWORD">-->
+       
+       </div>
+       <!-- 일단 GUI 상에는 없는 기능             
+         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %> -->
+
+
+      </div>
+    
+
+    <div class="form-actions">
+        <%= f.button :submit, "로그인" %>
+    </div>
+  <% end %>
+
+  <%= render "users/shared/links" %>
+</div>  
+
+<script>
+  var $loginMsg = $('.loginMsg'),
+  $login = $('.login'),
+  $signupMsg = $('.signupMsg'),
+  $signup = $('.signup'),
+  $frontbox = $('.frontbox');
+
+
+setTimeout(function(){
+  $('#switch1').click()
+},1000)
+
+setTimeout(function(){
+  $('#switch2').click()
+},3000)
+</script>
