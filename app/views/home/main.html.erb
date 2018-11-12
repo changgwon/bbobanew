@@ -1,12 +1,32 @@
-<h1>서강톤_backend</h1>
+<div class="default_page">
 
-<% if user_signed_in? %>
-<%= current_user.email %>로 로그인되어 있습니다.<br><br>
+	<div class="header">
+		<div>뽀바드림
+		<% if user_signed_in? %>
+			<div class="info" style="float:right;">
+				<!--<%= current_user.username %><br><br>-->
+				<%= link_to "로그아웃", destroy_user_session_path %>
+				<a href="/">정보변경</a>
+			</div>
+		</div>
+	</div>
 
-<a href="/home/fileupload">파일업로드</a>
-<a href="/home/filecurrent">신청 현황</a>
-<a href="/home/ownerpage">복사대화면</a>
+	<div class="row">
+		
+		<div class="column print_list"><a href="/home/filecurrent">신청 현황</a>
+		</div>
+	
+		<div class="column print_upload"><a href="/home/fileupload">파일업로드</a>
+		</div>
+		
+		
+		<div class="column print_advertisement">광고 영역</div>
+<!-- 
+		<a href="/home/ownerpage"><div class="point">복사대화면</div></a> -->
 
-<%= link_to "로그아웃", destroy_user_session_path %>
+	<% end %>
+</div>
+		
+<div class="footer"></div>
 
-<% end %>
+
