@@ -10,32 +10,77 @@
       <br>
 
       <%= f.label "픽업시간" %>
-      <%= f.select(:pkuptime, ["10:15~10:30","11:45~12:00", "13:15~13:30", "14:45~15:00","16:15~16:30"],{}, {})%>
       <br>
 
       <%= f.label "인쇄페이지" %>
       <%= f.text_field :pagenum %>
       <br>
+            color: #666;
+            margin-bottom: 20px;     
 
       <%= f.label "가로/세로" %>
       <%= f.select(:landscape, ["가로","세로"],{}, {})%>
       <br>
+            color: white;
+      }
 
       <%= f.label "양면/단면" %>
       <%= f.select(:doublepg, ["양면","단면"],{}, {})%>
-      <br>
+</style>
 
       <%= f.label "분할" %>
       <%= f.select(:split, ["2","4","6","8"],{}, {})%>
-      <br>
 
       <%= f.label "흑백/컬러" %>
       <%= f.select(:color, ["흑백","컬러"],{}, {})%>
-      <br>
 
       <%= f.label "첨부파일" %>
       <%= f.file_field :attachment, accept: 'application/pdf, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/haansofthwp'  %>
       <br>
+<body>    
 
-      <%= f.submit "Save", class: "btn btn-primary" %>
    <% end %>
+                              <!--<%= current_user.username %><br><br>-->
+      <%= form_for @upload, url: home_filecheck_path, html: { multipart: true, id: :msform} do |f| %>
+        <ul id="progressbar">
+      $(".previous").click(function(){
+            if(animating) return false;
+            animating = true;
+            
+            current_fs = $(this).parent();
+            previous_fs = $(this).parent().prev();
+            
+            //de-activate current step on progressbar
+            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+            
+            //show the previous fieldset
+            previous_fs.show(); 
+            //hide the current fieldset with style
+            current_fs.animate({opacity: 0}, {
+                  step: function(now, mx) {
+                        //as the opacity of current_fs reduces to 0 - stored in "now"
+                        //1. scale previous_fs from 80% to 100%
+                        scale = 0.8 + (1 - now) * 0.2;
+                        //2. take current_fs to the right(50%) - from 0%
+                        left = ((1-now) * 50)+"%";
+                        //3. increase opacity of previous_fs to 1 as it moves in
+                        opacity = 1 - now;
+                        current_fs.css({'left': left});
+                        previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+                  }, 
+                  duration: 800, 
+                  complete: function(){
+                        current_fs.hide();
+                        animating = false;
+                  }, 
+                  //this comes from the custom easing plugin
+                  easing: 'easeInOutBack'
+            });
+      });
+
+      //       $(".submit").click(function(){
+      //             return false;
+      // });
+});
+</script>
+   
