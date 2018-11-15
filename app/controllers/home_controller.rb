@@ -39,41 +39,41 @@ class HomeController < ApplicationController
     @upload.attachment = params[:upload][:attachment]
     @upload.printer = params[:upload][:printer]
     @upload.pagenum = params[:upload][:pagenum]
-    # @upload.totalpage = params[:upload][:totalpage]
+    @upload.totalpage = params[:upload][:totalpage]
 
-    # pagenum_o = params[:upload_c][:pagenum]
-    # count = 0
-    # pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
-    # pagenum_c.each do |x|
-    #   if x.include? "-"
-    #     pagenum_d = x.split('-')
-    #     count = count + (pagenum_d[1].to_i-pagenum_d[0].to_i+1) 
-    #   else
-    #     count = count +1
-    #   end
-    # end
-    # @upload_c.pagenum = count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
+    pagenum_o = params[:upload_c][:pagenum]
+    count = 0
+    pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
+    pagenum_c.each do |x|
+      if x.include? "-"
+        pagenum_d = x.split('-')
+        count = count + (pagenum_d[1].to_i-pagenum_d[0].to_i+1) 
+      else
+        count = count +1
+      end
+    end
+    @upload_c.pagenum = count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
 
-    # @upload.pagenum = params[:upload][:pagenum]
-    # pagenum_o = @upload.pagenum
-    # count = 0
-    # pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
-    # pagenum_c.each do |x|
-    #   if x.include? "-"
-    #     pagenum_d = x.split('-')
-    #     count = count + (pagenum_d[1].to_i-pagenum_d[0].to_i+1) 
-    #   else
-    #     count = count +1
-    #   end
-    # end
-    # if params[:upload][:split].to_i % 2 == 0
-    #   count = count / params[:upload][:split].to_i
-    # else
-    #   count = count / params[:upload][:split].to_i + 1
-    # end
-    # if params[:upload][:doublepg] == "양면"
-    #   count = count/2
-    # end
+    @upload.pagenum = params[:upload][:pagenum]
+    pagenum_o = @upload.pagenum
+    count = 0
+    pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
+    pagenum_c.each do |x|
+      if x.include? "-"
+        pagenum_d = x.split('-')
+        count = count + (pagenum_d[1].to_i-pagenum_d[0].to_i+1) 
+      else
+        count = count +1
+      end
+    end
+    if params[:upload][:split].to_i % 2 == 0
+      count = count / params[:upload][:split].to_i
+    else
+      count = count / params[:upload][:split].to_i + 1
+    end
+    if params[:upload][:doublepg] == "양면"
+      count = count/2
+    end
     @upload.totalpage = params[:upload][:totalpage] # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
    
     pkupdate = params[:upload][:pkupdate]
@@ -97,23 +97,26 @@ class HomeController < ApplicationController
   end
 
   def filecurrent
-    # @upload = Upload.find_by_userid(current_user.userid)
+    @upload = Upload.find_by_userid(current_user.userid)
     uploads = Upload.all
     @ongoing_upload = []
+    @past_upload = []
     uploads.each do |upload|
       if upload.pkupdate < Date.today
-        next
+        @past_upload << upload
 
       elsif upload.pkupdate == Date.today
-        # pkuptime_s = upload.pkuptime.split('~')
-        # pkuptime_d = pkuptime_s[1].split(':')
-        # to_compare = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
-        #   pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0)
+        pkuptime_s = upload.pkuptime.split('~')
+        pkuptime_d = pkuptime_s[1].split(':')
+        to_compare = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
+                              pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0)
       
-        # if to_compare >= Time.now
-        #   @ongoing_upload << upload
-        # end
-        @ongoing_upload << upload
+        if to_compare >= Time.now
+          @ongoing_upload << upload
+        else
+          @past_upload << upload
+        end
+      
       else
         @ongoing_upload << upload
       end
@@ -149,6 +152,11 @@ class HomeController < ApplicationController
 
   def filedetail
     @upload = Upload.find(params[:id])
+  end
+
+  def filehistory
+    @upload = Upload.all
+    @user = current_user.cur_cash
   end
 
 end
