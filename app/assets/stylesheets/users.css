@@ -11,7 +11,6 @@ body{
 }
 
 .login_container{
-  /*border:1px solid white;*/
   width: 50vw;
   height: 60vh;
   position: absolute;
@@ -22,7 +21,7 @@ body{
 
 }
 .backbox{  
-  background-color: #404040;
+  background-color: #057075;
   width: 100%;
   height: 80%;
   position: absolute;
@@ -42,7 +41,7 @@ body{
   margin-right: 3%;
   margin-left: 3%;
   transition: right .8s ease-in-out;
-border:1px solid grey;
+  border:1px solid grey;
 }
 
 .moving{
@@ -58,7 +57,7 @@ border:1px solid grey;
 
 .loginMsg .title{
   font-weight: 300;
-  font-size: 23px;
+  font-size: 11px;
 }
 
 .loginMsg p{
@@ -72,7 +71,7 @@ border:1px solid grey;
 }
 
 .loginMsg button{
-  background-color: #404040;
+  background-color: #057075;
   border: 2px solid white;
   border-radius: 10px;
   color:white;
@@ -83,7 +82,7 @@ border:1px solid grey;
   margin-top: 20px;
 }
 
-/* front box content*/
+
 .login{
   padding: 20px;
   text-align: center;
@@ -91,12 +90,10 @@ border:1px solid grey;
 
 .login h2{
   color: black;
-  font-size:22px;
+  font-size:16px;
 }
 
-.inputbox{
-  margin-top:30px; 
-}
+
 .login input{
   display: block;
   width: 100%;
@@ -108,7 +105,7 @@ border:1px solid grey;
 }
 
 .login button{
-  background-color: #35B729;
+  background-color: #057075;
   border: none;
   color:white;
   font-size: 12px;
@@ -122,88 +119,82 @@ border:1px solid grey;
   bottom: 30px;
   cursor: pointer;
 }
-
-/* Fade In & Out*/
 .login p {
   cursor: pointer;
   color:#404040;
-  font-size:15px;
-}
-
-.loginMsg{
-  /*opacity: 1;*/
-  transition: opacity .8s ease-in-out;
+  font-size:11px;
 }
 
 
-.signup_container{
-    left:50%
-}
 
-.login-signup {
-  padding: 0 0 25px;
-}
 
-.btn-success {
-  background: #23bab5;
-  border-radius:0;
-  border: 2px solid #23bab5;
+.btn-block:hover,.btn-block:focus {
+  background-color: #057075;
+  color: #ffffff;
   webkit-transition: all 400ms cubic-bezier(.4,0,.2,1);
   transition: all 400ms cubic-bezier(.4,0,.2,1);
-}
-
-.btn-success:hover,.btn-success:focus {
-  background: rgba(26, 161, 157, 0);
-  border: 2px solid #1aa19d;
-  webkit-transition: all 400ms cubic-bezier(.4,0,.2,1);
-  transition: all 400ms cubic-bezier(.4,0,.2,1);
-  color: #23BAB5;
+ 
 }
 
 a {
-  color: #23bab5;
+  color: #057075;
 }
 
 ul {
   list-style-type: none;
 }
 
-article[role="login"] {
+article[role="signup"] {
   background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 10px rgba(0, 0, 0, 0.24);
   webkit-transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 30px 50px;
+  padding: 20px 40px;
   margin-bottom: 20px;
+  max-width:600px;
+  margin:0 auto;
 }
 
-article[role="login"] input[type="submit"] {
+article[role="signup"] input[type="submit"] {
   padding: 10px 15px;
-  font-size: 16px;
+  font-size: 11px;
 }
 
-article[role="login"]:hover {
+article[role="signup"]:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 1px 15px rgba(0, 0, 0, 0.23);
   webkit-transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-article[role="login"] h3 {
-  font-size: 26px;
+article[role="signup"] h5 {
+  font-size: 16px;
   font-weight: 300;
-  color: #23bab5;
+  color: #057075;
   margin-bottom: 20px;
 }
 
-article[role="login"] p {
-  font-size: 16px;
+article[role="signup"] p {
+  font-size: 11px;
   padding: 5px 15px;
 }
 
 .login-signup {
-  padding: 0 0 25px;
+  height:60vh;
+  margin:0 auto;
+  margin-top:10px;
+  max-width:400px;
+
+}
+
+.signup{
+  font-size:11px;
+}
+
+.form-control{
+  font-size:11px;
+
 }
 
 
@@ -211,4 +202,19 @@ article[role="login"] p {
   .mobile-pull {
     float: none;
   }
+
+  .backbox{
+    display:none;
+  }
+  .frontbox{
+    width:100%;
+    border:none;
+  }
+  .login_container{
+    width:90vw;
+  }
+  .register_button{
+    display:inline;
+  }
+
 }

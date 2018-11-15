@@ -141,15 +141,15 @@
 
 <body>    
 
-            <div class="header" style="height:10vh">
-                  <div>
-                  <% if user_signed_in? %>
-                        <div class="info" style="float:right;">
-                              <!--<%= current_user.username %><br><br>-->
+  <div class="header" style="height:10vh">
+    <div>
+      <% if user_signed_in? %>
+        <div class="info" style="float:right;">
+        <!--<%= current_user.username %><br><br>-->
                               
-                        </div>
-                  </div>
-            </div>
+        </div>
+    </div>
+  </div>
       
       <!-- multistep form -->
       <%= form_for @upload, url: home_filecheck_path, html: { multipart: true, id: :msform} do |f| %>
