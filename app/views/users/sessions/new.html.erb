@@ -14,51 +14,36 @@
 <div class="frontbox">
   <div class="login">
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-inputs">
 
       <h2>로그인</h2>
-      <div class="inputbox">
         <%= f.input :email,
+                    placeholder:'이메일',
                     required: false,
                     autofocus: true,
                     input_html: { autocomplete: "email", class: "form_input" }
                     %>
         <%= f.input :password,
+                    placeholder:'비밀번호',
                     required: false,
                     input_html: { autocomplete: "current-password", class: "form_input"} %>
 
-                    <!-- <input type="text" name="email" placeholder="  EMAIL">
-          <input type="password" name="password" placeholder="  PASSWORD">-->
-       
-       </div>
        <!-- 일단 GUI 상에는 없는 기능             
          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %> -->
+        <!-- label 삭제하는 방법? --> 
 
-
-      </div>
-    
 
     <div class="form-actions">
         <%= f.button :submit, "로그인" %>
     </div>
-  <% end %>
 
-  <%= render "users/shared/links" %>
+    
+    <%= render "users/shared/links", style: "font-size:11px"%>
+    <% end %>
+    
+    <a href="/users/sign_up"><input type="button" value="회원가입" class="register_button" style="display:none"></a>
+    
+   
 </div>  
+</div>
+</div>
 
-<script>
-  var $loginMsg = $('.loginMsg'),
-  $login = $('.login'),
-  $signupMsg = $('.signupMsg'),
-  $signup = $('.signup'),
-  $frontbox = $('.frontbox');
-
-
-setTimeout(function(){
-  $('#switch1').click()
-},1000)
-
-setTimeout(function(){
-  $('#switch2').click()
-},3000)
-</script>
