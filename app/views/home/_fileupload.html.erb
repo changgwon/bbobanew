@@ -1,5 +1,5 @@
 
-    <div>
+<div>
       <% if user_signed_in? %>
         <div class="info" style="float:right;">
         <!--<%= current_user.username %><br><br>-->
@@ -8,6 +8,7 @@
     </div>
       
       <!-- multistep form -->
+
       <%= form_for @upload, url: home_filecreate_path, :autenticity_token => true, method:"post", :remote => true, html: { multipart: true, id: :msform} do |f| %>
         <!-- progressbar -->
         <ul id="progressbar">
@@ -75,10 +76,10 @@
 <!-- 
           <%#= f.submit "Save", class: "action-button btn btn-primary", id:"mybtn" %> -->
 
+
         </fieldset>
       <!-- </form> -->
       <% end %>
-
 
       <% end %>
 
@@ -204,3 +205,5 @@
 
             }
         </script>
+
+      
