@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'payment/new' => 'payment#new'
   get 'home/filedetail/:id' => 'home#filedetail'
   get 'home/index' => 'home#index'
+
   get 'payment/charge' => 'payment#charge'
   post 'payment/create'
   get 'payment/new'

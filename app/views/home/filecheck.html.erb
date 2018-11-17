@@ -1,43 +1,109 @@
+<style>
+      #msform {
+            margin: 50px auto;
+            text-align: center;
+            position: relative;
+      }
+      #msform fieldset {
+            background: white;
+            border: 0 none;
+            border-radius: 3px;
+            box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+            padding: 20px 30px;
+            box-sizing: border-box;
+            width: 80%;
+            margin: 0 auto;  
+            
+            /*stacking fieldsets above each other*/
+            position: relative;
+            max-width:500px;
+      }
+      .label{
+            float:left;
+            font-size:10px;
+      }
+      .input_check{
+            float:right;
+      }
+      .action-button{
+            width: 100px;
+            background: #057075;
+            font-weight: bold;
+            color: white;
+            border: 0 none;
+            border-radius: 1px;
+            cursor: pointer;
+            padding: 10px 5px;
+            margin: 10px 5px;
+      }
+</style>
+<body>
+
+<div>
+      <% if user_signed_in? %>
+</div>
+
+<div id="msform">
+      <fieldset>
+
 <%= form_for @upload, url: home_filecreate_path, :method => :POST, html: { multipart: true } do |f| %>
+      <p style="font-size:10px">결제 예정 금액</p>
 
-      <%= f.label "가격" %>
-      <%= @count*50 %> 원
-      <%= f.hidden_field :totalprice, value: @count*50 %> <!-- 얘는 캐시 차감할 때 쓸거임 db저장 x -->
-      <%= f.hidden_field :pagenum, value: params[:upload][:pagenum] %>  
-      <%= f.hidden_field :totalpage, value: @count %>          
-      <br>
+      <div style="font-size:25px">
+            <%= @count*50 %> 원
+            <%= f.hidden_field :totalprice, value: @count*50 %> <!-- 얘는 캐시 차감할 때 쓸거임 db저장 x -->
+      </div>
 
-      <%= f.label "파일명" %>
+      <hr>
+  
+      <%= f.label "파일명", class: :label %><br>
       <%= params[:upload][:attachment].original_filename %>
       <%= f.hidden_field :attachment, value: params[:upload][:attachment] %>
       <br>
 
-      <%= f.label "복사대" %>
-      <%= params[:upload][:printer]%>
-      <%= f.hidden_field :printer,  value: params[:upload][:printer] %>      
-      <br>
+      <%= f.hidden_field :pagenum, value: params[:upload][:pagenum] %>  
+      <%= f.hidden_field :totalpage, value: @count %>
 
-      <%= f.label "픽업날짜" %>
-      <%= params[:upload][:pkupdate]%>
-      <%= f.hidden_field :pkupdate,  value: params[:upload][:pkupdate] %>
       <br>
+      <hr>
 
-      <%= f.label "픽업시간" %>
-      <%= params[:upload][:pkuptime]%>
-      <%= f.hidden_field :pkuptime,  value: params[:upload][:pkuptime] %>            
-      <br>
-
-      <%= f.label "인쇄정보" %>
-      <%= params[:upload][:landscape] + "/" +params[:upload][:doublepg] + "/" + params[:upload][:split] + "/" +
-      params[:upload][:color]%>
+      <%= f.label "인쇄정보", class: :label %><br>
+      <%= params[:upload][:landscape] + " " + params[:upload][:split]+"분할 / "+params[:upload][:doublepg] + "인쇄 / " + params[:upload][:color] %>
       <%= f.hidden_field :landscape,  value: params[:upload][:landscape] %>      
       <%= f.hidden_field :doublepg,  value: params[:upload][:doublepg] %>      
       <%= f.hidden_field :split, value: params[:upload][:split] %>            
       <%= f.hidden_field :color, value: params[:upload][:color] %>                  
       <br>
+      <hr>
 
-      <h2>신청한 내용을 확인하시겠습니까?</h2>
+      <%= f.label "수령 장소, 시간", class: :label %><br>
+      <%= params[:upload][:printer] + "관 "%>
+      <%= f.hidden_field :printer,  value: params[:upload][:printer] %>      
+
+      <%= params[:upload][:pkupdate]+ "  " %>
+      <%= f.hidden_field :pkupdate,  value: params[:upload][:pkupdate] %>
+      <br>
+
+      <%= params[:upload][:pkuptime]%>
+      <%= f.hidden_field :pkuptime,  value: params[:upload][:pkuptime] %>            
+      <br>
+      <hr>
+
+<!-- 오늘/내일 => 날짜로 표시하기 + 관에 따른 층수 DB에 넣어두고, 자동으로 보여주기.-->
 
 
-      <%= f.submit "결제하기", class: "btn btn-primary" %>
+      <div>
+      <h6>신청한 내용을 확인하시겠습니까?</h6>
+
+
+      <button class="action-button">수정하기</button>
+      <%= f.submit "결제하기", class: "btn btn-primary action-button" %>
+      </div>
+
    <% end %>
+    <% end %>
+</fieldset>
+</div>
+
+
+</body>
