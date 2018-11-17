@@ -1,26 +1,503 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
 
-/* color
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
 
-main color : 057075 ;
-light-grey color : f9f9f9 ;
 
-*/
 
-abbr[title="required"] {
-  display: none;
+header{
+	background-color:white;
+	width:100%;
+	height:15vh;
+}
+
+body{
+	background-color: #f8f8f8
+}
+
+.info{
+	float:right;
+	margin:30px;
+
+}
+
+.info a{
+	color:#057075;
+}
+
+/* PEN STYLES ========== */
+	a,
+	.side_menu {
+		-webkit-transition: all 300ms ease-in-out;
+		transition: all 300ms ease-in-out;
+	}
+
+/* MENU CONTAINER ----- */
+	.side_menu {
+		background: #057075;
+		height: 100vh;
+		left: -250px;
+		position: fixed;
+		top: 0;
+		width: 250px;
+	}
+	.side_menu .container {
+		padding: 40px 20px 0px 20px ;
+	}
+
+/* HAMBURGER STYLES ----- */
+	.burger_box {
+		display: block;
+		float: right;
+		margin-right: -45px;
+		margin-top:20px;
+	}
+	.burger_box a.menu-icon {
+		display: inline-block;
+		float: none;
+		height: 25px;
+		padding: 10px;
+		opacity: .5;
+		width: 25px;
+		z-index: 100;
+	}
+	.burger_box a.menu-icon:hover,
+	.burger_box a.menu-icon.opened {
+		opacity: 1;
+	}
+	.burger_box a.menu-icon.opened {
+		background: #057075;
+	}
+	.burger_box .menu-icon_box {
+		display: inline-block;
+		height: 25px;
+		position: relative;
+		text-align: left;
+		width: 25px;
+	}
+	.burger_box .menu-icon_line {
+		background: #057075;
+		border-radius: 2px;
+		display: inline-block;
+		height: 3px;
+		position: absolute;
+		width: 100%;
+	}
+	.burger_box .menu-icon_line--1 {
+		top: 2px;
+	}
+	.burger_box .menu-icon_line--2 {
+		top: 10px;
+	}
+	.burger_box .menu-icon_line--3 {
+		top: 18px;
+	}
+	.burger_box .menu-icon_line--1 {
+		transition: top 200ms 250ms, transform 200ms;
+		-webkit-transition: top 200ms 250ms, -webkit-transform 200ms;
+	}
+	.burger_box .menu-icon_line--2 {
+		transition: opacity 0ms 300ms;
+		-webkit-transition: opacity 0ms 300ms;
+	}
+	.burger_box .menu-icon_line--3 {
+		transition: top 100ms 300ms, transform 200ms;
+		-webkit-transition: top 100ms 300ms, -webkit-transform 200ms;
+	}
+	.burger_box .menu-icon.opened .menu-icon_box {
+		transform: scale3d(0.9, 0.9, 0.9);
+		-webkit-transform: scale3d(0.9, 0.9, 0.9);
+	}
+	.burger_box .menu-icon.opened .menu-icon_line {
+		top: 10px;
+	}
+	.burger_box .menu-icon.opened .menu-icon_line--1 {
+		transform: rotate3d(0, 0, 1, 45deg);
+		-webkit-transform: rotate3d(0, 0, 1, 45deg);
+		transition: top 100ms, transform 200ms 250ms;
+		-webkit-transition: top 100ms, -webkit-transform 200ms 250ms;
+	}
+	.burger_box .menu-icon.opened .menu-icon_line--2 {
+		opacity: 0;
+		transition: opacity 200ms;
+		-webkit-transition: opacity 200ms;
+	}
+	.burger_box .menu-icon.opened .menu-icon_line--3 {
+		transform: rotate3d(0, 0, 1, -45deg);
+		-webkit-transform: rotate3d(0, 0, 1, -45deg);
+		transition: top 200ms, transform 200ms 250ms;
+		-webkit-transition: top 200ms, -webkit-transform 200ms 250ms;
+	}
+
+/* STAGGER LIST ----- */
+	.list_load {
+		display: none;
+		list-style: none;
+		padding: 0;
+		margin-top:30px;
+	}
+	.list_item {
+		margin-left: -20px;
+		opacity: 0;
+		-webkit-transition: all 200ms ease-in-out;
+		transition: all 200ms ease-in-out;
+	}
+	.list_item a {
+		color: #fff;
+		display: block;
+		padding: 5px 10px;
+		text-decoration: none;
+	}
+	.list_item a:hover {
+		background: rgba(255,255,255,.2);
+	}
+.menu_title{
+	color:white;
+}
+
+.print_upload img{
+	max-width:200px;
+}
+
+
+
+@media (max-width: 600px) {
+	.menu_title{
+		font-size:20px;
+
+	}
+	.list_item{
+		font-size:18px;
+	}	
+}
+
+
+
+
+
+*{
+	box-sizing:border-box;
+	margin:0;
+}
+
+body{
+  background-color:light-grey;
+  font-family: 'Roboto', sans-serif;
+}
+
+.login_container{
+  width: 50vw;
+  height: 60vh;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex; 
+
+}
+.backbox{  
+  background-color: #057075;
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  transform: translate(0,-50%);
+  top:50%;
+  display: inline-flex;
+}
+
+.frontbox{
+  background-color: white;
+  border-radius: 20px;
+  height: 100%;
+  width: 50%;
+  z-index: 10;
+  position: absolute;
+  right:0;
+  margin-right: 3%;
+  margin-left: 3%;
+  transition: right .8s ease-in-out;
+  border:1px solid grey;
+}
+
+.moving{
+  right:45%;
+}
+
+.loginMsg{
+  width: 50%;
+  height: 100%;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.loginMsg .title{
+  font-weight: 300;
+  font-size: 11px;
+}
+
+.loginMsg p{
+  font-weight: 100;
+}
+
+.textcontent{
+  color:white;
+  margin-top:65px;
+  margin-left: 12%;
+}
+
+.loginMsg button{
+  background-color: #057075;
+  border: 2px solid white;
+  border-radius: 10px;
+  color:white;
+  font-size: 12px;
+  box-sizing: content-box;
+  font-weight: 300;
+  padding:10px;
+  margin-top: 20px;
+}
+
+
+.login{
+  padding: 20px;
+  text-align: center;
+}
+
+.login h2{
+  color: black;
+  font-size:16px;
+}
+
+
+.login input{
+  display: block;
+  width: 100%;
+  height: 40px;
+  background-color: #f2f2f2;
+  border: none;
+  margin-bottom:20px;
+  font-size: 12px;
+}
+
+.login button{
+  background-color: #057075;
+  border: none;
+  color:white;
+  font-size: 12px;
+  font-weight: 300;
+  box-sizing: content-box;
+  padding:10px;
+  border-radius: 10px;
+  width: 60px;
+  position: absolute;
+  right:30px;
+  bottom: 30px;
+  cursor: pointer;
+}
+.login p {
+  cursor: pointer;
+  color:#404040;
+  font-size:11px;
+}
+
+
+
+
+.btn-block:hover,.btn-block:focus {
+  background-color: #057075;
+  color: #ffffff;
+  webkit-transition: all 400ms cubic-bezier(.4,0,.2,1);
+  transition: all 400ms cubic-bezier(.4,0,.2,1);
+ 
+}
+
+
+
+ul {
+  list-style-type: none;
+}
+
+article[role="signup"] {
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 10px rgba(0, 0, 0, 0.24);
+  webkit-transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 20px 40px;
+  margin-bottom: 20px;
+  max-width:600px;
+  margin:0 auto;
+}
+
+article[role="signup"] input[type="submit"] {
+  padding: 10px 15px;
+  font-size: 11px;
+}
+
+article[role="signup"]:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 1px 15px rgba(0, 0, 0, 0.23);
+  webkit-transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+article[role="signup"] h5 {
+  font-size: 16px;
+  font-weight: 300;
+  color: #057075;
+  margin-bottom: 20px;
+}
+
+article[role="signup"] p {
+  font-size: 11px;
+  padding: 5px 15px;
+}
+
+.login-signup {
+  height:60vh;
+  margin:0 auto;
+  margin-top:10px;
+  max-width:400px;
+
+}
+
+.signup{
+  font-size:11px;
+}
+
+.form-control{
+  font-size:11px;
+
+}
+
+
+@media only screen and (max-width: 767px) {
+  .mobile-pull {
+    float: none;
+  }
+
+  .backbox{
+    display:none;
+  }
+  .frontbox{
+    width:100%;
+    border:none;
+  }
+  .login_container{
+    width:90vw;
+  }
+  .register_button{
+    display:inline;
+  }
+
+}
+
+
+* {
+    box-sizing: border-box;
+    margin:0px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
+    background-color:#F8F8F8
+}
+
+/* Style the header */
+.header {
+    padding: 30px;
+    text-align: center;
+    height:15vh;
+    width:100%;
+}
+
+/* Container for flexboxes */
+.row {
+    display: flex;
+}
+
+/* Create three unequal columns that sits next to each other */
+.column {
+    padding: 50px;
+     height:70vh;
+     /* Should be removed. Only for demonstration */
+     
+     margin:40px;
+     border-top-color:#057075;
+     border-top: 10px solid #057075;
+     text-align:center;
+     color:white;
+}
+
+/* Left and right column */
+.column.print_advertisement{
+   -webkit-flex: 1;
+   -ms-flex: 1;
+   flex: 1;
+   width:25vw;
+}
+.column.print_list{
+-webkit-flex: 1;
+   -ms-flex: 1;
+   flex: 1;
+   width:25vw;
+
+}
+
+/* upload column */
+.column.print_upload {
+    -webkit-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+    width:50vw;
+}
+
+/* Style the footer */
+.footer {
+    text-align: center;
+    height:15vh;
+    bottom:0;
+    width:100%;
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+a{  
+  color:white;
+
+}
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .header{
+  height:15vh;
+  }
+
+  .row {
+      -webkit-flex-direction: column;
+      flex-direction: column;
+    }
+  .column{
+  margin:10px 20px;
+  }
+   
+
+  .column.print_advertisement{
+  display:none;
+  }
+
+  .column.print_list{
+  height:30vh;
+  order:2;
+  width:90%;
+  }
+  
+  .column.print_upload{
+  height:50vh;
+  order:1;
+  width:90%;
+  } 
 }

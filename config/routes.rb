@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
         sessions: 'users/sessions'
   }
-  root 'home#main'
+  root 'home#index'
   get 'home/new2'
   get 'home/main'
   get 'home/fileupload'
