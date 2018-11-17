@@ -18,12 +18,14 @@
       <h2>로그인</h2>
         <%= f.input :userid,
                     placeholder: '아이디',
+                    label: false,
                     required: false,
                     autofocus: true,
                     input_html: { class: "form_input" }
                     %>
         <%= f.input :password,
                     placeholder:'비밀번호',
+                    label: false,
                     required: false,
                     input_html: { autocomplete: "current-password", class: "form_input"} %>
 
