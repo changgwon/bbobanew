@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   end
 
   def main
+    @upload = Upload.new
   end
 
   def fileupload
