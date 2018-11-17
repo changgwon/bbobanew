@@ -1,54 +1,48 @@
 
-<div class="header" style="height:10vh">
-</div>
 
-<div class="login-signup">
- 
-      <article role="signup">
-         <h5 class="text-center"><i class="fa fa-lock"></i>회원가입</h5>
+  <div class="login-signup">
+   
+        <article role="signup">
+           <h5 class="text-center"><i class="fa fa-lock"></i>회원가입</h5>
 
-<div class="signup">
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
+  <div class="signup">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-      <div class="field form-group">
-        <%= f.text_field :userid, autofocus: true, class:'form-control', placeholder:'아이디' %>
-      </div>
+        <div class="field form-group">
+          <%= f.text_field :userid, autofocus: true, class:'form-control', placeholder:'아이디' %>
+        </div>
 
-       <div class="field form-group">
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password",class:'form-control', placeholder:'비밀번호' %>
-      </div>
+         <div class="field form-group">
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password",class:'form-control', placeholder:'비밀번호' %>
+        </div>
 
-      <div class="field form-group">
-        <%= f.password_field :password_confirmation, autocomplete: "new-password",class:'form-control', placeholder:'비밀번호 확인' %>
-      </div>
+        <div class="field form-group">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",class:'form-control', placeholder:'비밀번호 확인' %>
+        </div>
 
-      <div class="field form-group">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control', placeholder:'이메일' %>
-      </div> 
+        <div class="field form-group">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control', placeholder:'이메일' %>
+        </div> 
 
-      <div class="field form-group">
-        <%= f.text_field :username, autofocus: true, class:'form-control' , placeholder:'이름' %>
-      </div>
+        <div class="field form-group">
+          <%= f.text_field :username, autofocus: true, class:'form-control' , placeholder:'이름' %>
+        </div>
 
-      <div class="field form-group">
-        <%= f.text_field :phonenum, autofocus: true,class:'form-control', placeholder:'핸드폰 번호' %>
-      </div>
+        <div class="field form-group">
+          <%= f.text_field :phonenum, autofocus: true,class:'form-control', placeholder:'핸드폰 번호' %>
+        </div>
 
-      <div class="field form-group">
-        <%= f.text_field :stdnum, autofocus: true, class:'form-control', placeholder:'학번' %>
-      </div>
+        <div class="field form-group">
+          <%= f.text_field :stdnum, autofocus: true, class:'form-control', placeholder:'학번' %>
+        </div>
 
 
-      
-        <%= f.submit "가입하기", class:'btn button form-group btn-block' %>
-           
-    <% end %>
+        
+          <%= f.submit "가입하기", class:'btn button form-group btn-block' %>
+             
+      <% end %>
 
-
-  </div>
-</article>
-</div>
