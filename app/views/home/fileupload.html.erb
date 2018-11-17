@@ -94,7 +94,7 @@
       }
       #progressbar li {
             list-style-type: none;
-            color: white;
+            color: black;
             text-transform: uppercase;
             font-size: 9px;
             width: 33.33%;
@@ -141,7 +141,6 @@
 
 <body>    
 
-  <div class="header" style="height:10vh">
     <div>
       <% if user_signed_in? %>
         <div class="info" style="float:right;">
@@ -149,7 +148,6 @@
                               
         </div>
     </div>
-  </div>
       
       <!-- multistep form -->
       <%= form_for @upload, url: home_filecheck_path, html: { multipart: true, id: :msform} do |f| %>
@@ -221,6 +219,7 @@
         </fieldset>
       <!-- </form> -->
       <% end %>
+      
       <% end %>
 </body>
 
