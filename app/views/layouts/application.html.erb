@@ -23,7 +23,7 @@
   <body>
 
     <header>
-      <img src="/mainlogo.png" style="margin:0 auto; height:80%; margin:10px">
+      
       <div class="side_menu">
         <div class="burger_box">
           <div class="menu-icon-container">
@@ -47,8 +47,7 @@
         </div>
       </div>
 
-      <div>
-        
+      <img src="/mainlogo.png" style="margin:0 auto; height:80%; margin:10px">
         <% if user_signed_in? %>
           <div class="info">
             <!-- <%= current_user.username %><br><br> -->
@@ -57,7 +56,6 @@
           </div>
         <% end %>
 
-      </div>
     </header>
     <%= yield %>
     

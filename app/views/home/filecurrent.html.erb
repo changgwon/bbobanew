@@ -14,7 +14,7 @@
 	   </p>
 	<% end %>
 	
-	<% @past_uploads.each do |x| %>
+	<% @past_upload.each do |x| %>
 		<p>
 	   <%= URI.decode(x.attachment_url.split('/').last) %><br>
 	   <%= x.totalpage %>장 -> <%= x.totalpage*50 %>원 출금<br>
