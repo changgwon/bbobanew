@@ -9,8 +9,26 @@ class HomeController < ApplicationController
     @upload = Upload.new
   end
 
-  def filecheck
+  # def filecheck
+  #   @upload = Upload.new
+
+  #   # respond_to do |format|
+  #   #   format.html
+  #   #   format.js
+  #   # end
+
+  # end
+
+
+  def filecreate
     @upload = Upload.new
+    @upload.userid = current_user.userid
+    @upload.stdnum = current_user.stdnum
+    @upload.progress = "인쇄대기"
+
+    @upload.attachment = params[:upload][:attachment]
+    @upload.printer = params[:upload][:printer]
+    @upload.pagenum = params[:upload][:pagenum]
 
     pagenum_o = params[:upload][:pagenum]
     @count = 0
@@ -29,52 +47,7 @@ class HomeController < ApplicationController
       @count = @count / params[:upload][:split].to_i + 1
     end
 
-
-  def filecreate
-    @upload = Upload.new
-    @upload.userid = current_user.userid
-    @upload.stdnum = current_user.stdnum
-    @upload.progress = "인쇄대기"
-
-    @upload.attachment = params[:upload][:attachment]
-    @upload.printer = params[:upload][:printer]
-    @upload.pagenum = params[:upload][:pagenum]
-    # @upload.totalpage = params[:upload][:totalpage]
-
-    # pagenum_o = params[:upload_c][:pagenum]
-    # count = 0
-    # pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
-    # pagenum_c.each do |x|
-    #   if x.include? "-"
-    #     pagenum_d = x.split('-')
-    #     count = count + (pagenum_d[1].to_i-pagenum_d[0].to_i+1) 
-    #   else
-    #     count = count +1
-    #   end
-    # end
-    # @upload_c.pagenum = count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
-
-    # @upload.pagenum = params[:upload][:pagenum]
-    # pagenum_o = @upload.pagenum
-    # count = 0
-    # pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
-    # pagenum_c.each do |x|
-    #   if x.include? "-"
-    #     pagenum_d = x.split('-')
-    #     count = count + (pagenum_d[1].to_i-pagenum_d[0].to_i+1) 
-    #   else
-    #     count = count +1
-    #   end
-    # end
-    # if params[:upload][:split].to_i % 2 == 0
-    #   count = count / params[:upload][:split].to_i
-    # else
-    #   count = count / params[:upload][:split].to_i + 1
-    # end
-    # if params[:upload][:doublepg] == "양면"
-    #   count = count/2
-    # end
-    @upload.totalpage = params[:upload][:totalpage] # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
+    @upload.totalpage = @count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
    
     pkupdate = params[:upload][:pkupdate]
     if pkupdate == "오늘"
@@ -113,7 +86,7 @@ class HomeController < ApplicationController
         # if to_compare >= Time.now
         #   @ongoing_upload << upload
         # end
-        @ongoing_upload << upload
+        @ongoing_upload << upload # 일단은 오늘꺼도 다 프린트!
       else
         @ongoing_upload << upload
       end
