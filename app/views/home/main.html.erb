@@ -1,9 +1,9 @@
 <div>
 	<div class="row">
     <div class="column print_list"><a href="/home/filecurrent">신청 내역</a></div>
-     <div class="column print_upload"><a href="/home/fileupload"><img src="/printingimage.png">파일업로드</a>
+     <div class="column print_upload"></a>
 			
-			<%= form_for @upload, url: home_filecheck_path, html: { multipart: true, id: :msform} do |f| %>
+			<%= form_for @upload, url: home_filecreate_path, html: { multipart: true, id: :msform} do |f| %>
 				<%= render partial: "home/fileupload", locals: { upload: @upload, f: f } %>
 			<% end %>
       </div>
