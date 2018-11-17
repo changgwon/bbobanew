@@ -10,7 +10,6 @@ body {
 
 /* Style the header */
 .header {
-    background-color: #f1f1f1;
     padding: 30px;
     text-align: center;
     height:15vh;
@@ -25,10 +24,13 @@ body {
 /* Create three unequal columns that sits next to each other */
 .column {
     padding: 50px;
-	height:70vh;
+	   height:70vh;
      /* Should be removed. Only for demonstration */
-     border:1px solid black;
-
+     border:1px dotted white;
+     margin:40px;
+     border-radius:30px;
+     text-align:center;
+     color:white;
 }
 
 /* Left and right column */
@@ -56,7 +58,6 @@ body {
 
 /* Style the footer */
 .footer {
-    background-color: #f1f1f1;
     text-align: center;
     height:15vh;
     bottom:0;
@@ -68,6 +69,11 @@ body {
 
 }
 
+a{  
+  color:white;
+
+}
+
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media (max-width: 600px) {
@@ -75,11 +81,15 @@ body {
 	height:15vh;
 	}
 
-    .row {
+  .row {
       -webkit-flex-direction: column;
       flex-direction: column;
     }
-	
+	.column{
+  margin:10px 20px;
+  }
+   
+
 	.column.print_advertisement{
 	display:none;
 	}
@@ -87,13 +97,13 @@ body {
 	.column.print_list{
 	height:30vh;
 	order:2;
-	width:100%;
+	width:90%;
 	}
 	
 	.column.print_upload{
-	height:60vh;
+	height:50vh;
 	order:1;
-	width:100%;
+	width:90%;
 	}
 
 

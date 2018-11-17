@@ -1,7 +1,156 @@
-<div class="default_page">
+<style>
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
 
+
+/* PEN STYLES ========== */
+	a,
+	.side_menu {
+		-webkit-transition: all 300ms ease-in-out;
+		transition: all 300ms ease-in-out;
+	}
+
+/* MENU CONTAINER ----- */
+	.side_menu {
+		background: #057075;
+		height: 100vh;
+		left: -250px;
+		position: fixed;
+		top: 0;
+		width: 250px;
+	}
+	.side_menu .container {
+		padding: 40px 20px 0px 20px ;
+	}
+
+/* HAMBURGER STYLES ----- */
+	.burger_box {
+		display: block;
+		float: right;
+		margin-right: -45px;
+		margin-top:20px;
+	}
+	.burger_box a.menu-icon {
+		display: inline-block;
+		float: none;
+		height: 25px;
+		padding: 10px;
+		opacity: .5;
+		width: 25px;
+		z-index: 100;
+	}
+	.burger_box a.menu-icon:hover,
+	.burger_box a.menu-icon.opened {
+		opacity: 1;
+	}
+	.burger_box a.menu-icon.opened {
+		background: #057075;
+	}
+	.burger_box .menu-icon_box {
+		display: inline-block;
+		height: 25px;
+		position: relative;
+		text-align: left;
+		width: 25px;
+	}
+	.burger_box .menu-icon_line {
+		background: #057075;
+		border-radius: 2px;
+		display: inline-block;
+		height: 3px;
+		position: absolute;
+		width: 100%;
+	}
+	.burger_box .menu-icon_line--1 {
+		top: 2px;
+	}
+	.burger_box .menu-icon_line--2 {
+		top: 10px;
+	}
+	.burger_box .menu-icon_line--3 {
+		top: 18px;
+	}
+	.burger_box .menu-icon_line--1 {
+		transition: top 200ms 250ms, transform 200ms;
+		-webkit-transition: top 200ms 250ms, -webkit-transform 200ms;
+	}
+	.burger_box .menu-icon_line--2 {
+		transition: opacity 0ms 300ms;
+		-webkit-transition: opacity 0ms 300ms;
+	}
+	.burger_box .menu-icon_line--3 {
+		transition: top 100ms 300ms, transform 200ms;
+		-webkit-transition: top 100ms 300ms, -webkit-transform 200ms;
+	}
+	.burger_box .menu-icon.opened .menu-icon_box {
+		transform: scale3d(0.9, 0.9, 0.9);
+		-webkit-transform: scale3d(0.9, 0.9, 0.9);
+	}
+	.burger_box .menu-icon.opened .menu-icon_line {
+		top: 10px;
+	}
+	.burger_box .menu-icon.opened .menu-icon_line--1 {
+		transform: rotate3d(0, 0, 1, 45deg);
+		-webkit-transform: rotate3d(0, 0, 1, 45deg);
+		transition: top 100ms, transform 200ms 250ms;
+		-webkit-transition: top 100ms, -webkit-transform 200ms 250ms;
+	}
+	.burger_box .menu-icon.opened .menu-icon_line--2 {
+		opacity: 0;
+		transition: opacity 200ms;
+		-webkit-transition: opacity 200ms;
+	}
+	.burger_box .menu-icon.opened .menu-icon_line--3 {
+		transform: rotate3d(0, 0, 1, -45deg);
+		-webkit-transform: rotate3d(0, 0, 1, -45deg);
+		transition: top 200ms, transform 200ms 250ms;
+		-webkit-transition: top 200ms, -webkit-transform 200ms 250ms;
+	}
+
+/* STAGGER LIST ----- */
+	.list_load {
+		display: none;
+		list-style: none;
+		padding: 0;
+		margin-top:30px;
+	}
+	.list_item {
+		margin-left: -20px;
+		opacity: 0;
+		-webkit-transition: all 200ms ease-in-out;
+		transition: all 200ms ease-in-out;
+	}
+	.list_item a {
+		color: #fff;
+		display: block;
+		padding: 5px 10px;
+		text-decoration: none;
+	}
+	.list_item a:hover {
+		background: rgba(255,255,255,.2);
+	}
+.menu_title{
+	color:white;
+}
+
+@media (max-width: 600px) {
+	.menu_title{
+		font-size:20px;
+
+	}
+	.list_item{
+		font-size:18px;
+	}	
+}
+
+
+
+
+</style>
+
+
+<body>
 	<div class="header">
-		<div>뽀바드림
+		<div>
 		<% if user_signed_in? %>
 			<div class="info" style="float:right;">
 				<!--<%= current_user.username %><br><br>-->
@@ -10,6 +159,28 @@
 			</div>
 		</div>
 	</div>
+	<div class="side_menu">
+		<div class="burger_box">
+			<div class="menu-icon-container">
+				<a href="#" class="menu-icon js-menu_toggle closed">
+					<span class="menu-icon_box">
+						<span class="menu-icon_line menu-icon_line--1"></span>
+						<span class="menu-icon_line menu-icon_line--2"></span>
+						<span class="menu-icon_line menu-icon_line--3"></span>
+					</span>
+				</a>
+			</div>
+		</div>
+		<div class="container">
+			<h5 class="menu_title">서비스 메인 이름</h5>
+			<ul class="list_load">
+				<li class="list_item"><a href="#">뽀바드림</a></li>
+				<li class="list_item"><a href="#">카페</a></li>
+				<li class="list_item"><a href="#">음식점</a></li>
+			</ul>
+		</div>
+	</div>
+
 
 	<div class="row">
 		
@@ -29,10 +200,52 @@
 		
 <div class="footer"></div>
 
-<a href="/home/fileupload">파일업로드</a>
+<!-- <a href="/home/fileupload">파일업로드</a>
 <a href="/home/filecurrent">신청 현황</a>
 <a href="/home/ownerpage">복사대화면</a>
-<a href="/home/pointhistory">사용 내역</a>
+<a href="/home/pointhistory">사용 내역</a> -->
 
+</body>
+
+<script>
+
+	// Requires jQuery
+
+	$(document).on('click','.js-menu_toggle.closed',function(e){
+		e.preventDefault(); $('.list_load, .list_item').stop();
+		$(this).removeClass('closed').addClass('opened');
+
+		$('.side_menu').css({ 'left':'0px' });
+
+		var count = $('.list_item').length;
+		$('.list_load').slideDown( (count*.6)*100 );
+		$('.list_item').each(function(i){
+			var thisLI = $(this);
+			timeOut = 100*i;
+			setTimeout(function(){
+				thisLI.css({
+					'opacity':'1',
+					'margin-left':'0'
+				});
+			},100*i);
+		});
+
+	});
+
+	$(document).on('click','.js-menu_toggle.opened',function(e){
+		e.preventDefault(); $('.list_load, .list_item').stop();
+		$(this).removeClass('opened').addClass('closed');
+
+		$('.side_menu').css({ 'left':'-250px' });
+
+		var count = $('.list_item').length;
+		$('.list_item').css({
+			'opacity':'0',
+			'margin-left':'-20px'
+		});
+		$('.list_load').slideUp(300);
+	});
+
+</script>
 
 
