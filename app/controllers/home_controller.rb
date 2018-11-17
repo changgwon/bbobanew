@@ -10,27 +10,27 @@ class HomeController < ApplicationController
     @upload = Upload.new
   end
 
-  # def filecheck
-  #   @upload = Upload.new
+  def filecheck
+    @upload = Upload.new
 
-  #   pagenum_o = params[:upload][:pagenum]
-  #   @count = 0
-  #   pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
-  #   pagenum_c.each do |x|
-  #     if x.include? "-"
-  #       pagenum_d = x.split('-')
-  #       @count = @count + (pagenum_d[1].to_i-pagenum_d[0].to_i+1) 
-  #     else
-  #       @count = @count +1
-  #     end
-  #   end
-  #   if params[:upload][:split].to_i % 2 == 0
-  #     @count = @count / params[:upload][:split].to_i
-  #   else
-  #     @count = @count / params[:upload][:split].to_i + 1
-  #   end
+    pagenum_o = params[:upload][:pagenum]
+    @count = 0
+    pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
+    pagenum_c.each do |x|
+      if x.include? "-"
+        pagenum_d = x.split('-')
+        @count = @count + (pagenum_d[1].to_i-pagenum_d[0].to_i+1) 
+      else
+        @count = @count +1
+      end
+    end
+    if params[:upload][:split].to_i % 2 == 0
+      @count = @count / params[:upload][:split].to_i
+    else
+      @count = @count / params[:upload][:split].to_i + 1
+    end
+  end
 
-  # end
   def filecreate
     @upload = Upload.new
     @upload.userid = current_user.userid
