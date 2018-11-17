@@ -17,6 +17,9 @@
 		</div>
 	
 		<div class="column print_upload"><a href="/home/fileupload">파일업로드</a>
+			<%= form_for @upload, url: home_filecheck_path, html: { multipart: true, id: :msform} do |f| %>
+				<%= render partial: "home/fileupload", locals: { upload: @upload, f: f } %>
+			<% end %>
 		</div>
 		
 		
@@ -28,10 +31,12 @@
 		
 <div class="footer"></div>
 
+<a href="/users/sign_in">로그인</a>
 <a href="/home/fileupload">파일업로드</a>
 <a href="/home/filecurrent">신청 현황</a>
 <a href="/home/ownerpage">복사대화면</a>
 <a href="/home/pointhistory">사용 내역</a>
+
 
 
 

@@ -1,0 +1,50 @@
+<%= form_for @upload, url: home_filecheck_path, html: { multipart: true, id: :msform} do |f| %>
+        <!-- fieldsets -->
+        <fieldset>
+          <div class="input_text">
+                <br>
+                <%= f.label "픽업날짜" %>
+                <%= f.select(:pkupdate, ["오늘","내일"],{}, {})%>
+                <br>
+
+                <%= f.label "픽업시간" %>
+                <%= f.select(:pkuptime, ["10:15~10:30","11:45~12:00", "13:15~13:30", "14:45~15:00","16:15~16:30"],{}, {})%>
+                <br>
+
+                <%= f.label "복사대" %>
+                <%= f.select(:printer, ["K", "J", "D"], {}, {}) %>
+                <br>
+                
+                
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <%= f.file_field :attachment, accept: 'application/pdf, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/haansofthwp', placeholder: "첨부파일"  %><br>
+          
+          <%= f.text_field :pagenum, placeholder: "인쇄 페이지  ex) 1-33, 35" %><br>
+        </fieldset>
+
+        <fieldset>
+            <div class="input_text">
+                <%= f.label "가로/세로" %>
+                <%= f.select(:landscape, ["가로","세로"],{}, {})%>
+                <br>
+
+                <%= f.label "양면/단면" %>
+                <%= f.select(:doublepg, ["양면","단면"],{}, {})%>
+                <br>
+
+                <%= f.label "분할" %>
+                <%= f.select(:split, ["2","4","6","8"],{}, {})%>
+                <br>
+
+                <%= f.label "흑백/컬러" %>
+                <%= f.select(:color, ["흑백","컬러"],{}, {})%>
+                <br>
+          </div>
+
+          <%= f.submit "Save", class: "action-button btn btn-primary" %>
+
+        </fieldset>
+<% end %>
