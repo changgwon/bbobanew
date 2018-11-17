@@ -3,8 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :authentication_keys => [:userid]
+  has_many :charges
+         
   def email_required?
-    false
+   false
   end
 
   def email_changed?
