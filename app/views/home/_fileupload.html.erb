@@ -1,32 +1,57 @@
-<%= form_for @upload, url: home_filecheck_path, html: { multipart: true, id: :msform} do |f| %>
+<div>
+      <% if user_signed_in? %>
+        <div class="info" style="float:right;">
+        <!--<%= current_user.username %><br><br>-->
+                              
+        </div>
+    </div>
+      
+      <!-- multistep form -->
+      <%= form_for @upload, url: home_filecheck_path, html: { multipart: true, id: :msform} do |f| %>
+        <!-- progressbar -->
+        <ul id="progressbar">
+          <li class="active">복사대 선택</li>
+          <li>파일 업로드</li>
+          <li>파일 상세 설정</li>
+        </ul>
         <!-- fieldsets -->
         <fieldset>
+          <h2 class="fs-title">복사대 설정</h2>
+          <h3 class="fs-subtitle">프린트물을 찾아갈 장소와 시간을<br> 정하는 단계입니다.</h3><br>
           <div class="input_text">
-                <br>
                 <%= f.label "픽업날짜" %>
                 <%= f.select(:pkupdate, ["오늘","내일"],{}, {})%>
-                <br>
+                <br><br>
 
                 <%= f.label "픽업시간" %>
                 <%= f.select(:pkuptime, ["10:15~10:30","11:45~12:00", "13:15~13:30", "14:45~15:00","16:15~16:30"],{}, {})%>
-                <br>
+                <br><br>
 
                 <%= f.label "복사대" %>
                 <%= f.select(:printer, ["K", "J", "D"], {}, {}) %>
-                <br>
+                <br><br>
                 
                 
           </div>
+          <input type="button" name="next" class="next action-button" value="Next" />
         </fieldset>
 
         <fieldset>
+          <h2 class="fs-title">파일 업로드</h2>
+          <h3 class="fs-subtitle">파일을 업로드하고, 페이지수를 <br>선택하는 단계입니다.</h3>
+
           <%= f.file_field :attachment, accept: 'application/pdf, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/haansofthwp', placeholder: "첨부파일"  %><br>
           
           <%= f.text_field :pagenum, placeholder: "인쇄 페이지  ex) 1-33, 35" %><br>
+
+          <input type="button" name="previous" class="previous action-button" value="Previous" />
+          <input type="button" name="next" class="next action-button" value="Next" />
         </fieldset>
 
         <fieldset>
             <div class="input_text">
+                <h2 class="fs-title">파일 상세 설정</h2>
+                <h3 class="fs-subtitle">상세 인쇄 설정을 선택하는 단계입니다. </h3>
                 <%= f.label "가로/세로" %>
                 <%= f.select(:landscape, ["가로","세로"],{}, {})%>
                 <br>
@@ -44,7 +69,12 @@
                 <br>
           </div>
 
+          <input type="button" name="previous" class="previous action-button" value="Previous" />
+
           <%= f.submit "Save", class: "action-button btn btn-primary" %>
 
         </fieldset>
-<% end %>
+      <!-- </form> -->
+      <% end %>
+      
+      <% end %>
