@@ -81,11 +81,10 @@ class HomeController < ApplicationController
   end
 
   def filecurrent
-    @upload = Upload.find_by_userid(current_user.userid)
-    uploads = Upload.all
+    @uploads = Upload.where(userid:current_user.userid)
     @ongoing_upload = []
     @past_upload = []
-    uploads.each do |upload|
+    @uploads.each do |upload|
       if upload.pkupdate < Date.today
         @past_upload << upload
 

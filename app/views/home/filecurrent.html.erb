@@ -1,6 +1,7 @@
-<% if @ongoing_upload.empty? %>
+<% if @uploads.empty? %>
 	신청 내역이 없습니다.<br>
 <% else %>
+	<h1>현재 진행중인 업로드 입니다</h1>
 	<% @ongoing_upload.each do |x| %>
 	   <p>
 	   <%= URI.decode(x.attachment_url.split('/').last) %><br>
@@ -13,7 +14,8 @@
 	   ------------------ <br>
 	   </p>
 	<% end %>
-	
+	<hr>
+	<h1>이미 완료된 업로드 입니다</h1>
 	<% @past_upload.each do |x| %>
 		<p>
 	   <%= URI.decode(x.attachment_url.split('/').last) %><br>
