@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
 
 	protected
 		def configure_permitted_parameters
-	      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :userid, :stdnum, :username, :usertype, :cur_cash, :expt_cash])
-		  devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :userid, :stdnum, :username, :usertype, :cur_cash, :expt_cash])
-		  devise_parameter_sanitizer.permit(:accout_update, keys: [:email, :userid, :stdnum, :username, :usertype, :cur_cash, :expt_cash])
+	      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :userid, :stdnum, :username, :phonenum, :usertype, :cur_cash, :expt_cash])
+		  devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :userid, :stdnum, :username, :phonenum, :usertype, :cur_cash, :expt_cash])
+		  devise_parameter_sanitizer.permit(:accout_update, keys: [:email, :userid, :stdnum, :username, :phonenum, :usertype, :cur_cash, :expt_cash])
 		end
 end
