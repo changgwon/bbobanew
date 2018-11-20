@@ -1,0 +1,173 @@
+<div class="header">
+  <div class="title">뽀바드림</div>
+  <div class="topnav">
+    <a href="#">[ K관복사대 ]</a>
+    <a href="#">로그아웃</a>
+    <a href="home/account">매출관리</a>
+  </div>
+</div>
+
+<div class="datetime">
+  <div class="date">
+    <p id="yy"></p>
+    <p id="mm"></p>
+    <p id="dd"></p>
+    <p id="day"></p>
+  </div>
+  <div class="time">
+    <p>현재시각</p>
+    <p id="time"></p>
+  </div>
+  <script>
+    var d = new Date();
+    document.getElementById("yy").innerHTML = d.getFullYear()+"년";
+    document.getElementById("mm").innerHTML = (d.getMonth()+1)+"월";
+    document.getElementById("dd").innerHTML = d.getDate()+"일";
+
+    var weekdays=["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+    document.getElementById("day").innerHTML = weekdays[d.getDay()];
+
+    var hr = d.getHours();
+    var min = d.getMinutes();
+    function hrfunc(hr){
+      if(hr<12) return "(오전)"+hr+":"
+      else if (hr==12) return "(오후)"+hr+":"
+      else return "(오후)"+(hr-12)+":"
+    }
+    document.getElementById("time").innerHTML = hrfunc(hr)+min;
+  </script>
+</div>
+
+<div id="tableID" style="margin-top: 100px;">
+  <table class="table-list" data-currentpage="1">
+    <thead>
+      <th><button type="button" class="sort textcenter" data-sort="pickupTime">픽업시간<i class="caret"></i></button></th>
+      <th><button type="button" class="sort textcenter" data-sort="pickupName">이름<i class="caret"></i></button></th>
+      <th><button type="button" class="sort textcenter" data-sort="pickupID">학번<i class="caret"></i></button></th>
+      <th><button type="button" class="sort" data-sort="fileName">파일명<i class="caret"></i></button></th>
+      <th><button type="button" class="sort textright" data-sort="printSetting">인쇄설정<i class="caret"></i></button></th>
+      <th><button type="button" class="sort textright" data-sort="printPage">범위(매수)<i class="caret"></i></button></th>
+      <th><button type="button" class="sort textright" data-sort="printFee">결제금액<i class="caret"></i></button></th>
+      <th><button type="button" class="sort textright" data-sort="printState">상태<i class="caret"></i></button></th>
+    </thead>
+    <!-- IMPORTANT, class="list" must be on tbody -->
+    <tbody class="list">
+      <tr>
+        <td class="minify pickupTime">10:15</td>
+        <td class="pickupName">Alpha</td>
+        <td class="minify textright pickupID">20180001</td>
+        <td class="fileName">filename.pptx</td>
+        <td class="printSetting">filesetting</td>
+        <td class="printPage">1-4(4)</td>
+        <td class="printFee">200원</td>
+        <td class="printState">인쇄대기중</td>
+      </tr>
+      <tr>
+        <td class="minify pickupTime">10:15</td>
+        <td class="pickupName">Bravo</td>
+        <td class="minify textright pickupID">20180002</td>
+        <td class="fileName">filename.pptx</td>
+        <td class="printSetting">filesetting</td>
+        <td class="printPage">1-4(4)</td>
+        <td class="printFee">200원</td>
+        <td class="printState">인쇄대기중</td>    
+      </tr>
+      <tr>
+        <td class="minify pickupTime">10:15</td>
+        <td class="pickupName">Charlie</td>
+        <td class="minify textright pickupID">20180003</td>
+        <td class="fileName">filename.pptx</td>
+        <td class="printSetting">filesetting</td>
+        <td class="printPage">1-4(4)</td>
+        <td class="printFee">200원</td>
+        <td class="printState">인쇄대기중</td>   
+      </tr>
+      <tr>
+        <td class="minify pickupTime">10:15</td>
+        <td class="pickupName">Foxtrot</td>
+        <td class="minify textright pickupID">20180004</td>
+        <td class="fileName">filename.pptx</td>
+        <td class="printSetting">filesetting</td>
+        <td class="printPage">1-4(4)</td>
+        <td class="printFee">200원</td>
+        <td class="printState">인쇄대기중</td>     
+      </tr>
+      <tr>
+        <td class="minify pickupTime">10:15</td>
+        <td class="pickupName">Golf</td>
+        <td class="minify textright pickupID">20180005</td>
+        <td class="fileName">filename.pptx</td>
+        <td class="printSetting">filesetting</td>
+        <td class="printPage">1-4(4)</td>
+        <td class="printFee">200원</td>
+        <td class="printState">인쇄대기중</td>    
+      </tr>
+      <tr>
+        <td class="minify pickupTime">11:45</td>
+        <td class="pickupName">Alpha</td>
+        <td class="minify textright pickupID">20180006</td>
+        <td class="fileName">filename.pptx</td>
+        <td class="printSetting">filesetting</td>
+        <td class="printPage">1-4(4)</td>
+        <td class="printFee">200원</td>
+        <td class="printState">인쇄대기중</td>      
+      </tr>
+      <tr>
+        <td class="minify pickupTime">11:45</td>
+        <td class="pickupName">Bravo</td>
+        <td class="minify textright pickupID">20180007</td>
+        <td class="fileName">filename.pptx</td>
+        <td class="printSetting">filesetting</td>
+        <td class="printPage">1-4(4)</td>
+        <td class="printFee">200원</td>
+        <td class="printState">인쇄대기중</td>      
+      </tr>
+      <tr>
+        <td class="minify pickupTime">11:45</td>
+        <td class="pickupName">Charlie</td>
+        <td class="minify textright pickupID">20180008</td>
+        <td class="fileName">filename.pptx</td>
+        <td class="printSetting">filesetting</td>
+        <td class="printPage">1-4(4)</td>
+        <td class="printFee">200원</td>
+        <td class="printState">인쇄대기중</td>      
+      </tr>
+      <tr>
+        <td class="minify pickupTime">11:45</td>
+        <td class="pickupName">Foxtrot</td>
+        <td class="minify textright pickupID">20180009</td>
+        <td class="fileName">filename.pptx</td>
+        <td class="printSetting">filesetting</td>
+        <td class="printPage">1-4(4)</td>
+        <td class="printFee">200원</td>
+        <td class="printState">인쇄대기중</td>      
+      </tr>
+      <tr>
+        <td class="minify pickupTime">11:45</td>
+        <td class="pickupName">India</td>
+        <td class="minify textright pickupID">20180010</td>
+        <td class="fileName">filename.pptx</td>
+        <td class="printSetting">filesetting</td>
+        <td class="printPage">1-4(4)</td>
+        <td class="printFee">200원</td>
+        <td class="printState">인쇄대기중</td>      
+      </tr>
+      <tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="table-footer">
+          <div class="table-pagination">
+            <button type="button" class="btn-tablepage jTablePagePrev">&laquo;</button>
+            <ul class="pagination"></ul>
+            <button type="button" class="btn-tablepage jTablePageNext">&raquo;</button>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+</div>
+
+<div class="footer">
+</div>
