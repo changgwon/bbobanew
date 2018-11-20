@@ -17,5 +17,9 @@ Rails.application.routes.draw do
   get 'printer/index' => 'printer#index'
   get 'printer/account' => 'printer#account'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'payment/charge' => 'payment#charge'
+  post 'payment/create'
+  get 'payment/new'
+  get 'payment/charge_show'
+  
 end

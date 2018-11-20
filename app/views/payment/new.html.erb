@@ -1,4 +1,4 @@
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<!-- <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
@@ -60,4 +60,34 @@
         }
        
     </script>
-<button type="button" onclick="pay_new_test();">결제창 테스트 버튼</button>
+<button type="button" onclick="pay_new_test();">결제창 테스트 버튼</button> -->
+
+
+    <%= form_for @charge, url: "/payment/create" do |f| %>
+
+      <%= f.label "10장" %>
+      <%= f.hidden_field :amount, :value => 10 %>
+      <%= f.submit "500원" %>
+    <% end %>
+    <br>
+   <%= form_for @charge, url: "/payment/create" do |f| %>
+
+    <%= f.label "50장" %>
+      <%= f.hidden_field :amount, :value => 50 %>
+      <%= f.submit "2500원" %>
+    <% end %>
+    <br>
+    <%= form_for @charge, url: "/payment/create" do |f| %>
+      <%= f.label "100장" %>
+      <%= f.hidden_field :amount, :value => 100 %>
+      <%= f.submit "5000원" %>
+    <% end %>
+    <br>
+    <%= form_for @charge, url: "/payment/create" do |f| %>
+
+      <%= f.label "200장" %>
+      <%= f.hidden_field :amount, :value => 200 %>
+      <%= f.submit "10000원" %>
+    <% end %>
+    <br>
+

@@ -1,32 +1,21 @@
-<div class="default_page">
-
-	<div class="header">
-		<div>뽀바드림
-		<% if user_signed_in? %>
-			<div class="info" style="float:right;">
-				<!--<%= current_user.username %><br><br>-->
-				<%= link_to "로그아웃", destroy_user_session_path %>
-				<a href="/">정보변경</a>
-			</div>
-		</div>
-	</div>
-
+<div>
 	<div class="row">
-		
-		<div class="column print_list"><a href="/home/filecurrent">신청 현황</a>
+    <div class="column print_list"><a href="/home/filecurrent">신청 내역</a></div>
+     <div class="column print_upload"></a>
+			
+			<%= form_for @upload, url: home_filecreate_path, html: { multipart: true, id: :msform} do |f| %>
+				<%= render partial: "home/fileupload", locals: { upload: @upload, f: f } %>
+			<% end %>
+      </div>
+      <div class="column print_advertisement">광고 영역</div>
+  
+  
 		</div>
-	
-		<div class="column print_upload"><a href="/home/fileupload">파일업로드</a>
-		</div>
-		
-		
-		<div class="column print_advertisement">광고 영역</div>
-<!-- 
-		<a href="/home/ownerpage"><div class="point">복사대화면</div></a> -->
-
-	<% end %>
 </div>
 		
 <div class="footer"></div>
 
+
+
+<a href="/payment/charge_show">충전 내역</a>
 

@@ -29,9 +29,48 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+
+    <header>
+      
+      <div class="side_menu">
+        <div class="burger_box">
+          <div class="menu-icon-container">
+            <a href="#" class="menu-icon js-menu_toggle closed">
+              <span class="menu-icon_box">
+                <span class="menu-icon_line menu-icon_line--1"></span>
+                <span class="menu-icon_line menu-icon_line--2"></span>
+                <span class="menu-icon_line menu-icon_line--3"></span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="container">
+          <h5 class="menu_title">서비스 메인 이름</h5>
+          <ul class="list_load">
+            <li class="list_item"><a href="#">뽀바드림</a></li>
+            <li class="list_item"><a href="#">카페</a></li>
+            <li class="list_item"><a href="#">음식점</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <img src="/mainlogo.png" style="margin:0 auto; height:80%; margin:10px">
+        <% if user_signed_in? %>
+          <div class="info">
+            <!-- <%= current_user.username %><br><br> -->
+            <%= link_to "로그아웃", destroy_user_session_path %>
+            <%= link_to "정보변경", edit_user_registration_path %>
+          </div>
+        <% end %>
+
+    </header>
     <%= yield %>
+    
+  
   </body>
 </html>

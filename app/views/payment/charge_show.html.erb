@@ -1,0 +1,20 @@
+<h1>내 충전 내역</h1>
+현재 포인트 : <%= current_user.cur_cash %><br>
+<a href="/payment/new">포인트 충전</a><br>
+**************************************************<br>
+
+<br>
+<% if @charges.empty? %>
+	신청 내역이 없습니다.<br>
+<% else %>
+	<% @charges.each do |x| %>
+	   
+	   고유 유저 번호 : <%=x.user_id%><br>
+	   충전 일신 : <%=x.created_at%><br>
+	   충전 량 : <%=x.amount%><br>
+	   상태 : <%=x.deposit%><br>
+
+	   ------------------------------------------------------<br>
+	<% end %>
+<% end %>
+<a href="/">홈으로 돌아가기</a>
