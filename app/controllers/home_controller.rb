@@ -84,7 +84,8 @@ class HomeController < ApplicationController
     end
 
     @upload.totalpage = @count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
-    @upload.cost = @count * 50
+    @upload.cost = @count #* 50
+
 
     pkupdate = params[:upload][:pkupdate]
     if pkupdate == "오늘"
@@ -100,15 +101,18 @@ class HomeController < ApplicationController
     @upload.split = params[:upload][:split]
     @upload.color = params[:upload][:color]
 
-    @upload.save
-
-    ## 유저 DB 갱신 (캐시 차감)
     @user = current_user
     if @user.cur_cash < @upload.cost
       @upload.flag = false
     else
-      @user.cur_cash -= @upload.cost
+      @user.cur_cash -= @count #*50
     end
+
+    @user.save
+    @upload.save
+
+    ## 유저 DB 갱신 (캐시 차감)
+
 
     redirect_to '/'
   end
@@ -165,7 +169,7 @@ class HomeController < ApplicationController
 
     # 환불!!!!
     @user = current_user
-    @user.cur_cash += upload.totalpage #*50
+    @user.cur_cash += upload.totalpage #* 50
     @user.save
     # redirect_to home_ownerpage_path
     redirect_back(fallback_location: home_ownerpage_path)
