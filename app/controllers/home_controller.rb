@@ -145,6 +145,7 @@ class HomeController < ApplicationController
   end
 
   def ownerpage
+    @user = current_user
     @todayuploads = []
     Upload.all.each do |x|
       if x.pkupdate == Date.today
