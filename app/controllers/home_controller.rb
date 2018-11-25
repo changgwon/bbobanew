@@ -100,15 +100,18 @@ class HomeController < ApplicationController
     @upload.split = params[:upload][:split]
     @upload.color = params[:upload][:color]
 
+
+    @user = current_user
+    if @user.cur_cash < @upload.totalpage
+      @upload.flag = false
+    else
+      @user.cur_cash -= @upload.totalpage
+      @user.save
+    end
+
     @upload.save
 
     ## 유저 DB 갱신 (캐시 차감)
-    @user = current_user
-    if @user.cur_cash < @upload.cost
-      @upload.flag = false
-    else
-      @user.cur_cash -= @upload.cost
-    end
 
     redirect_to '/'
   end
