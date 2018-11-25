@@ -2,7 +2,7 @@
 
 [<%=@upload.pkuptime%>, <%=@upload.printer%>]
 <br>
-<%=URI.decode(@upload.attachment_url.split('/').last)%>
+<%= link_to "#{URI.decode(@upload.attachment_url.split('/').last)}", @upload.attachment_url, download: "#{URI.decode(@upload.attachment_url.split('/').last)}" %> <br>
 <br>
 페이지: <%=@upload.pagenum%> (총 <%=@upload.totalpage%>장)<br><br>
 

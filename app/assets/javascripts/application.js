@@ -42,6 +42,7 @@ var animating; //flag to prevent quick multi-click glitches
 jQuery(document).ready(function($){
 
       $(".next").click(function(){
+            
             if(animating) return false;
             animating = true;
             
