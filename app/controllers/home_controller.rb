@@ -102,17 +102,18 @@ class HomeController < ApplicationController
     @upload.color = params[:upload][:color]
 
     @user = current_user
-    if @user.cur_cash < @upload.cost
+    if @user.cur_cash < @upload.totalpage
       @upload.flag = false
     else
-      @user.cur_cash -= @count #*50
+
+      @user.cur_cash -= @upload.totalpage
+      @user.save
     end
 
-    @user.save
+
     @upload.save
 
     ## 유저 DB 갱신 (캐시 차감)
-
 
     redirect_to '/'
   end
