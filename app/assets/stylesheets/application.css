@@ -1,5 +1,50 @@
 
 
+/* main.html */
+.filecurrent_card{
+  width:90%;
+  height:150px;
+  border-radius:10px;
+  color:black;
+  margin: 0 auto;
+  margin-bottom:20px;
+  background-color:white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding:20px;
+}
+.filecurrent_card:hover{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0, 0.2), 0 6px 20px 0 rgba(0,0,0, 0.59);
+}
+
+.print_list a{
+  text-decoration :none;
+  color:black;
+}
+
+.filecurrent_title{
+  height:50px;
+  text-align:center;
+}
+.center{
+  margin: 0 auto;
+}
+.grey{
+  background-color:grey;
+}
+@media (max-width: 767px) {
+  .filecurrent_title{
+    margin:0 auto;
+    width:80%;
+    height:200px;
+    background-color:white;
+    border-radius:10px;
+  }
+  
+
+
+}
+
+
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
 
 
@@ -136,7 +181,6 @@ body{
 		margin-top:30px;
 	}
 	.list_item {
-		margin-left: -20px;
 		opacity: 0;
 		-webkit-transition: all 200ms ease-in-out;
 		transition: all 200ms ease-in-out;
@@ -160,7 +204,7 @@ body{
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
 	.menu_title{
 		font-size:20px;
 
@@ -418,37 +462,36 @@ body {
 
 /* Create three unequal columns that sits next to each other */
 .column {
-     height:70vh;
      /* Should be removed. Only for demonstration */
-     
-     margin:40px;
-     border-top-color:#057075;
-     border-top: 10px solid #057075;
      text-align:center;
-     color:white;
+     border:1px solid black;
+}
+
+.column.print_list{
+/*-webkit-flex: 1;
+   -ms-flex: 1;*/
+   flex: 1;
+   width:30vw;
+   margin: 0 auto;
+
 }
 
 /* Left and right column */
 .column.print_advertisement{
-   -webkit-flex: 1;
-   -ms-flex: 1;
+   /*-webkit-flex: 1;
+   -ms-flex: 1;*/
    flex: 1;
-   width:25vw;
+   width:30vw;
 }
-.column.print_list{
--webkit-flex: 1;
-   -ms-flex: 1;
-   flex: 1;
-   width:25vw;
 
-}
 
 /* upload column */
 .column.print_upload {
-    -webkit-flex: 2;
-    -ms-flex: 2;
+    /*-webkit-flex: 2;
+    -ms-flex: 2;*/
     flex: 2;
-    width:50vw;
+    width:40vw;
+    padding:10px;
 }
 
 /* Style the footer */
@@ -471,9 +514,9 @@ a{
 
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .header{
-  height:15vh;
+     height:15vh;
   }
 
   .row {
@@ -490,16 +533,22 @@ a{
   }
 
   .column.print_list{
-  height:30vh;
   order:2;
   width:90%;
   }
   
   .column.print_upload{
-  height:50vh;
   order:1;
   width:90%;
   } 
+
+  .info{
+    display:none;
+  }
+  #progressbar{
+    display:none;
+  }
+
 }
 
 
@@ -542,7 +591,7 @@ a{
             display: none;
       }
       /*inputs*/
-      #msform input, #msform textarea {
+      #msform input, #msform textarea, #msform select {
             padding: 15px;
             border: 1px solid #ccc;
             border-radius: 3px;
@@ -552,6 +601,12 @@ a{
             font-family: montserrat;
             color: #2C3E50;
             font-size: 13px;
+      }
+      #msform label{
+        float:left;
+      }
+      #msform select{
+        margin-bottom:0px;
       }
       /*buttons*/
       #msform .action-button {
@@ -585,7 +640,7 @@ a{
             font-weight: normal;
             font-size: 13px;
             color: #666;
-            margin-bottom: 20px;     
+            margin-bottom: 10px;     
 
       }
       /*progressbar*/
@@ -661,6 +716,7 @@ a{
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    max-width:400px;
 }
 
 /* The Close Button */
