@@ -1,32 +1,40 @@
-<% if @uploads.empty? %>
-	신청 내역이 없습니다.<br>
-<% else %>
-	<h1>현재 진행중인 업로드 입니다</h1>
-	<% @ongoing_upload.each do |x| %>
-	   <p>
-	   <%= URI.decode(x.attachment_url.split('/').last) %><br>
-	   <%= x.totalpage %>장 -> <%= x.totalpage*50 %>원 출금<br>
-	   <%= x.pkupdate %><br>
-	   <%= x.pkuptime %><br>
-	   <%=x.printer%><br>
-	   <%=x.progress%><br><br>
-	   <a href="filedetail/<%=x.id%>">자세히</a><br>
-	   ------------------ <br>
-	   </p>
-	<% end %>
-	<hr>
-	<h1>이미 완료된 업로드 입니다</h1>
-	<% @past_upload.each do |x| %>
-		<p>
-	   <%= URI.decode(x.attachment_url.split('/').last) %><br>
-	   <%= x.totalpage %>장 -> <%= x.totalpage*50 %>원 출금<br>
-	   <%= x.pkupdate %><br>
-	   <%= x.pkuptime %><br>
-	   <%=x.printer%><br>
-	   <%=x.progress%><br><br>
-	   ------------------ <br>
-	   </p>
-	<% end %>
+<div class="column print_upload center">
 
-<% end %>
-<a href="/">홈으로 돌아가기</a>
+	<% if @uploads.empty? %>
+		신청 내역이 없습니다.<br>
+	<% else %>
+		<h1>현재 진행중인 업로드 입니다</h1>
+		<% @ongoing_upload.each do |x| %>
+		   <a href="filedetail/<%=x.id%>">
+		   	<div class="filecurrent_card">
+			  <div style="text-align:left">
+			   		<b><%= x.pkupdate %><br>
+				   	<%= x.pkuptime %>  
+				   	<%=x.printer%> 관 <br> </b></div>
+				   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
+				   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
+				   
+				  	<%=x.progress%><br>
+			</div></a>
+		   
+		<% end %>
+		<hr>
+		<h1>이미 완료된 업로드 입니다</h1>
+		<% @past_upload.each do |x| %>
+		<a href="filedetail/<%=x.id%>">
+			<div class="filecurrent_card grey">
+			   <div style="text-align:left">
+			   		<b><%= x.pkupdate %><br>
+				   	<%= x.pkuptime %>  
+				   	<%=x.printer%> 관 <br> </b></div>
+				   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
+				   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
+				   
+				  	<%=x.progress%><br>
+		 	</div>
+		 </a>
+		<% end %>
+
+	<% end %>
+	<a href="/">홈으로 돌아가기</a>
+</div>

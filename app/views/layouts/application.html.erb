@@ -60,14 +60,16 @@
         </div>
       </div>
 
-      <img src="/mainlogo.png" style="margin:0 auto; height:80%; margin:10px">
+      <div style="text-align: center">
+        <a href="/"><img src="/mainlogo.png" style="height:80px; position:absolute"></a>
         <% if user_signed_in? %>
-          <div class="info">
+          <span class="info">
             <!-- <%= current_user.username %><br><br> -->
             <%= link_to "로그아웃", destroy_user_session_path %>
             <%= link_to "정보변경", edit_user_registration_path %>
-          </div>
+          </span>
         <% end %>
+      </div>
 
     </header>
     <%= yield %>
