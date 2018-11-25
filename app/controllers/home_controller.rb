@@ -59,7 +59,8 @@ class HomeController < ApplicationController
     end
 
     @upload.totalpage = @count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
-   
+    @upload.cost = @count * 50
+
     pkupdate = params[:upload][:pkupdate]
     if pkupdate == "오늘"
       pkupdate = Date.today
@@ -73,9 +74,16 @@ class HomeController < ApplicationController
     @upload.doublepg = params[:upload][:doublepg]
     @upload.split = params[:upload][:split]
     @upload.color = params[:upload][:color]
+
     @upload.save
 
     ## 유저 DB 갱신 (캐시 차감)
+    @user = current_user
+    if @user.cur_cash < @upload.cost
+      @upload.flag = false
+    else
+      @user.cur_cash -= @upload.cost
+    end
 
     redirect_to '/'
   end
@@ -114,6 +122,36 @@ class HomeController < ApplicationController
         @todayuploads << x
       end
     end
+  end
+
+  def changeState1
+    upload = Upload.find(params[:id])
+    upload.progress = "인쇄중"
+    upload.save
+
+    # redirect_to home_ownerpage_path
+    redirect_back(fallback_location: home_ownerpage_path)
+  end
+
+  def changeState2
+    upload = Upload.find(params[:id])
+    upload.progress = "인쇄취소"
+    upload.save
+
+    # 환불!!!!
+    @user = current_user
+    @user.cur_cash += upload.totalpage #*50
+    # redirect_to home_ownerpage_path
+    redirect_back(fallback_location: home_ownerpage_path)
+  end
+
+  def changeState3
+    upload = Upload.find(params[:id])
+    upload.progress = "인쇄완료"
+    upload.save
+
+    # redirect_to home_ownerpage_path
+    redirect_back(fallback_location: home_ownerpage_path)
   end
 
   def changeState
