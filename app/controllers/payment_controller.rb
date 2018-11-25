@@ -16,10 +16,16 @@ class PaymentController < ApplicationController
     	# puts current_user.id
     	# puts charge.errors.full_messages
     	# puts "*"*100
-    	redirect_to '/'
+    	redirect_to '/payment/charge_show'
 	end
 	def charge_show
 		@charges=current_user.charges
+
+	end
+	def charge_delete
+		charge = Charge.find(params[:charge_id])
+		charge.delete
+		redirect_back(fallback_location: root_path)
 	end
 
 end

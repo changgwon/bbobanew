@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   post 'payment/create'
   get 'payment/new'
   get 'payment/charge_show'
+  delete 'payment/charge_delete/:charge_id' => 'payment#charge_delete'
   
 end
