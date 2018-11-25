@@ -78,10 +78,10 @@ class HomeController < ApplicationController
         @count = @count +1
       end
     end
-    if params[:upload][:split].to_i % 2 == 0
+    if @count % params[:upload][:split].to_i  == 0
       @count = @count / params[:upload][:split].to_i
     else
-      @count = @count / params[:upload][:split].to_i + 1
+     @count = (@count / params[:upload][:split].to_i) + 1
     end
 
     @upload.totalpage = @count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
@@ -105,10 +105,10 @@ class HomeController < ApplicationController
 
     ## 유저 DB 갱신 (캐시 차감)
     @user = current_user
-    if @user.cur_cash < @upload.cost
+    if @user.cur_cash < @upload.totalpage
       @upload.flag = false
     else
-      @user.cur_cash -= @upload.cost
+      @user.cur_cash -= @upload.totalpage
       @user.save
       cashflow=Cashflow.new
       cashflow.cur_cash=current_user.cur_cash
