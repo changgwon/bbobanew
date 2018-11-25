@@ -1,0 +1,14 @@
+
+
+<% @cashflows.each do |x| %>
+	<% if x.use_type == '차감' %>
+    <%= x.real_created_at %> [<%=x.use_type%>] -<%=x.amount%> <%=x.cur_cash%>
+    <%else%>
+    <%= x.real_created_at %> [<%=x.use_type%>] <%=x.amount%> <%=x.cur_cash%>
+    <%end%>
+    <br>
+    ***********************************************************************
+    <br>
+ 
+
+<% end %>

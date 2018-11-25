@@ -28,4 +28,10 @@ class PaymentController < ApplicationController
 		redirect_back(fallback_location: root_path)
 	end
 
+	def cashflow
+		@cashflows=current_user.cashflows
+
+		
+	end
+
 end

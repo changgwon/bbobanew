@@ -1,3 +1,4 @@
+
 class HomeController < ApplicationController  
   def new2
   end
@@ -58,6 +59,7 @@ class HomeController < ApplicationController
   def filecreate
     @upload = Upload.new
     @upload.userid = current_user.userid
+    @upload.user_id = current_user.id
     @upload.stdnum = current_user.stdnum
     @upload.progress = "인쇄대기"
 
@@ -76,16 +78,14 @@ class HomeController < ApplicationController
         @count = @count +1
       end
     end
-
-    if @count % params[:upload][:split].to_i  == 0
+    if params[:upload][:split].to_i % 2 == 0
       @count = @count / params[:upload][:split].to_i
     else
-      @count = (@count / params[:upload][:split].to_i) + 1
+      @count = @count / params[:upload][:split].to_i + 1
     end
 
     @upload.totalpage = @count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
     @upload.cost = @count #* 50
-
 
     pkupdate = params[:upload][:pkupdate]
     if pkupdate == "오늘"
@@ -101,19 +101,26 @@ class HomeController < ApplicationController
     @upload.split = params[:upload][:split]
     @upload.color = params[:upload][:color]
 
-    @user = current_user
-    if @user.cur_cash < @upload.totalpage
-      @upload.flag = false
-    else
-
-      @user.cur_cash -= @upload.totalpage
-      @user.save
-    end
-
-
     @upload.save
 
     ## 유저 DB 갱신 (캐시 차감)
+    @user = current_user
+    if @user.cur_cash < @upload.cost
+      @upload.flag = false
+    else
+      @user.cur_cash -= @upload.cost
+      @user.save
+      cashflow=Cashflow.new
+      cashflow.cur_cash=current_user.cur_cash
+      cashflow.user_id=@upload.user_id
+      cashflow.real_created_at = @upload.created_at
+      cashflow.amount =@upload.cost
+      cashflow.use_type = "차감"
+      cashflow.save
+    
+    end
+    
+
 
     redirect_to '/'
   end
@@ -170,8 +177,19 @@ class HomeController < ApplicationController
 
     # 환불!!!!
     @user = current_user
-    @user.cur_cash += upload.totalpage #* 50
+    @user.cur_cash += upload.totalpage #*50
     @user.save
+
+    cashflow=Cashflow.new
+    cashflow.user_id=upload.user_id
+    cashflow.real_created_at = upload.created_at
+    cashflow.amount = upload.cost
+    cashflow.cur_cash=current_user.cur_cash
+    cashflow.use_type = "인쇄취소"
+
+    cashflow.save
+
+
     # redirect_to home_ownerpage_path
     redirect_back(fallback_location: home_ownerpage_path)
   end
@@ -212,3 +230,12 @@ class HomeController < ApplicationController
   end
 
 end
+
+  
+
+  
+  
+
+ 
+
+ 
