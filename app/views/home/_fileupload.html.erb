@@ -36,7 +36,7 @@
                 
                 
           </div>
-          <input type="button" id="btn_checktime" name="next" class="next action-button" value="Next" />
+          <input type="button" id="btn_checktime" name="next" class="check action-button" value="Next" />
         </fieldset>
 
         <fieldset>
@@ -110,15 +110,6 @@
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
 
-            var btn_checktime = document.getElementById("btn_checktime");
-
-            btn_checktime.onclick = function(){
-              var timeerror = time_check();
-              if (timeerror){
-                alert(timeerror);
-              }
-            }
-
             // When the user clicks the button, open the modal 
             btn.onclick = function() {
                   var errormsg = empty_check();
@@ -143,24 +134,7 @@
                 }
             }
 
-            function time_check(){
-              var val3 = document.getElementById("pkupdateop").value;
-              var msg = "";
-
-              if (val3 == "오늘"){
-                var pkuptime = document.getElementById("pkuptimeop").value.split('~');
-                var starttime = pkuptime[1].split(':');
-                var comparetime = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
-                              pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0);
-
-                if (comparetime<Time.now){
-                  msg += "신청 불가능한 시간 입니다!";
-                }
-
-              }
-              
-              return msg;
-            }
+            
 
             function empty_check(){ 
                   var val4 = document.getElementById("pagenumop").value;
