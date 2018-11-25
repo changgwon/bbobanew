@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :authentication_keys => [:userid]
   has_many :charges
+  has_many :uploads
+  has_many :cashflows
          
   def email_required?
    false

@@ -58,6 +58,7 @@ class HomeController < ApplicationController
   def filecreate
     @upload = Upload.new
     @upload.userid = current_user.userid
+    @upload.user_id = current_user.id
     @upload.stdnum = current_user.stdnum
     @upload.progress = "인쇄대기"
 
@@ -107,7 +108,17 @@ class HomeController < ApplicationController
       @upload.flag = false
     else
       @user.cur_cash -= @upload.cost
+      cashflow=Cashflow.new
+      cashflow.cur_cash=current_user.cur_cash
+      cashflow.user_id=@upload.user_id
+      cashflow.real_created_at = @upload.created_at
+      cashflow.amount =@upload.cost
+      cashflow.use_type = "차감"
+      cashflow.save
+    
     end
+
+
 
     redirect_to '/'
   end
@@ -166,6 +177,17 @@ class HomeController < ApplicationController
     @user = current_user
     @user.cur_cash += upload.totalpage #*50
     @user.save
+
+    cashflow=Cashflow.new
+    cashflow.user_id=upload.user_id
+    cashflow.real_created_at = upload.created_at
+    cashflow.amount = upload.cost
+    cashflow.cur_cash=current_user.cur_cash
+    cashflow.use_type = "인쇄취소"
+
+    cashflow.save
+
+
     # redirect_to home_ownerpage_path
     redirect_back(fallback_location: home_ownerpage_path)
   end
