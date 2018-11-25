@@ -165,6 +165,7 @@ class HomeController < ApplicationController
     # 환불!!!!
     @user = current_user
     @user.cur_cash += upload.totalpage #*50
+    @user.save
     # redirect_to home_ownerpage_path
     redirect_back(fallback_location: home_ownerpage_path)
   end
