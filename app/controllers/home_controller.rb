@@ -4,6 +4,30 @@ class HomeController < ApplicationController
 
   def main
     @upload = Upload.new
+    @uploads = Upload.where(userid:current_user.userid)
+    @ongoing_upload = []
+    @past_upload = []
+    @uploads.each do |upload|
+      if upload.pkupdate < Date.today
+        @past_upload << upload
+
+      elsif upload.pkupdate == Date.today
+        pkuptime_s = upload.pkuptime.split('~')
+        pkuptime_d = pkuptime_s[1].split(':')
+        to_compare = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
+                              pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0)
+      
+        if to_compare >= Time.now
+          @ongoing_upload << upload
+        else
+          @past_upload << upload
+        end
+      
+      else
+        @ongoing_upload << upload
+      end
+
+    end
   end
 
   def fileupload
@@ -52,14 +76,17 @@ class HomeController < ApplicationController
         @count = @count +1
       end
     end
-    if params[:upload][:split].to_i % 2 == 0
+
+    if @count % params[:upload][:split].to_i  == 0
       @count = @count / params[:upload][:split].to_i
     else
-      @count = @count / params[:upload][:split].to_i + 1
+      @count = (@count / params[:upload][:split].to_i) + 1
     end
 
     @upload.totalpage = @count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
-   
+    @upload.cost = @count #* 50
+
+
     pkupdate = params[:upload][:pkupdate]
     if pkupdate == "오늘"
       pkupdate = Date.today
@@ -73,9 +100,19 @@ class HomeController < ApplicationController
     @upload.doublepg = params[:upload][:doublepg]
     @upload.split = params[:upload][:split]
     @upload.color = params[:upload][:color]
+
+    @user = current_user
+    if @user.cur_cash < @upload.cost
+      @upload.flag = false
+    else
+      @user.cur_cash -= @count #*50
+    end
+
+    @user.save
     @upload.save
 
     ## 유저 DB 갱신 (캐시 차감)
+
 
     redirect_to '/'
   end
@@ -114,6 +151,37 @@ class HomeController < ApplicationController
         @todayuploads << x
       end
     end
+  end
+
+  def changeState1
+    upload = Upload.find(params[:id])
+    upload.progress = "인쇄중"
+    upload.save
+
+    # redirect_to home_ownerpage_path
+    redirect_back(fallback_location: home_ownerpage_path)
+  end
+
+  def changeState2
+    upload = Upload.find(params[:id])
+    upload.progress = "인쇄취소"
+    upload.save
+
+    # 환불!!!!
+    @user = current_user
+    @user.cur_cash += upload.totalpage #* 50
+    @user.save
+    # redirect_to home_ownerpage_path
+    redirect_back(fallback_location: home_ownerpage_path)
+  end
+
+  def changeState3
+    upload = Upload.find(params[:id])
+    upload.progress = "인쇄완료"
+    upload.save
+
+    # redirect_to home_ownerpage_path
+    redirect_back(fallback_location: home_ownerpage_path)
   end
 
   def changeState

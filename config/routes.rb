@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users, controllers: {
         sessions: 'users/sessions'
   }
@@ -10,7 +12,9 @@ Rails.application.routes.draw do
   post 'home/filecheck'
   get 'home/filecurrent'
   get 'home/ownerpage'
-  get 'home/changeState/:id'=>'home#changeState'
+  get 'home/changeState1/:id'=>'home#changeState1'
+  get 'home/changeState2/:id'=>'home#changeState2'
+  get 'home/changeState3/:id'=>'home#changeState3'
   get 'payment/new' => 'payment#new'
   get 'home/filedetail/:id' => 'home#filedetail'
   get 'home/index' => 'home#index'
@@ -21,5 +25,6 @@ Rails.application.routes.draw do
   post 'payment/create'
   get 'payment/new'
   get 'payment/charge_show'
+  delete 'payment/charge_delete/:charge_id' => 'payment#charge_delete'
   
 end

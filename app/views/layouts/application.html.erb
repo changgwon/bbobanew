@@ -10,7 +10,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <!--   <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -22,6 +22,19 @@
     <link href="https://btn.ninja/css/bootstrap.css">
     <link href="https://btn.ninja/css/addons.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.2.0/list.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.pagination.js/0.1.1/list.pagination.min.js"></script>
+    <link href="https://btn.ninja/css/bootstrap.css">
+    <link href="https://btn.ninja/css/addons.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
 
     <title>Bbobadream</title>
     <%= csrf_meta_tags %>
@@ -59,14 +72,16 @@
         </div>
       </div>
 
-      <img src="/mainlogo.png" style="margin:0 auto; height:80%; margin:10px">
+      <div style="text-align: center">
+        <a href="/"><img src="/mainlogo.png" style="height:80px; position:absolute"></a>
         <% if user_signed_in? %>
-          <div class="info">
+          <span class="info">
             <!-- <%= current_user.username %><br><br> -->
             <%= link_to "로그아웃", destroy_user_session_path %>
             <%= link_to "정보변경", edit_user_registration_path %>
-          </div>
+          </span>
         <% end %>
+      </div>
 
     </header>
     <%= yield %>

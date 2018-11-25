@@ -1,11 +1,50 @@
-<p> 자세히 보기 </p>
+<style>
+.column{
+	color:black;
+	width:50vw;
+	margin:0 auto;
+}
 
-[<%=@upload.pkuptime%>, <%=@upload.printer%>]
-<br>
-<%=URI.decode(@upload.attachment_url.split('/').last)%>
-<br>
-페이지: <%=@upload.pagenum%> (총 <%=@upload.totalpage%>장)<br><br>
+.detailview{
+	border:2px solid #057075;
+	border-radius:10px;
+	padding:40px;
 
-<a href="/home/filecurrent">신청현황으로 돌아가기</a><br>
-<a href="/">홈으로 돌아가기</a>
+}
+.detail_info{
+	text-align:right;
+	max-width:400px;
+}
+.detail_title{
+	text-align:left;
+}
 
+
+@media (max-width: 600px) {
+	.column{
+		width:90vw;
+	}
+}
+
+
+</style>
+
+<div class="column detailview center">
+	<div class="detail_title">
+		<%= @upload.pkupdate %> <%=@upload.pkuptime%> <%=@upload.printer%> 관
+	</div>
+	<br>
+	<div style="display:block">
+		<div class="detail_info">
+			결제금액 <%=@upload.totalpage*50 %>(원)<hr>
+			파일명 <%=URI.decode(@upload.attachment_url.split('/').last)%><hr>
+			
+			인쇄설정 : <%= @upload.landscape %> <%= @upload.split %>분할, <%= @upload.doublepg %><hr>
+		</div>
+	</div>
+	<div style="display:block">
+		<a href="/home/filecurrent">신청현황으로 돌아가기</a><br>
+		<a href="/">홈으로 돌아가기</a>
+	</div>
+
+</div>

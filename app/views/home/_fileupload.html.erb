@@ -1,4 +1,5 @@
 
+
 <div>
       <% if user_signed_in? %>
         <div class="info" style="float:right;">
@@ -35,7 +36,7 @@
                 
                 
           </div>
-          <input type="button" name="next" class="next action-button" value="Next" />
+          <input type="button" id="btn_checktime" name="next" class="check action-button" value="Next" />
         </fieldset>
 
         <fieldset>
@@ -93,7 +94,7 @@
           <div class="modal-content" style="color:black">
             <span class="close">&times;</span>
             <div id ="printerchk"></div>
-            <button onclick="$('form').submit()">확인 완료!</button>
+            <button onclick="$('form').submit()" class="btn button form-group btn-block">확인 완료!</button>
           </div>
 
         </div>
@@ -108,7 +109,6 @@
 
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
-
 
             // When the user clicks the button, open the modal 
             btn.onclick = function() {
@@ -134,10 +134,12 @@
                 }
             }
 
+            
+
             function empty_check(){ 
                   var val4 = document.getElementById("pagenumop").value;
 
-                  var val9 = document.getElementById("attachmentop").value
+                  var val9 = document.getElementById("attachmentop").value;
                   var msg = "";
 
                   if (!val4){
@@ -176,7 +178,6 @@
                   "수령장소,시간:"+val1+"관 복사대, "+val2+" "+val3+"<br>"+
                   "잔여 포인트:";
 
-
             }
 
             function totalPage(pagenum, split){
@@ -194,7 +195,8 @@
                               count+=1;
                         }
                   }
-                  if (split.to_i % 2 == 0){
+
+                  if (count % parseInt(split) == 0){
                         count = parseInt(count/split);
                   }else{
                         count = parseInt(count/split) +1;
@@ -203,6 +205,9 @@
                   return count;
 
             }
+
+
+             
         </script>
 
       
