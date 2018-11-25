@@ -58,107 +58,24 @@ header {
     </thead>
     <!-- IMPORTANT, class="list" must be on tbody -->
     <tbody class="list">
-      <tr>
-        <td class="minify pickupTime">10:15</td>
-        <td class="pickupName">Alpha</td>
-        <td class="minify textright pickupID">20180001</td>
-        <td class="fileName">filename.pptx</td>
-        <td class="printSetting">filesetting</td>
-        <td class="printPage">1-4(4)</td>
-        <td class="printFee">200원</td>
-        <td class="printState">인쇄대기중</td>
-      </tr>
-      <tr>
-        <td class="minify pickupTime">10:15</td>
-        <td class="pickupName">Bravo</td>
-        <td class="minify textright pickupID">20180002</td>
-        <td class="fileName">filename.pptx</td>
-        <td class="printSetting">filesetting</td>
-        <td class="printPage">1-4(4)</td>
-        <td class="printFee">200원</td>
-        <td class="printState">인쇄대기중</td>    
-      </tr>
-      <tr>
-        <td class="minify pickupTime">10:15</td>
-        <td class="pickupName">Charlie</td>
-        <td class="minify textright pickupID">20180003</td>
-        <td class="fileName">filename.pptx</td>
-        <td class="printSetting">filesetting</td>
-        <td class="printPage">1-4(4)</td>
-        <td class="printFee">200원</td>
-        <td class="printState">인쇄대기중</td>   
-      </tr>
-      <tr>
-        <td class="minify pickupTime">10:15</td>
-        <td class="pickupName">Foxtrot</td>
-        <td class="minify textright pickupID">20180004</td>
-        <td class="fileName">filename.pptx</td>
-        <td class="printSetting">filesetting</td>
-        <td class="printPage">1-4(4)</td>
-        <td class="printFee">200원</td>
-        <td class="printState">인쇄대기중</td>     
-      </tr>
-      <tr>
-        <td class="minify pickupTime">10:15</td>
-        <td class="pickupName">Golf</td>
-        <td class="minify textright pickupID">20180005</td>
-        <td class="fileName">filename.pptx</td>
-        <td class="printSetting">filesetting</td>
-        <td class="printPage">1-4(4)</td>
-        <td class="printFee">200원</td>
-        <td class="printState">인쇄대기중</td>    
-      </tr>
-      <tr>
-        <td class="minify pickupTime">11:45</td>
-        <td class="pickupName">Alpha</td>
-        <td class="minify textright pickupID">20180006</td>
-        <td class="fileName">filename.pptx</td>
-        <td class="printSetting">filesetting</td>
-        <td class="printPage">1-4(4)</td>
-        <td class="printFee">200원</td>
-        <td class="printState">인쇄대기중</td>      
-      </tr>
-      <tr>
-        <td class="minify pickupTime">11:45</td>
-        <td class="pickupName">Bravo</td>
-        <td class="minify textright pickupID">20180007</td>
-        <td class="fileName">filename.pptx</td>
-        <td class="printSetting">filesetting</td>
-        <td class="printPage">1-4(4)</td>
-        <td class="printFee">200원</td>
-        <td class="printState">인쇄대기중</td>      
-      </tr>
-      <tr>
-        <td class="minify pickupTime">11:45</td>
-        <td class="pickupName">Charlie</td>
-        <td class="minify textright pickupID">20180008</td>
-        <td class="fileName">filename.pptx</td>
-        <td class="printSetting">filesetting</td>
-        <td class="printPage">1-4(4)</td>
-        <td class="printFee">200원</td>
-        <td class="printState">인쇄대기중</td>      
-      </tr>
-      <tr>
-        <td class="minify pickupTime">11:45</td>
-        <td class="pickupName">Foxtrot</td>
-        <td class="minify textright pickupID">20180009</td>
-        <td class="fileName">filename.pptx</td>
-        <td class="printSetting">filesetting</td>
-        <td class="printPage">1-4(4)</td>
-        <td class="printFee">200원</td>
-        <td class="printState">인쇄대기중</td>      
-      </tr>
-      <tr>
-        <td class="minify pickupTime">11:45</td>
-        <td class="pickupName">India</td>
-        <td class="minify textright pickupID">20180010</td>
-        <td class="fileName">filename.pptx</td>
-        <td class="printSetting">filesetting</td>
-        <td class="printPage">1-4(4)</td>
-        <td class="printFee">200원</td>
-        <td class="printState">인쇄대기중</td>      
-      </tr>
-      <tr>
+      <% if @todayuploads.empty? %>
+        <tr>
+          <td>신청 내역이 없습니다.<br></td>
+        </tr>
+      <% else %>
+        <% @todayuploads.each do |x| %>
+          <tr>
+            <td class="minify pickupTime"><%= x.pkuptime.split('~')[0] %></td>
+            <td class="pickupName"><%= x.userid %></td>
+            <td class="minify textright pickupID"><%= x.stdnum %></td>
+            <td class="fileName"><%= URI.decode(x.attachment_url.split('/').last) %></td>
+            <td class="printSetting"><%= x.landscape %>/<%= x.doublepg %>/<%= x.split %>분할/<%= x.color %></td>
+            <td class="printPage"><%= x.pagenum %>(<%= x.totalpage %>)</td>
+            <td class="printFee"><%= x.cost %>원</td>
+            <td class="printState"><%= x.progress %></td>
+          </tr>
+        <% end %>
+      <% end %>
     </tbody>
     <tfoot>
       <tr>

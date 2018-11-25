@@ -1,3 +1,4 @@
+
 class HomeController < ApplicationController  
   def new2
   end
@@ -84,7 +85,7 @@ class HomeController < ApplicationController
     end
 
     @upload.totalpage = @count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
-    @upload.cost = @count * 50
+    @upload.cost = @count #* 50
 
     pkupdate = params[:upload][:pkupdate]
     if pkupdate == "오늘"
@@ -108,6 +109,7 @@ class HomeController < ApplicationController
       @upload.flag = false
     else
       @user.cur_cash -= @upload.cost
+      @user.save
       cashflow=Cashflow.new
       cashflow.cur_cash=current_user.cur_cash
       cashflow.user_id=@upload.user_id
@@ -117,7 +119,7 @@ class HomeController < ApplicationController
       cashflow.save
     
     end
-
+    
 
 
     redirect_to '/'
@@ -228,3 +230,12 @@ class HomeController < ApplicationController
   end
 
 end
+
+  
+
+  
+  
+
+ 
+
+ 

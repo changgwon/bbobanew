@@ -195,7 +195,8 @@
                               count+=1;
                         }
                   }
-                  if (split.to_i % 2 == 0){
+
+                  if (count % parseInt(split) == 0){
                         count = parseInt(count/split);
                   }else{
                         count = parseInt(count/split) +1;
