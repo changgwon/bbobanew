@@ -4,26 +4,26 @@
 	<div class="row">
     <div class="column print_list">
     	<div class="filecurrent_title"><a href="/home/filecurrent">신청 내역 보러가기</a></div>
-
-    	<% if @uploads.empty? %>
-			신청 내역이 없습니다.<br>
-		<% else %>
-			<% @ongoing_upload.each do |x| %>
-			   <a href="filedetail/<%=x.id%>">
-			   <div class="filecurrent_card">
-			   		<div style="text-align:left">
-			   		<b><%= x.pkupdate %><br>
-				   	<%= x.pkuptime %>  
-				   	<%=x.printer%> 관 <br> </b></div>
-				   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
-				   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
-				   
-				  	<%=x.progress%><br>
-				   
-			   </div></a>
-			<% end %>
-		<% end %>
-
+    		<div class="filecurrent_list">
+		    	<% if @uploads.empty? %>
+					신청 내역이 없습니다.<br>
+				<% else %>
+					<% @ongoing_upload.each do |x| %>
+					   <a href="filedetail/<%=x.id%>">
+					   <div class="filecurrent_card">
+					   		<div style="text-align:left">
+					   		<b><%= x.pkupdate %><br>
+						   	<%= x.pkuptime %>  
+						   	<%=x.printer%> 관 <br> </b></div>
+						   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
+						   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
+						   
+						  	<%=x.progress%><br>
+						   
+					   </div></a>
+					<% end %>
+				<% end %>
+			</div>
 
     </div>
      <div class="column print_upload"></a>

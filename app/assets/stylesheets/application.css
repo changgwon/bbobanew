@@ -1,5 +1,8 @@
 
 
+body{
+  background-color: #f8f8f8
+}
 /* main.html */
 .filecurrent_card{
   width:90%;
@@ -32,14 +35,24 @@
   background-color:grey;
 }
 @media (max-width: 767px) {
+  body{
+    background-color:white;
+  }
   .filecurrent_title{
     margin:0 auto;
     width:80%;
+    max-width:600px;
     height:200px;
     background-color:white;
     border-radius:10px;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    margin-top:50px;
   }
   
+  .filecurrent_list{
+    display:none;
+  }
 
 
 }
@@ -52,12 +65,9 @@
 header{
 	background-color:white;
 	width:100%;
-	height:15vh;
+	height:100px;
 }
 
-body{
-	background-color: #f8f8f8
-}
 
 .info{
 	float:right;
@@ -88,6 +98,10 @@ body{
 	.side_menu .container {
 		padding: 40px 20px 0px 20px ;
 	}
+  .container{
+    z-index:100;
+    position:absolute;
+  }
 
 /* HAMBURGER STYLES ----- */
 	.burger_box {
@@ -215,18 +229,12 @@ body{
 }
 
 
-
-
-
 *{
 	box-sizing:border-box;
 	margin:0;
 }
 
-body{
-  background-color:light-grey;
-  font-family: 'Roboto', sans-serif;
-}
+
 
 .login_container{
   width: 50vw;
@@ -441,11 +449,7 @@ article[role="signup"] p {
     margin:0px;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x:hidden;
-    background-color:#F8F8F8
-}
+
 
 /* Style the header */
 .header {
@@ -464,7 +468,7 @@ body {
 .column {
      /* Should be removed. Only for demonstration */
      text-align:center;
-     border:1px solid black;
+     margin-top:30px;
 }
 
 .column.print_list{
@@ -472,7 +476,7 @@ body {
    -ms-flex: 1;*/
    flex: 1;
    width:30vw;
-   margin: 0 auto;
+   margin: 30 auto;
 
 }
 
@@ -524,7 +528,7 @@ a{
       flex-direction: column;
     }
   .column{
-  margin:10px 20px;
+
   }
    
 
@@ -534,12 +538,15 @@ a{
 
   .column.print_list{
   order:2;
-  width:90%;
+  width:100%;
+  margin-top:0px;
+  
   }
   
   .column.print_upload{
   order:1;
-  width:90%;
+  width:100%;
+  margin: 0 auto;
   } 
 
   .info{
@@ -558,9 +565,7 @@ a{
       /*basic reset*/
       * {margin: 0; padding: 0;}
 
-      html {
-            height: 100%; 
-      }
+     
 
       body {
             font-family: montserrat, arial, verdana;
@@ -569,8 +574,8 @@ a{
       /*form styles*/
       #msform {
             max-width: 600px;
-            min-width:350px;
-            margin: 50px auto;
+            /*min-width:350px;*/
+            margin: 0 auto;
             text-align: center;
             position: relative;
       }
@@ -583,6 +588,7 @@ a{
             box-sizing: border-box;
             width: 90%;
             margin: 0 auto;  
+            z-index:0;
             /*stacking fieldsets above each other*/
             position: relative;
       }
@@ -647,6 +653,8 @@ a{
       #progressbar {
             margin-bottom: 30px;
             overflow: hidden;
+            margin: auto;
+            margin-bottom:30px;
             /*CSS counters to number the steps*/
             counter-reset: step;
       }
@@ -654,7 +662,7 @@ a{
             list-style-type: none;
             color: black;
             text-transform: uppercase;
-            font-size: 9px;
+            font-size: 14px;
             width: 33.33%;
             float: left;
             position: relative;
