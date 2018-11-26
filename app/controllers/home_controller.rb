@@ -226,7 +226,7 @@ class HomeController < ApplicationController
 
   def index
     if user_signed_in?
-      redirect_to "/home/main"
+      redirect_to "/home/category"
     else
       redirect_to "/users/sign_in"
     end
@@ -239,6 +239,9 @@ class HomeController < ApplicationController
   def filehistory
     @upload = Upload.all
     @user = current_user.cur_cash
+  end
+
+  def category
   end
 
 end
