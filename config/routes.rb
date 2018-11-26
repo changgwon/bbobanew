@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'home/category1' => 'home#category1'
   get 'home/category2' => 'home#category2'
   get 'home/category3' => 'home#category3'
+  get 'home/usercancel/:id' => 'home#usercancel'
 
   get 'payment/charge' => 'payment#charge'
   post 'payment/create'
