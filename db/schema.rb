@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2018_11_25_080808) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "cashflows", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "real_created_at"
+    t.string "use_type"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "cur_cash"
+  end
+
   create_table "charges", force: :cascade do |t|
     t.integer "amount"
     t.boolean "deposit"
@@ -66,6 +76,7 @@ ActiveRecord::Schema.define(version: 2018_11_25_080808) do
     t.boolean "flag", default: true
     t.integer "cost"
     t.string "category", default: "ongoing"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -29,5 +29,5 @@ Rails.application.routes.draw do
   get 'payment/new'
   get 'payment/charge_show'
   delete 'payment/charge_delete/:charge_id' => 'payment#charge_delete'
-  
+  get 'payment/cashflow'
 end

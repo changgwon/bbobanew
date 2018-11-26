@@ -3,6 +3,7 @@
 a:hover{
     text-decoration: none;
 }
+
 </style>
 
 <div class="column print_upload center">
@@ -10,6 +11,7 @@ a:hover{
 	<% if @uploads.empty? %>
 		신청 내역이 없습니다.<br>
 	<% else %>
+
 		<input type="button" value="전체 보기" id="category1">
 		<input type="button" value="과거 내역 보기" id ="category2">
 		<input type="button" value="미래 내역 보기" id ="category3"> <br>
@@ -18,7 +20,7 @@ a:hover{
 		<p3> 진행중인 내역 </p3>
 		<% @ongoing_upload.each do |x| %>
 		   <a href="filedetail/<%=x.id%>">
-		   	<div class="filecurrent_card">
+		   	<div class="filecurrent_card" style="border:1px solid #057075;">
 			  <div style="text-align:left">
 			   		<b><%= x.pkupdate %><br>
 				   	<%= x.pkuptime %>  
@@ -29,6 +31,7 @@ a:hover{
 				  	<%=x.progress%><br>
 			</div></a>
 		<% end %>
+      
 		</div>
 
 		<div value="category" id="past">
@@ -37,6 +40,7 @@ a:hover{
 		   <a href="filedetail/<%=x.id%>">
 		   	<div class="filecurrent_card">
 			  <div style="text-align:left">
+
 			   		<b><%= x.pkupdate %><br>
 				   	<%= x.pkuptime %>  
 				   	<%=x.printer%> 관 <br> </b></div>
