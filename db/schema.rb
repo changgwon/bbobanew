@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_25_074233) do
+ActiveRecord::Schema.define(version: 2018_11_25_080808) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2018_11_25_074233) do
     t.integer "totalpage"
     t.boolean "flag", default: true
     t.integer "cost"
+    t.string "category", default: "ongoing"
     t.integer "user_id"
   end
 

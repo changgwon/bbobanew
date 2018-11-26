@@ -62,32 +62,50 @@
     </script>
 <button type="button" onclick="pay_new_test();">결제창 테스트 버튼</button> -->
 
+<style>
+.price{
+  width:100px;
+  height:50px;
+  border-radius:5px;
+  background-color:#057075;
+  color:white;
+  border:none;
+  align-items:right;
+}
 
-    <%= form_for @charge, url: "/payment/create" do |f| %>
 
-      <%= f.label "10장" %>
-      <%= f.hidden_field :amount, :value => 10 %>
-      <%= f.submit "500원" %>
-    <% end %>
-    <br>
-   <%= form_for @charge, url: "/payment/create" do |f| %>
+</style>
 
-    <%= f.label "50장" %>
-      <%= f.hidden_field :amount, :value => 50 %>
-      <%= f.submit "2500원" %>
-    <% end %>
-    <br>
-    <%= form_for @charge, url: "/payment/create" do |f| %>
-      <%= f.label "100장" %>
-      <%= f.hidden_field :amount, :value => 100 %>
-      <%= f.submit "5000원" %>
-    <% end %>
-    <br>
-    <%= form_for @charge, url: "/payment/create" do |f| %>
+<div class="charge_cash_box">
+    <h5>포인트 충전</h5>
+    <div class="charge_cash">
 
-      <%= f.label "200장" %>
-      <%= f.hidden_field :amount, :value => 200 %>
-      <%= f.submit "10000원" %>
-    <% end %>
-    <br>
+          <%= form_for @charge, url: "/payment/create" do |f| %>
 
+            <%= f.label "10장" %>
+            <%= f.hidden_field :amount, :value => 10 %>
+            <%= f.submit "500원",:class => "price" %><br><hr>
+          <% end %>
+          <br>
+         <%= form_for @charge, url: "/payment/create" do |f| %>
+
+          <%= f.label "50장" %>
+            <%= f.hidden_field :amount, :value => 50 %>
+            <%= f.submit "2500원", :class => "price" %><br><hr>
+          <% end %>
+          <br>
+          <%= form_for @charge, url: "/payment/create" do |f| %>
+            <%= f.label "100장" %>
+            <%= f.hidden_field :amount, :value => 100 %>
+            <%= f.submit "5000원", :class => "price" %><br><hr>
+          <% end %>
+          <br>
+          <%= form_for @charge, url: "/payment/create" do |f| %>
+
+            <%= f.label "200장" %>
+            <%= f.hidden_field :amount, :value => 200 %>
+            <%= f.submit "10000원", :class => "price" %><br><hr>
+          <% end %>
+          <br>
+        </div>
+</div>
