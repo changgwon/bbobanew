@@ -132,7 +132,7 @@ class HomeController < ApplicationController
     @ongoing_upload = []
     @past_upload = []
     @uploads.each do |upload|
-      if upload.progress != "인쇄취소"
+    if upload.progress != "인쇄취소"
         if upload.pkupdate < Date.today
           @past_upload << upload
 
@@ -145,7 +145,7 @@ class HomeController < ApplicationController
           if to_compare >= Time.now
             @ongoing_upload << upload
           
-          else 
+          elsif to_compare < Time.now
             upload.category = "past"
             @ongoing_upload << upload
           # else
@@ -221,6 +221,7 @@ class HomeController < ApplicationController
     @user.save
 
     redirect_to '/'
+
   end
 
   def index
