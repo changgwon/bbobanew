@@ -7,18 +7,31 @@
 
 .detailview{
 	border:2px solid #057075;
-	border-radius:10px;
+	border-radius:5px;
 	padding:40px;
+	margin-top:50px;
+	max-width:600px;
 
 }
 .detail_info{
 	text-align:right;
-	max-width:400px;
+	margin-left:50px;
 }
 .detail_title{
 	text-align:left;
+	font-size:20px;
+	margin-bottom:40px;
 }
 
+#print_status{
+	width:100px;
+	height:50px;
+	background-color:#057075;
+	border:none;
+	color:white;
+	border-radius:10px;
+
+}
 
 @media (max-width: 600px) {
 	.column{
@@ -31,7 +44,7 @@
 
 <div class="column detailview center">
 	<div class="detail_title">
-		<%= @upload.pkupdate %> <%=@upload.pkuptime%> <%=@upload.printer%> 관
+		<%= @upload.pkupdate %><br> <%=@upload.pkuptime%> <%=@upload.printer%> 관
 	</div>
 	<br>
 	<div style="display:block">
@@ -40,11 +53,16 @@
 			파일명 <%=URI.decode(@upload.attachment_url.split('/').last)%><hr>
 			
 			인쇄설정 : <%= @upload.landscape %> <%= @upload.split %>분할, <%= @upload.doublepg %><hr>
+
+			<button id="print_status"><%= @upload.progress %></button>
+
+
+			<!-- 수빈이가 추가할 '프린트 취소' -->
+			<button id="print_status">신청 취소하기</button>
 		</div>
 	</div>
 	<div style="display:block">
 		<a href="/home/filecurrent">신청현황으로 돌아가기</a><br>
-		<a href="/">홈으로 돌아가기</a>
 	</div>
 
 </div>

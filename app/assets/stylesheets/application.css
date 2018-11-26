@@ -721,7 +721,7 @@ a{
 .modal-content {
     background-color: #fefefe;
     margin: auto;
-    padding: 20px;
+    padding: 50px 0;
     border: 1px solid #888;
     width: 80%;
     max-width:400px;
@@ -829,6 +829,23 @@ a{
 .footer {
   background-color: #f1f1f1;
   padding: 10px;
+}
+
+
+/* 캐시 충전 */
+.charge_cash{
+  background-color:white;
+  border-radius:3px;
+  padding:50px;
+  
+
+}
+.charge_cash_box{
+  max-width:600px;
+  min-width:350px;
+  width:90%;
+  margin: 0 auto;
+  margin-top:50px;
 }
 
 
