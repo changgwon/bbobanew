@@ -1,4 +1,17 @@
+<style>
 
+
+</style>
+
+
+<div class="column detailview center">
+
+	<h5>포인트 내역</h5>
+	<div class="point_box">
+		현재 포인트 : <%= current_user.cur_cash %><br>
+		<a href="/payment/new">포인트 충전</a><br>
+		**************************************************<br>
+	</div>
 
 <% @cashflows.each do |x| %>
 	<% if x.use_type == '차감' %>
@@ -7,8 +20,9 @@
     <%= x.real_created_at %> [<%=x.use_type%>] <%=x.amount%> <%=x.cur_cash%>
     <%end%>
     <br>
-    ***********************************************************************
+    <hr>
     <br>
  
 
 <% end %>
+</div>

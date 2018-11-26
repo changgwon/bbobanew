@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 2018_11_25_080808) do
     t.integer "totalpage"
     t.boolean "flag", default: true
     t.integer "cost"
-    t.string "category", default: "ongoing"
     t.integer "user_id"
+    t.string "category", default: "ongoing"
   end
 
   create_table "users", force: :cascade do |t|
