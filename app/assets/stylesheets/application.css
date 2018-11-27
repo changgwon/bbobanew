@@ -1,11 +1,8 @@
-/*
- * This is a manifest file that'll automatically include all the stylesheets available in this directory
- * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
- * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require_self
- *= require_tree . 
- */
 
+
+body{
+  background-color: #f8f8f8
+}
 /* main.html */
 .filecurrent_card{
   width:90%;
@@ -38,14 +35,24 @@
   background-color:grey;
 }
 @media (max-width: 767px) {
+  body{
+    background-color:white;
+  }
   .filecurrent_title{
     margin:0 auto;
     width:80%;
+    max-width:600px;
     height:200px;
     background-color:white;
     border-radius:10px;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    margin-top:50px;
   }
   
+  .filecurrent_list{
+    display:none;
+  }
 
 
 }
@@ -58,12 +65,9 @@
 header{
 	background-color:white;
 	width:100%;
-	height:15vh;
+	height:100px;
 }
 
-body{
-	background-color: #f8f8f8
-}
 
 .info{
 	float:right;
@@ -94,6 +98,10 @@ body{
 	.side_menu .container {
 		padding: 40px 20px 0px 20px ;
 	}
+  .container{
+    z-index:100;
+    position:absolute;
+  }
 
 /* HAMBURGER STYLES ----- */
 	.burger_box {
@@ -221,18 +229,12 @@ body{
 }
 
 
-
-
-
 *{
 	box-sizing:border-box;
 	margin:0;
 }
 
-body{
-  background-color:light-grey;
-  font-family: 'Roboto', sans-serif;
-}
+
 
 .login_container{
   width: 50vw;
@@ -447,14 +449,10 @@ article[role="signup"] p {
     margin:0px;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x:hidden;
-    background-color:#F8F8F8
-}
+
 
 /* Style the header */
-.pheader {
+.header {
     padding: 30px;
     text-align: center;
     height:15vh;
@@ -470,7 +468,7 @@ body {
 .column {
      /* Should be removed. Only for demonstration */
      text-align:center;
-     border:1px solid black;
+     margin-top:30px;
 }
 
 .column.print_list{
@@ -478,7 +476,7 @@ body {
    -ms-flex: 1;*/
    flex: 1;
    width:30vw;
-   margin: 0 auto;
+   margin: 30 auto;
 
 }
 
@@ -530,7 +528,7 @@ a{
       flex-direction: column;
     }
   .column{
-  margin:10px 20px;
+
   }
    
 
@@ -540,12 +538,15 @@ a{
 
   .column.print_list{
   order:2;
-  width:90%;
+  width:100%;
+  margin-top:0px;
+  
   }
   
   .column.print_upload{
   order:1;
-  width:90%;
+  width:100%;
+  margin: 0 auto;
   } 
 
   .info{
@@ -564,9 +565,7 @@ a{
       /*basic reset*/
       * {margin: 0; padding: 0;}
 
-      html {
-            height: 100%; 
-      }
+     
 
       body {
             font-family: montserrat, arial, verdana;
@@ -575,8 +574,8 @@ a{
       /*form styles*/
       #msform {
             max-width: 600px;
-            min-width:350px;
-            margin: 50px auto;
+            /*min-width:350px;*/
+            margin: 0 auto;
             text-align: center;
             position: relative;
       }
@@ -589,6 +588,7 @@ a{
             box-sizing: border-box;
             width: 90%;
             margin: 0 auto;  
+            z-index:0;
             /*stacking fieldsets above each other*/
             position: relative;
       }
@@ -653,6 +653,8 @@ a{
       #progressbar {
             margin-bottom: 30px;
             overflow: hidden;
+            margin: auto;
+            margin-bottom:30px;
             /*CSS counters to number the steps*/
             counter-reset: step;
       }
@@ -660,7 +662,7 @@ a{
             list-style-type: none;
             color: black;
             text-transform: uppercase;
-            font-size: 9px;
+            font-size: 14px;
             width: 33.33%;
             float: left;
             position: relative;
@@ -719,7 +721,7 @@ a{
 .modal-content {
     background-color: #fefefe;
     margin: auto;
-    padding: 20px;
+    padding: 50px 0;
     border: 1px solid #888;
     width: 80%;
     max-width:400px;
@@ -744,7 +746,7 @@ a{
 
 /* printer style */
 
-.pheader {
+.header {
   height: 100px;
   width: 100%;
   padding-left: 45px;
@@ -753,7 +755,7 @@ a{
   align-items: center;
 }
 
-.pheader .title {
+.header .title {
   font-size: 2.5em;
   font-weight: bold;
 }
@@ -830,6 +832,23 @@ a{
 }
 
 
+/* 캐시 충전 */
+.charge_cash{
+  background-color:white;
+  border-radius:3px;
+  padding:50px;
+  
+
+}
+.charge_cash_box{
+  max-width:600px;
+  min-width:350px;
+  width:90%;
+  margin: 0 auto;
+  margin-top:50px;
+}
+
+
 /* codepen table
 
 $text:#333333;
@@ -852,8 +871,7 @@ border-spacing:0px; line-height:16px;
 border: #d2d2d2;
 padding: 9px; }
 th { 
-text-align:left;
-font-weight:normal; 
+text-align:left; font-weight:normal; 
 font-size:12px; }
 button { 
 background:none; 
@@ -899,12 +917,8 @@ text-overflow:ellipsis; }
 .table-list tbody td { 
   white-space:nowrap; padding:9px; 
   vertical-align:top; height:35px;
-  border-bottom:1px solid #d2d2d2;}
+  border-bottom:1px solid #d2d2d2; }
 tr:last-child td { height:auto; }
-
-/* state modal style */
-/*#tallModal .modal-body p { margin-bottom: 900px }*/
-
 
 /* sort styles, optional */
 .sort {
@@ -915,7 +929,7 @@ tr:last-child td { height:auto; }
   color: #808080; 
   line-height:14px; }
 .sort.textcenter { text-align:center; }
-.sort.textright { text-align:right; }
+.sort.textright { text-align:center; }
 
 .caret { line-height:0; }
 .caret:after { content:""; }
@@ -955,6 +969,27 @@ tr:last-child td { height:auto; }
   border-left:1px solid #d2d2d2; }
 
 /* pagination styles,  optional */
+.table-pagination {
+  display:table; border-collapse:collapse; 
+  width:156px; float:left; 
+  border-right:1px solid #d2d2d2; 
+  padding:6px; }
+.btn-tablepage { display:table-cell; width:33px; padding:9px; }
+
+.pagination { display:table-cell; text-align:center; list-style:none; margin:0; padding:0; width:90px; }
+.pagination li { display:inline-table;  border:1px solid #eaeaea; }
+
+.page { 
+  display:block; 
+  padding:4px 0; width:22px;
+  text-align:center; 
+  text-decoration:none; 
+  line-height:12px; font-size:12px; 
+  color:#808080;  }
+
+.pagination .disabled { display:none; }
+.pagination .active { border-color:#aaa; }
+.active .page {  background:#aaa; color:#fff; }
 
 
 /* unused */
@@ -973,106 +1008,46 @@ tr:last-child td { height:auto; }
   border-right: 4px solid transparent;
   border-left: 4px solid transparent; }
 
-  /* account calendar */
-  #calendar{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40px;
-    width: 320px;
-    font-family: 'Lato', sans-serif;
-  }
-  #calendar_weekdays div{
-    display:inline-block;
-    vertical-align:top;
-  }
-  #calendar_content, #calendar_weekdays, #calendar_header{
-    position: relative;
-    width: 320px;
-    overflow: hidden;
-    float: left;
-    z-index: 10;
-  }
-  #calendar_weekdays div, #calendar_content div{
-    width:40px;
-    height: 40px;
-    overflow: hidden;
-    text-align: center;
-    background-color: #FFFFFF;
-  }
-  #calendar_content{
-    -webkit-border-radius: 0px 0px 12px 12px;
-    -moz-border-radius: 0px 0px 12px 12px; 
-    border-radius: 0px 0px 12px 12px;
-  }
-  #calendar_content div{
-    float: left;
-  }
-  #calendar_content div:hover{
-    background-color: #F8F8F8;
-  }
-  #calendar_content div.blank{
-    background-color: #FFFFFF;
-  }
-  #calendar_header, #calendar_content div.today{
-    zoom: 1;
-    filter: alpha(opacity=70);
-    opacity: 0.7;
-  }
-  #calendar_content div.today{
-    color: #FFFFFF;
-  }
-  #calendar_header{
-    width: 100%;
-    height: 37px;
-    text-align: center;
-    padding: 18px 0;
-    -webkit-border-radius: 12px 12px 0px 0px;
-    -moz-border-radius: 12px 12px 0px 0px; 
-    border-radius: 12px 12px 0px 0px;
-  }
-  #calendar_header h1{
-    font-size: 1.5em;
-    color: #FFFFFF;
-    float:left;
-    width:70%;
-  }
-  i[class^=icon-chevron]{
-    color: #FFFFFF;
-    float: left;
-    width:15%;
-    border-radius: 50%;
-  }
 
-  /* printer detail style */
-  .accountDetail {
-    background-color: #ddd;
-    padding: 10px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    font-size: 1.2em;
-    font-weight: 600;
-  }
 
-  .accountDetail #sub1, #sub2 {
-    margin-left: 30px;
-    font-size: 1.2em;
-    font-weight: 600;
-  }
+  /* Detail page */
 
-  .daily {
-    width: 80%;
-    height: 400px;
-    margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  .column{
+  color:black;
+  width:50vw;
+  margin:0 auto;
+}
 
-  .detail {
-    width: 80%;
-    height: 400px;
-    margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
+.detailview{
+  border:2px solid #057075;
+  border-radius:5px;
+  padding:40px;
+  margin-top:50px;
+  max-width:600px;
+
+}
+.detail_info{
+  text-align:right;
+  margin-left:50px;
+}
+.detail_title{
+  text-align:left;
+  font-size:20px;
+  margin-bottom:40px;
+}
+
+#print_status{
+  width:100px;
+  height:50px;
+  background-color:#057075;
+  border:none;
+  color:white;
+  border-radius:10px;
+
+}
+
+@media (max-width: 600px) {
+  .column{
+    width:90vw;
   }
+}

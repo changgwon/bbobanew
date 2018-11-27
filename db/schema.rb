@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_25_060325) do
+ActiveRecord::Schema.define(version: 2018_11_25_080808) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2018_11_25_060325) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "cashflows", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "real_created_at"
+    t.string "use_type"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "cur_cash"
+  end
+
   create_table "charges", force: :cascade do |t|
     t.integer "amount"
     t.boolean "deposit"
@@ -65,6 +75,8 @@ ActiveRecord::Schema.define(version: 2018_11_25_060325) do
     t.integer "totalpage"
     t.boolean "flag", default: true
     t.integer "cost"
+    t.integer "user_id"
+    t.string "category", default: "ongoing"
   end
 
   create_table "users", force: :cascade do |t|
