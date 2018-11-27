@@ -9,25 +9,27 @@ class HomeController < ApplicationController
     @ongoing_upload = []
     @past_upload = []
     @uploads.each do |upload|
-      if upload.pkupdate < Date.today
-        @past_upload << upload
+      if upload.progress != "인쇄취소"
 
-      elsif upload.pkupdate == Date.today
-        pkuptime_s = upload.pkuptime.split('~')
-        pkuptime_d = pkuptime_s[1].split(':')
-        to_compare = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
-                              pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0)
-      
-        if to_compare >= Time.now
-          @ongoing_upload << upload
-        else
+        if upload.pkupdate < Date.today
           @past_upload << upload
-        end
-      
-      else
-        @ongoing_upload << upload
-      end
 
+        elsif upload.pkupdate == Date.today
+          pkuptime_s = upload.pkuptime.split('~')
+          pkuptime_d = pkuptime_s[1].split(':')
+          to_compare = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
+                                pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0)
+        
+          if to_compare >= Time.now
+            @ongoing_upload << upload
+          else
+            @past_upload << upload
+          end
+        
+        else
+          @ongoing_upload << upload
+        end
+      end
     end
   end
 
@@ -130,29 +132,30 @@ class HomeController < ApplicationController
     @ongoing_upload = []
     @past_upload = []
     @uploads.each do |upload|
-      if upload.pkupdate < Date.today
-        @past_upload << upload
+    if upload.progress != "인쇄취소"
+        if upload.pkupdate < Date.today
+          @past_upload << upload
 
-      elsif upload.pkupdate == Date.today
-        pkuptime_s = upload.pkuptime.split('~')
-        pkuptime_d = pkuptime_s[1].split(':')
-        to_compare = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
-                              pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0)
-      
-        if to_compare >= Time.now
-          @ongoing_upload << upload
+        elsif upload.pkupdate == Date.today
+          pkuptime_s = upload.pkuptime.split('~')
+          pkuptime_d = pkuptime_s[1].split(':')
+          to_compare = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
+                                pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0)
         
-        else 
-          upload.category = "past"
+          if to_compare >= Time.now
+            @ongoing_upload << upload
+          
+          elsif to_compare < Time.now
+            upload.category = "past"
+            @ongoing_upload << upload
+          # else
+          #   @past_upload << upload
+          end
+        
+        else
           @ongoing_upload << upload
-        # else
-        #   @past_upload << upload
         end
-      
-      else
-        @ongoing_upload << upload
       end
-
     end
   end
 
@@ -207,9 +210,23 @@ class HomeController < ApplicationController
     redirect_back(fallback_location: home_ownerpage_path)
   end
 
+  def usercancel
+    upload = Upload.find(params[:id])
+    upload.progress = "인쇄취소"
+    upload.save
+
+    # 환불!!!!
+    @user = current_user
+    @user.cur_cash += upload.totalpage #*50
+    @user.save
+
+    redirect_to '/'
+
+  end
+
   def index
     if user_signed_in?
-      redirect_to "/home/main"
+      redirect_to "/home/category"
     else
       redirect_to "/users/sign_in"
     end
@@ -224,13 +241,7 @@ class HomeController < ApplicationController
     @user = current_user.cur_cash
   end
 
+  def category
+  end
+
 end
-
-  
-
-  
-  
-
- 
-
- 
