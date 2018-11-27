@@ -4,15 +4,6 @@ header {
 }
 </style>
 
-<div class="header">
-  <div class="title">뽀바드림</div>
-  <div class="topnav">
-    <a href="#">[ K관복사대 ]</a>
-    <a href="#">로그아웃</a>
-    <a href="home/account">매출관리</a>
-  </div>
-</div>
-
 <div class="datetime">
   <div class="date">
     <p id="yy"></p>
@@ -50,11 +41,11 @@ header {
       <th><button type="button" class="sort textcenter" data-sort="pickupTime">픽업시간<i class="caret"></i></button></th>
       <th><button type="button" class="sort textcenter" data-sort="pickupName">이름<i class="caret"></i></button></th>
       <th><button type="button" class="sort textcenter" data-sort="pickupID">학번<i class="caret"></i></button></th>
-      <th><button type="button" class="sort" data-sort="fileName">파일명<i class="caret"></i></button></th>
-      <th><button type="button" class="sort textright" data-sort="printSetting">인쇄설정<i class="caret"></i></button></th>
-      <th><button type="button" class="sort textright" data-sort="printPage">범위(매수)<i class="caret"></i></button></th>
-      <th><button type="button" class="sort textright" data-sort="printFee">결제금액<i class="caret"></i></button></th>
-      <th><button type="button" class="sort textright" data-sort="printState">상태<i class="caret"></i></button></th>
+      <th><button type="button" class="sort textcenter" data-sort="fileName">파일명<i class="caret"></i></button></th>
+      <th><button type="button" class="sort textcenter" data-sort="printSetting">인쇄설정<i class="caret"></i></button></th>
+      <th><button type="button" class="sort textcenter" data-sort="printPage">범위(매수)<i class="caret"></i></button></th>
+      <th><button type="button" class="sort textcenter" data-sort="printFee">결제금액<i class="caret"></i></button></th>
+      <th><button type="button" class="sort textcenter" data-sort="printState">상태<i class="caret"></i></button></th>
     </thead>
     <!-- IMPORTANT, class="list" must be on tbody -->
     <tbody class="list">
@@ -78,16 +69,8 @@ header {
       <% end %>
     </tbody>
     <tfoot>
-      <tr>
-        <td colspan="3" class="table-footer">
-          <div class="table-pagination">
-            <button type="button" class="btn-tablepage jTablePagePrev">&laquo;</button>
-            <ul class="pagination"></ul>
-            <button type="button" class="btn-tablepage jTablePageNext">&raquo;</button>
-          </div>
-        </td>
-      </tr>
     </tfoot>
+
   </table>
 
 </div>
