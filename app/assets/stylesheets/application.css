@@ -746,7 +746,7 @@ a{
 
 /* printer style */
 
-.header {
+.pheader {
   height: 100px;
   width: 100%;
   padding-left: 45px;
@@ -755,7 +755,7 @@ a{
   align-items: center;
 }
 
-.header .title {
+.pheader .title {
   font-size: 2.5em;
   font-weight: bold;
 }
