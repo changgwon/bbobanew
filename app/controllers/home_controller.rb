@@ -134,8 +134,12 @@ class HomeController < ApplicationController
       
         if to_compare >= Time.now
           @ongoing_upload << upload
-        else
-          @past_upload << upload
+        
+        else 
+          upload.category = "past"
+          @ongoing_upload << upload
+        # else
+        #   @past_upload << upload
         end
       
       else
@@ -177,15 +181,6 @@ class HomeController < ApplicationController
   end
 
   def changeState3
-    upload = Upload.find(params[:id])
-    upload.progress = "인쇄완료"
-    upload.save
-
-    # redirect_to home_ownerpage_path
-    redirect_back(fallback_location: home_ownerpage_path)
-  end
-
-  def changeState
     upload = Upload.find(params[:id])
     upload.progress = "인쇄완료"
     upload.save

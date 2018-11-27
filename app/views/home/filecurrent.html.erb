@@ -10,7 +10,12 @@ a:hover{
 	<% if @uploads.empty? %>
 		신청 내역이 없습니다.<br>
 	<% else %>
-		<h1>현재 진행중인 업로드 입니다</h1>
+		<input type="button" value="전체 보기" id="category1">
+		<input type="button" value="과거 내역 보기" id ="category2">
+		<input type="button" value="미래 내역 보기" id ="category3"> <br>
+
+		<div value="category" id="ongoing">
+		<p3> 진행중인 내역 </p3>
 		<% @ongoing_upload.each do |x| %>
 		   <a href="filedetail/<%=x.id%>">
 		   	<div class="filecurrent_card">
@@ -23,14 +28,15 @@ a:hover{
 				   
 				  	<%=x.progress%><br>
 			</div></a>
-		   
 		<% end %>
-		<hr>
-		<h1>이미 완료된 업로드 입니다</h1>
+		</div>
+
+		<div value="category" id="past">
+		<p3> 지난 내역 </p3>
 		<% @past_upload.each do |x| %>
-		<a href="filedetail/<%=x.id%>">
-			<div class="filecurrent_card grey">
-			   <div style="text-align:left">
+		   <a href="filedetail/<%=x.id%>">
+		   	<div class="filecurrent_card">
+			  <div style="text-align:left">
 			   		<b><%= x.pkupdate %><br>
 				   	<%= x.pkuptime %>  
 				   	<%=x.printer%> 관 <br> </b></div>
@@ -38,10 +44,36 @@ a:hover{
 				   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
 				   
 				  	<%=x.progress%><br>
-		 	</div>
-		 </a>
+			</div></a>
 		<% end %>
+		</div>
 
 	<% end %>
 	<a href="/">홈으로 돌아가기</a>
 </div>
+
+
+<script>
+
+	var ongoing = document.getElementById('ongoing');
+	var past = document.getElementById('past');
+	ongoing.style.display = 'block';
+	past.style.display = 'block';
+
+	document.getElementById('category1').onclick = function () {
+		ongoing.style.display = 'block';
+		past.style.display = 'block';
+	}
+
+	document.getElementById('category2').onclick = function () {
+		ongoing.style.display = 'none';
+		past.style.display = 'block';
+	}
+
+	document.getElementById('category3').onclick = function() {
+		past.style.display = 'none';
+		ongoing.style.display = 'block';
+	}
+
+
+</script>
