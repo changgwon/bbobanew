@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'home/index' => 'home#index'
   get 'printer/index' => 'printer#index'
   get 'printer/account' => 'printer#account'
+  get 'printer/detail' => 'printer#detail'
 
   get 'payment/charge' => 'payment#charge'
   post 'payment/create'
