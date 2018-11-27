@@ -21,11 +21,16 @@ Rails.application.routes.draw do
   get 'printer/index' => 'printer#index'
   get 'printer/account' => 'printer#account'
   get 'printer/detail' => 'printer#detail'
+  get 'home/category1' => 'home#category1'
+  get 'home/category2' => 'home#category2'
+  get 'home/category3' => 'home#category3'
+  get 'home/usercancel/:id' => 'home#usercancel'
+  get 'home/category' => 'home#category'
 
   get 'payment/charge' => 'payment#charge'
   post 'payment/create'
   get 'payment/new'
   get 'payment/charge_show'
   delete 'payment/charge_delete/:charge_id' => 'payment#charge_delete'
-  
+  get 'payment/cashflow'
 end
