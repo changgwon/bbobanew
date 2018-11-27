@@ -9,5 +9,8 @@ class PrinterController < ApplicationController
 	end
   
     def account
-    end
+	end
+	
+	def detail
+	end
 end
