@@ -1,7 +1,18 @@
+
 <style>
 
 a:hover{
     text-decoration: none;
+}
+#category1, #category2, #category3{
+	border:none;
+	color:grey;
+	background-color:transparent;
+	margin-bottom:30px;
+}
+
+#category1:hover, #category2:hover, #category3:hover{
+	color:black;
 }
 
 </style>
@@ -12,9 +23,9 @@ a:hover{
 		신청 내역이 없습니다.<br>
 	<% else %>
 
-		<input type="button" value="전체 보기" id="category1">
-		<input type="button" value="과거 내역 보기" id ="category2">
-		<input type="button" value="미래 내역 보기" id ="category3"> <br>
+		<input type="button" value="전체 보기" id="category1">  |  
+		<input type="button" value="진행중인 인쇄" id ="category3">  |  
+		<input type="button" value="완료된 인쇄" id ="category2"> <br>
 
 		<div value="category" id="ongoing">
 		<p3> 진행중인 내역 </p3>
@@ -32,7 +43,7 @@ a:hover{
 			</div></a>
 		<% end %>
       
-		</div>
+		</div><hr>
 
 		<div value="category" id="past">
 		<p3> 지난 내역 </p3>
@@ -78,6 +89,5 @@ a:hover{
 		past.style.display = 'none';
 		ongoing.style.display = 'block';
 	}
-
 
 </script>

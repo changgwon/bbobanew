@@ -11,6 +11,7 @@ body{
   color:black;
   margin: 0 auto;
   margin-bottom:20px;
+  margin-left : 30px;
   background-color:white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   padding:20px;
@@ -505,11 +506,7 @@ article[role="signup"] p {
     bottom:0;
     width:100%;
 }
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
 
-}
 
 a{  
   color:white;
@@ -560,17 +557,14 @@ a{
 
 
       /*custom font*/
-      @import url(https://fonts.googleapis.com/css?family=Montserrat);
+      @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css)
+
+      body { font-family: 'Noto Sans KR', sans-serif;}
 
       /*basic reset*/
       * {margin: 0; padding: 0;}
 
      
-
-      body {
-            font-family: montserrat, arial, verdana;
-      }
-
       /*form styles*/
       #msform {
             max-width: 600px;
@@ -843,7 +837,6 @@ a{
 .charge_cash_box{
   max-width:600px;
   min-width:350px;
-  width:90%;
   margin: 0 auto;
   margin-top:50px;
 }
@@ -864,7 +857,7 @@ outline: 0; }
 
 body { 
 background-color:#f3f2f2; color:#333333;
-font-family:sans-serif; font-size:14px; }
+font-size:14px; }
 table { 
 border-collapse:collapse; 
 border-spacing:0px; line-height:16px;
@@ -1012,10 +1005,12 @@ tr:last-child td { height:auto; }
 
   /* Detail page */
 
-  .column{
+.column{
   color:black;
-  width:50vw;
-  margin:0 auto;
+  width:40vw;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:50px;
 }
 
 .detailview{

@@ -1,6 +1,35 @@
+
 <style>
 .point_box{
-	background-color:rgb();
+	background-color:rgb(5,112,117, 0.2);
+	height:200px;
+	border-radius:10px;
+	width:100%;
+	margin: 0 auto;
+	text-align: center;
+	padding-top:50px;
+	margin-bottom:50px;
+
+}
+
+table, td, th {    
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+}
+tr{
+	border-bottom:1px solid black;
+}
+
+h5{
+	margin-bottom: 10px;
 }
 
 </style>
@@ -10,21 +39,28 @@
 
 	<h5>포인트 내역</h5>
 	<div class="point_box">
-		현재 포인트 : <%= current_user.cur_cash %><br>
-		<a href="/payment/new">포인트 충전</a><br>
-		**************************************************<br>
+		<h4>현재 포인트 : <%= current_user.cur_cash %><br></h4><br>
+		<a href="/payment/new"><button id="print_status">포인트 충전</button></a><br>
+		<br>
 	</div>
 
-<% @cashflows.each do |x| %>
-	<% if x.use_type == '차감' %>
-    <%= x.real_created_at %> [<%=x.use_type%>] -<%=x.amount%> <%=x.cur_cash%>
-    <%else%>
-    <%= x.real_created_at %> [<%=x.use_type%>] <%=x.amount%> <%=x.cur_cash%>
-    <%end%>
-    <br>
-    <hr>
-    <br>
- 
-
-<% end %>
+	<div>
+		<h5 style="text-align:left">포인트 충전/사용내역</h5>
+		<div>
+		<table>
+		<% @cashflows.each do |x| %>
+			<tr>
+			<% if x.use_type == '차감' %>
+		    	<td><%= x.real_created_at %></td> <td>[<%=x.use_type%>]</td> <td>-<%=x.amount%></td> <td><%=x.cur_cash%></td>
+		    	
+		    <%else%>
+		    	<td><%= x.real_created_at %></td> <td>[<%=x.use_type%>]</td> <td><%=x.amount%></td> <td><%=x.cur_cash%></td>
+		    <%end%>
+		   
+		   	</tr>
+		    
+		    <br>
+		<% end %>
+		</table>
+	</div>
 </div>
