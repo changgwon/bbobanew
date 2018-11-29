@@ -124,7 +124,7 @@ class HomeController < ApplicationController
     
 
 
-    redirect_to '/'
+    redirect_to '/home/main'
   end
 
   def filecurrent
