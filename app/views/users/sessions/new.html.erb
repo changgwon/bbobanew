@@ -1,11 +1,22 @@
-<style>
+<!DOCTYPE html>
+<html>
+<head>
+
+  <link href="/assets/users.css" media="screen" rel="stylesheet" />
+  <style>
 
 .pheader{
   display:none;
 }
 
+
+
 </style>
-<div class="login_container">
+
+</head>
+
+<body>
+<!-- <div class="login_container">
   <div class="backbox">
     <div class="loginMsg">
       <div class="textcontent">
@@ -19,39 +30,102 @@
 
 <div class="frontbox">
   <div class="login">
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%#= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
       <h2>로그인</h2>
-        <%= f.input :userid,
+        <%#= f.input :userid,
                     placeholder: '아이디',
                     label: false,
                     required: false,
                     autofocus: true,
                     input_html: { class: "form_input" }
                     %>
-        <%= f.input :password,
+        <%#= f.input :password,
                     placeholder:'비밀번호',
                     label: false,
                     required: false,
                     input_html: { autocomplete: "current-password", class: "form_input"} %>
 
-       <!-- 일단 GUI 상에는 없는 기능             
-         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %> -->
-        <!-- label 삭제하는 방법? --> 
+        일단 GUI 상에는 없는 기능             
+         <%#= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %> -->
+        <!-- label 삭제하는 방법? 
 
 
     <div class="form-actions">
-        <%= f.button :submit, "로그인" %>
+        <%#= f.button :submit, "로그인" %>
     </div>
 
     
-    <%= render "users/shared/links", style: "font-size:11px"%>
-    <% end %>
+    <%#= render "users/shared/links", style: "font-size:11px"%>
+    <#% end %>
     
     <a href="/users/sign_up"><input type="button" value="회원가입" class="register_button" style="display:none"></a>
     
    
     </div>  
   </div>
-</div>
+</div> -->
+<div class="main">
+        <!-- Sing in  Form -->
+        <section class="sign-in">
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
+                        <a href="/users/sign_up" class="signup-image-link">회원가입</a>
+                    </div>
 
+                    <div class="signin-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form method="POST" class="register-form" id="login-form">
+                            <!-- <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="your_name" id="your_name" placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="your_pass" id="your_pass" placeholder="Password">
+                            </div> -->
+                            <div class="form-group">
+                            <%= f.input :userid,
+                                placeholder: '아이디',
+                                label: false,
+                                required: false,
+                                autofocus: true,
+                                input_html: { class: "form_input" }
+                                %>
+                            </div>
+                            <div class="form-group">
+                            <%= f.input :password,
+                                placeholder:'비밀번호',
+                                label: false,
+                                required: false,
+                                input_html: { autocomplete: "current-password", class: "form_input"} 
+                                %>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term">
+                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                            </div>
+                           <!--  <div class="form-group form-button">
+                                <a href="/users/sign_up"><input type="submit" name="signin" id="signin" class="form-submit register_button" value="Log in"></a>
+                            </div> -->
+                            <div class="form-actions">
+                                <%= f.button :submit, "로그인" %>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+            <% end %>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
