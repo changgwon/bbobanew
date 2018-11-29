@@ -1,7 +1,11 @@
+*{
+  box-sizing:border-box;
+  margin:0;
+}
 
 
 body{
-  background-color: #f8f8f8
+  background-color: #f8f8f8;
 }
 /* main.html */
 .filecurrent_card{
@@ -36,9 +40,7 @@ body{
   background-color:grey;
 }
 @media (max-width: 767px) {
-  body{
-    background-color:white;
-  }
+  
   .filecurrent_title{
     margin:0 auto;
     width:80%;
@@ -99,10 +101,7 @@ header{
 	.side_menu .container {
 		padding: 40px 20px 0px 20px ;
 	}
-  .container{
-    z-index:100;
-    position:absolute;
-  }
+ 
 
 /* HAMBURGER STYLES ----- */
 	.burger_box {
@@ -230,127 +229,6 @@ header{
 }
 
 
-*{
-	box-sizing:border-box;
-	margin:0;
-}
-
-
-
-.login_container{
-  width: 50vw;
-  height: 60vh;
-  position: absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%, -50%);
-  display: inline-flex; 
-
-}
-.backbox{  
-  background-color: #057075;
-  width: 100%;
-  height: 80%;
-  position: absolute;
-  transform: translate(0,-50%);
-  top:50%;
-  display: inline-flex;
-}
-
-.frontbox{
-  background-color: white;
-  border-radius: 20px;
-  height: 100%;
-  width: 50%;
-  z-index: 10;
-  position: absolute;
-  right:0;
-  margin-right: 3%;
-  margin-left: 3%;
-  transition: right .8s ease-in-out;
-  border:1px solid grey;
-}
-
-.moving{
-  right:45%;
-}
-
-.loginMsg{
-  width: 50%;
-  height: 100%;
-  font-size: 15px;
-  box-sizing: border-box;
-}
-
-.loginMsg .title{
-  font-weight: 300;
-  font-size: 11px;
-}
-
-.loginMsg p{
-  font-weight: 100;
-}
-
-.textcontent{
-  color:white;
-  margin-top:65px;
-  margin-left: 12%;
-}
-
-.loginMsg button{
-  background-color: #057075;
-  border: 2px solid white;
-  border-radius: 10px;
-  color:white;
-  font-size: 12px;
-  box-sizing: content-box;
-  font-weight: 300;
-  padding:10px;
-  margin-top: 20px;
-}
-
-
-.login{
-  padding: 20px;
-  text-align: center;
-}
-
-.login h2{
-  color: black;
-  font-size:16px;
-}
-
-
-.login input{
-  display: block;
-  width: 100%;
-  height: 40px;
-  background-color: #f2f2f2;
-  border: none;
-  margin-bottom:20px;
-  font-size: 12px;
-}
-
-.login button{
-  background-color: #057075;
-  border: none;
-  color:white;
-  font-size: 12px;
-  font-weight: 300;
-  box-sizing: content-box;
-  padding:10px;
-  border-radius: 10px;
-  width: 60px;
-  position: absolute;
-  right:30px;
-  bottom: 30px;
-  cursor: pointer;
-}
-.login p {
-  cursor: pointer;
-  color:#404040;
-  font-size:11px;
-}
 
 
 
