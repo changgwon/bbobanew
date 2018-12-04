@@ -16,6 +16,7 @@
       <!-- multistep form -->
 
       <%= form_for @upload, url: home_filecreate_path, :autenticity_token => true, method:"post", :remote => true, html: { multipart: true, id: :msform} do |f| %>
+      <input type="hidden" value="<%= form_authenticity_token() %>"name="authenticity_token"/>
         <!-- progressbar -->
         <ul id="progressbar">
           <li class="active">복사대 선택</li>

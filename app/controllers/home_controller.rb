@@ -35,6 +35,32 @@ class HomeController < ApplicationController
 
   def fileupload
     @upload = Upload.new
+    @uploads = Upload.where(userid:current_user.userid)
+    @ongoing_upload = []
+    @past_upload = []
+    @uploads.each do |upload|
+      if upload.progress != "인쇄취소"
+
+        if upload.pkupdate < Date.today
+          @past_upload << upload
+
+        elsif upload.pkupdate == Date.today
+          pkuptime_s = upload.pkuptime.split('~')
+          pkuptime_d = pkuptime_s[1].split(':')
+          to_compare = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
+                                pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0)
+        
+          if to_compare >= Time.now
+            @ongoing_upload << upload
+          else
+            @past_upload << upload
+          end
+        
+        else
+          @ongoing_upload << upload
+        end
+      end
+    end
   end
 
   def filecheck
@@ -121,9 +147,7 @@ class HomeController < ApplicationController
       cashflow.save
     
     end
-    
-
-
+  
     redirect_to '/home/main'
   end
 
