@@ -1,12 +1,18 @@
+<style>
+
+.pheader{
+  display:none;
+}
+
+</style>
 
 <div>
-      <% if user_signed_in? %>
-        <div class="info" style="float:right;">
-        <!--<%= current_user.username %><br><br>-->
-                              
-        </div>
+  <% if user_signed_in? %>
+    <div class="info" style="float:right;">
+    <!--<#%= current_user.username %><br><br>-->                             
     </div>
-      
+</div>
+      <div class="column">
       <!-- multistep form -->
 
       <%= form_for @upload, url: home_filecreate_path, :autenticity_token => true, method:"post", :remote => true, html: { multipart: true, id: :msform} do |f| %>
@@ -35,7 +41,7 @@
                 
                 
           </div>
-          <input type="button" id="btn_checktime" name="next" class="next action-button" value="Next" />
+          <input type="button" id="btn_checktime" name="next" class="check action-button" value="Next" />
         </fieldset>
 
         <fieldset>
@@ -79,7 +85,9 @@
 
         </fieldset>
       <!-- </form> -->
+
       <% end %>
+    </div>
 
       <% end %>
 
@@ -90,10 +98,12 @@
         <div id="mymodal" class="modal">
 
           <!-- Modal content -->
-          <div class="modal-content" style="color:black">
+          <div class="modal-content" style="color:black;padding:50px;padding-top:20px">
             <span class="close">&times;</span>
-            <div id ="printerchk"></div>
-            <button onclick="$('form').submit()">확인 완료!</button>
+            <div id ="printerchk" style="margin-top:50px"></div>
+            <div id ="printerchk2"><img src="/" id="print-image" style="max-width:100%"></div>
+            <div id = "printerchk3"></div>
+            <button onclick="$('form').submit()" class="btn button form-group btn-block">확인 완료!</button>
           </div>
 
         </div>
@@ -108,15 +118,6 @@
 
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
-
-            var btn_checktime = document.getElementById("btn_checktime");
-
-            btn_checktime.onclick = function(){
-              var timeerror = time_check();
-              if (timeerror){
-                alert(timeerror);
-              }
-            }
 
             // When the user clicks the button, open the modal 
             btn.onclick = function() {
@@ -142,24 +143,7 @@
                 }
             }
 
-            function time_check(){
-              var val3 = document.getElementById("pkupdateop").value;
-              var msg = "";
-
-              if (val3 == "오늘"){
-                var pkuptime = document.getElementById("pkuptimeop").value.split('~');
-                var starttime = pkuptime[1].split(':');
-                var comparetime = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
-                              pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0);
-
-                if (comparetime<Time.now){
-                  msg += "신청 불가능한 시간 입니다!";
-                }
-
-              }
-              
-              return msg;
-            }
+            
 
             function empty_check(){ 
                   var val4 = document.getElementById("pagenumop").value;
@@ -181,6 +165,9 @@
             function print_selected_option(){
 
                   var sel = document.getElementById("printerchk");
+                  var sel2 = document.getElementById("printerchk2");
+                  var sel3 = document.getElementById("printerchk3");
+                  var p_image = document.getElementById("print-image");
 
                   var val1 = document.getElementById("printerop").value;
                   var val2 = document.getElementById("pkuptimeop").value;
@@ -194,16 +181,54 @@
 
                   total = totalPage(val4, val7);
 
-                  sel.innerHTML = 
+                  sel.innerHTML = "<strong>결제 예정 금액 :  "+ (50*total) +"원</strong><br>"+"잔여 포인트:<hr><br><strong>"+val1+"관 복사대, "+val2+" "+val3+"</strong><br>"+"파일명:"+val9+"<br>"+"인쇄할 페이지:"+val4+"(총"+total+"장)<br><hr><br>";
 
-                  "결제 예정 금액:"+ (50*total) +"원<br><hr><br>"+
-                  "파일명:"+val9+"<br>"+
-                  "인쇄할 페이지:"+val4+"(총"+total+"장)<br><hr><br>"+
-                  val5+"방향 / "+val7+"분할 / "+val6+" / "+val8+"<br><hr><br>"+
-                  "수령장소,시간:"+val1+"관 복사대, "+val2+" "+val3+"<br>"+
-                  "잔여 포인트:";
+                  sel3.innerHTML = val5+"방향 / "+val7+"분할 / "+val6+" / "+val8+"<br><hr><br>";  
 
+                  if (val5=='가로'){
+                    if (val7==2){
+                      p_image.src="/hor_2.png";
 
+                    }
+                    else if(val7==4){
+                      p_image.src="/hor_4.png";
+
+                    }
+                    else if(val7==6){
+                      p_image.src="/hor_6.png";
+
+                    }
+                    else if(val7==9){
+                      p_image.src="/hor_9.png";
+
+                    }
+                    else{
+                      p_image.src="/hor_16.png";
+
+                    }
+
+                  }else{
+                    if (val7==2){
+                      p_image.src="/var_2.png";
+
+                    }
+                    else if(val7==4){
+                      p_image.src="/var_4.png";
+
+                    }
+                    else if(val7==6){
+                      p_image.src="/var_6.png";
+
+                    }
+                    else if(val7==9){
+                      p_image.src="/var_9.png";
+
+                    }
+                    else{
+                      p_image.src="/var_16.png";
+
+                    }
+                  }
             }
 
             function totalPage(pagenum, split){
@@ -221,7 +246,8 @@
                               count+=1;
                         }
                   }
-                  if (split % 2 == 0){
+
+                  if (count % parseInt(split) == 0){
                         count = parseInt(count/split);
                   }else{
                         count = parseInt(count/split) +1;
@@ -230,6 +256,9 @@
                   return count;
 
             }
+
+
+             
         </script>
 
       

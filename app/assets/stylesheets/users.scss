@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 /* @extend display-flex; */
 display-flex, .display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
   display: flex;
@@ -371,6 +370,9 @@ max-width:800px;
   .container {
     max-width: 800px; } }
 @media screen and (max-width: 767px) {
+  .container{
+    padding-top:30px;
+  }
   .signup-content, .signin-content {
     flex-direction: column;
     -moz-flex-direction: column;
@@ -403,12 +405,6 @@ max-width:800px;
   .signup-form, .signup-image, .signin-form, .signin-image {
     width: auto; }
 
-  .social-login {
-    justify-content: center;
-    -moz-justify-content: center;
-    -webkit-justify-content: center;
-    -o-justify-content: center;
-    -ms-justify-content: center; }
 
   .form-button {
     text-align: center; }
@@ -424,19 +420,11 @@ max-width:800px;
     padding: 0 30px; }
 
   .form-title {
-    text-align: center; } }
+    font-size:25px;
+    text-align: center; } 
 
-/*@media screen and (max-width: 400px) {
-  .social-login {
-    flex-direction: column;
-    -moz-flex-direction: column;
-    -webkit-flex-direction: column;
-    -o-flex-direction: column;
-    -ms-flex-direction: column; }
-
-  .social-label {
-    margin-right: 0px;
-    margin-bottom: 10px; } }
-*/
-/*# sourceMappingURL=style.css.map */
+  .signin-content{
+    margin: auto;
+  }
+}
 

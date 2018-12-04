@@ -3,15 +3,64 @@
 <head>
 
 <style>
+  header{
+    visibility:hidden;
+  }
   .pheader{
     display:none;
   }
+  .navbar-toggler{
+    display:none;
+  }
+  .nav-title{
+    display:block;
+   /* position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;*/
+  }
+  
+
+  @media (max-width:767px){
+    header{
+      visibility:visible;
+    }
+    .logo{
+      display:none;
+    }
+    .go-back{
+      display:block;
+    }
+    .nav-title {
+      visibility: hidden;
+     
+    }
+
+    .nav-title:after {
+      visibility: visible;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      text-align: center;
+      margin: auto;
+      content: "회원가입";
+    }
+    .text-center{
+      display:none;
+    }
+    article[role="signup"]{
+      box-shadow:none;
+      -webkit-box-shadow:none;
+    }
+
+  }
+
 
 </style>
 
 </head>
 <body>
-
 
   <div class="login-signup">
    

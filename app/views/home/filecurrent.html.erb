@@ -17,21 +17,26 @@ a:hover{
 .pheader{
   display:none;
 }
+.title{
+	margin-bottom:20px;
+
+}
 
 </style>
 
-<div class="column print_upload center">
+<div>
 
 	<% if @uploads.empty? %>
 		신청 내역이 없습니다.<br>
 	<% else %>
-
-		<input type="button" value="전체 보기" id="category1">  |  
-		<input type="button" value="진행중인 인쇄" id ="category3">  |  
-		<input type="button" value="완료된 인쇄" id ="category2"> <br>
-
+	<div style="text-align:center; margin-top:40px">
+		<input type="button" value="전체 보기   " id="category1">|    
+		<input type="button" value="   진행중인 인쇄   " id ="category3">|    
+		<input type="button" value="   완료된 인쇄" id ="category2"> <br>
+	</div>
+	<div class="column" style="margin-top:20px">
 		<div value="category" id="ongoing">
-		<p3> 진행중인 내역 </p3>
+		<div class="title"> 진행중인 내역 </div>
 		<% @ongoing_upload.each do |x| %>
 		   <a href="filedetail/<%=x.id%>">
 		   	<div class="filecurrent_card" style="border:1px solid #057075;">
@@ -49,7 +54,7 @@ a:hover{
 		</div><hr>
 
 		<div value="category" id="past">
-		<p3> 지난 내역 </p3>
+		<div class="title"> 지난 내역 </div>
 		<% @past_upload.each do |x| %>
 		   <a href="filedetail/<%=x.id%>">
 		   	<div class="filecurrent_card">
@@ -67,9 +72,8 @@ a:hover{
 		</div>
 
 	<% end %>
-	<a href="/">홈으로 돌아가기</a>
 </div>
-
+</div>
 
 <script>
 

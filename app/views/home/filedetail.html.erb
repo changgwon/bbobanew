@@ -4,6 +4,34 @@
   display:none;
 }
 
+@media (max-width: 767px){
+	.logo{
+		display:none;
+	}
+	.go-back{
+		display:block;
+	}
+    .navbar-toggler{
+      display:none;
+    }
+    .nav-title{
+      display:block;
+    }
+
+    .nav-title:after {
+      visibility: visible;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      text-align: center;
+      margin: auto;
+      content: "상세보기";
+    }
+    .text-center{
+      visibility:hidden;
+    }
+}
+
 </style>
 
 <div class="column detailview center">
@@ -18,15 +46,19 @@
 			
 			인쇄설정 : <%= @upload.landscape %> <%= @upload.split %>분할, <%= @upload.doublepg %><hr>
 
-			<button id="print_status"><%= @upload.progress %></button>
+			<% if @upload.progress='인쇄대기'%>
+				<button id="print_status" class="status-waiting"><%= @upload.progress %></button>
+				<!-- 수빈이가 추가할 '프린트 취소' -->
+				<button id="print_status" class="cancel-button" value="인쇄취소" onclick="window.location='../usercancel/<%=@upload.id%>'">신청 취소하기</button>
+			<% else %>
+				<button id="print_status" class="status-finished"><%= @upload.progress %></button>
+				<!-- 수빈이가 추가할 '프린트 취소' -->
+				<button id="print_status" value="인쇄취소" disabled>신청 취소하기</button>
+			<% end %>
 
-
-			<!-- 수빈이가 추가할 '프린트 취소' -->
-			<button id="print_status" value="인쇄취소" onclick="window.location='../usercancel/<%=@upload.id%>'">신청 취소하기</button>
+			
 		</div>
 	</div>
-	<div style="display:block">
-		<a href="/home/filecurrent">신청현황으로 돌아가기</a><br>
-	</div>
+	
 
 </div>

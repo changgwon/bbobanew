@@ -1,4 +1,30 @@
+// Place all the styles related to the payment controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* Main Page */
+.custom-button{
+	padding: 20px 100px;
+	border-radius:10px;
+	background-color:white;
+    border: 3px solid rgb(105,0,210);
+	/* border 색은 지정색*/
+}
+.custom-button:hover{
+	color:white;
+	background-color:rgb(105,0,210);
+	transform-origin:left;
+  	transition:width 0.25s ease;
+  	z-index:-1;
+}
+
+/* File Upload */
+
+
+/* File Current */
+
+
+/* File History */
 
 
 

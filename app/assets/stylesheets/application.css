@@ -1,12 +1,21 @@
-*{
+
+ /*custom font*/
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
+@import url(https://fonts.googleapis.com/css?family=Gamja+Flower|Sunflower:300);
+
+
+* {
+  margin: 0; 
+  padding: 0;
   box-sizing:border-box;
-  margin:0;
+}
+body { 
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color:white;
 }
 
 
-body{
-  background-color: #f8f8f8;
-}
 /* main.html */
 .filecurrent_card{
   width:90%;
@@ -15,7 +24,6 @@ body{
   color:black;
   margin: 0 auto;
   margin-bottom:20px;
-  margin-left : 30px;
   background-color:white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   padding:20px;
@@ -33,12 +41,7 @@ body{
   height:50px;
   text-align:center;
 }
-.center{
-  margin: 0 auto;
-}
-.grey{
-  background-color:grey;
-}
+
 @media (max-width: 767px) {
   
   .filecurrent_title{
@@ -61,25 +64,13 @@ body{
 }
 
 
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
 
 
-
-header{
-	background-color:white;
-	width:100%;
-	height:100px;
+.status-waiting{
+  background-color:rgb(255,205,45);
 }
+.status-finished{
 
-
-.info{
-	float:right;
-	margin:30px;
-
-}
-
-.info a{
-	color:#057075;
 }
 
 /* PEN STYLES ========== */
@@ -90,7 +81,7 @@ header{
 	}
 
 /* MENU CONTAINER ----- */
-	.side_menu {
+/*	.side_menu {
 		background: #057075;
 		height: 100vh;
 		left: -250px;
@@ -101,9 +92,9 @@ header{
 	.side_menu .container {
 		padding: 40px 20px 0px 20px ;
 	}
- 
+ */
 
-/* HAMBURGER STYLES ----- */
+/* HAMBURGER STYLES 
 	.burger_box {
 		display: block;
 		float: right;
@@ -185,7 +176,7 @@ header{
 		-webkit-transform: rotate3d(0, 0, 1, -45deg);
 		transition: top 200ms, transform 200ms 250ms;
 		-webkit-transition: top 200ms, -webkit-transform 200ms 250ms;
-	}
+	}*/
 
 /* STAGGER LIST ----- */
 	.list_load {
@@ -230,11 +221,8 @@ header{
 
 
 
-
-
-
 .btn-block:hover,.btn-block:focus {
-  background-color: #057075;
+  background-color: rgb(105,0,210);
   color: #ffffff;
   webkit-transition: all 400ms cubic-bezier(.4,0,.2,1);
   transition: all 400ms cubic-bezier(.4,0,.2,1);
@@ -274,7 +262,7 @@ article[role="signup"]:hover {
 article[role="signup"] h5 {
   font-size: 16px;
   font-weight: 300;
-  color: #057075;
+  color: rgb(105,0,210);
   margin-bottom: 20px;
 }
 
@@ -301,27 +289,6 @@ article[role="signup"] p {
 }
 
 
-@media only screen and (max-width: 767px) {
-  .mobile-pull {
-    float: none;
-  }
-
-  .backbox{
-    display:none;
-  }
-  .frontbox{
-    width:100%;
-    border:none;
-  }
-  .login_container{
-    width:90vw;
-  }
-  .register_button{
-    display:inline;
-  }
-
-}
-
 
 * {
     box-sizing: border-box;
@@ -343,48 +310,44 @@ article[role="signup"] p {
     display: flex;
 }
 
-/* Create three unequal columns that sits next to each other */
-.column {
-     /* Should be removed. Only for demonstration */
-     text-align:center;
-     margin-top:30px;
-}
 
+
+/*
 .column.print_list{
 /*-webkit-flex: 1;
-   -ms-flex: 1;*/
+   -ms-flex: 1;
    flex: 1;
    width:30vw;
    margin: 30 auto;
 
 }
 
-/* Left and right column */
+/* Left and right column 
 .column.print_advertisement{
    /*-webkit-flex: 1;
-   -ms-flex: 1;*/
+   -ms-flex: 1;
    flex: 1;
    width:30vw;
 }
 
 
-/* upload column */
+/* upload column 
 .column.print_upload {
     /*-webkit-flex: 2;
-    -ms-flex: 2;*/
+    -ms-flex: 2;
     flex: 2;
     width:40vw;
     padding:10px;
 }
 
-/* Style the footer */
+/* Style the footer 
 .footer {
     text-align: center;
     height:15vh;
     bottom:0;
     width:100%;
 }
-
+*/
 
 a{  
   color:white;
@@ -394,11 +357,11 @@ a{
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media (max-width: 767px) {
-  .header{
+  /*.header{
      height:15vh;
-  }
+  }*/
 
-  .row {
+  /*.row {
       -webkit-flex-direction: column;
       flex-direction: column;
     }
@@ -426,7 +389,7 @@ a{
 
   .info{
     display:none;
-  }
+  }*/
   #progressbar{
     display:none;
   }
@@ -434,13 +397,7 @@ a{
 }
 
 
-      /*custom font*/
-      @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css)
-
-      body { font-family: 'Noto Sans KR', sans-serif;}
-
-      /*basic reset*/
-      * {margin: 0; padding: 0;}
+     
 
      
       /*form styles*/
@@ -489,7 +446,7 @@ a{
       /*buttons*/
       #msform .action-button {
             width: 100px;
-            background: #057075;
+            background: rgb(105,0,210);
             font-weight: bold;
             color: white;
             border: 0 none;
@@ -569,9 +526,17 @@ a{
       /*marking active/completed steps green*/
       /*The number of the step and the connector before it = green*/
       #progressbar li.active:before,  #progressbar li.active:after{
-            background: #057075;
+            background: rgb(105,0,210);
             color: white;
       }
+
+
+@media (max-width:767px){
+  #msform fieldset{
+    box-shadow:none;
+    width:100%;
+  }
+}
 
 
 /* The Modal (background) */
@@ -595,7 +560,7 @@ a{
     margin: auto;
     padding: 50px 0;
     border: 1px solid #888;
-    width: 80%;
+    width: 90%;
     max-width:400px;
 }
 
@@ -704,182 +669,6 @@ a{
 }
 
 
-/* 캐시 충전 */
-.charge_cash{
-  background-color:white;
-  border-radius:3px;
-  padding:50px;
-  
-
-}
-.charge_cash_box{
-  max-width:600px;
-  min-width:350px;
-  margin: 0 auto;
-  margin-top:50px;
-}
-
-
-/* codepen table
-
-$text:#333333;
-$table-border: #d2d2d2; 
-$table-padding: 9px; */
-
-/* General styles */
-* {
--webkit-box-sizing: border-box;
--moz-box-sizing: border-box;
-box-sizing: border-box;
-outline: 0; }
-
-body { 
-background-color:#f3f2f2; color:#333333;
-font-size:14px; }
-table { 
-border-collapse:collapse; 
-border-spacing:0px; line-height:16px;
-border: #d2d2d2;
-padding: 9px; }
-th { 
-text-align:left; font-weight:normal; 
-font-size:12px; }
-button { 
-background:none; 
-background-color:transparent; 
-box-shadow:none; border:none;
-font-family:inherit; color:inherit; 
-border-radius:0; 
-cursor:pointer; }
-.number { 
-width:1%; white-space:nowrap; 
-text-align:right; 
-padding-left:20px !important; }
-.ellipsis { 
-overflow:hidden; 
-white-space:nowrap; 
-text-overflow:ellipsis; }
-.textcenter { text-align:center; }
-.textright { text-align:right; }
-.minify { width:1%; white-space:nowrap; text-align: center;}
-.pickupTime { text-align: center;}
-.pickupName { text-align: center;}
-.pickupID { text-align: center;}
-.table-icon { width:30px; max-width:30px; text-align:center; }
-.fileName { text-align: center;}
-.printSetting { text-align: center;}
-.printPage { text-align: center;}
-.printFee { text-align: center;}
-.printState { text-align: center;}
-
-/* TABLE */
-
-/* stick the height! (adjust based on pagingRows * rowHeight) */
-/* later we could use vh and adjust number of rows to match viewport. */
-.table-list { height: 280px; width: 800px;} 
-
-/* table styles, optional */
-.table-list { 
-  background-color:#ffffff; 
-  border:1px solid #d2d2d2; 
-  margin:0 auto;  }
-.table-list th { 
-  border-bottom:1px solid #d2d2d2; }
-.table-list tbody td { 
-  white-space:nowrap; padding:9px; 
-  vertical-align:top; height:35px;
-  border-bottom:1px solid #d2d2d2; }
-tr:last-child td { height:auto; }
-
-/* sort styles, optional */
-.sort {
-  text-align:center; 
-  padding: 9px;;
-  border: none; background: none; 
-  display: block; width:100%; 
-  color: #808080; 
-  line-height:14px; }
-.sort.textcenter { text-align:center; }
-.sort.textright { text-align:center; }
-
-.caret { line-height:0; }
-.caret:after { content:""; }
-.asc .caret:after {
-  width: 0;
-  height: 0;
-  border-left: 3px solid transparent;
-  border-right: 3px solid transparent;
-  border-top: 3px solid #808080;
-  content: "";
-  position: relative;
-  top: -3px;
-  right: -4px;
-  font-size:0; }
-.desc .caret:after {
-  width: 0;
-  height: 0;
-  border-left: 3px solid transparent;
-  border-right: 3px solid transparent;
-  border-bottom: 3px solid #808080;
-  content: "";
-  position: relative;
-  top: -7px;
-  right: -4px;
-  font-size:0; }
-.sort .caret { display:none; }
-.sort.asc .caret { display:inline-block; }
-.sort.desc .caret { display:inline-block; }
-.sortUnitPrice, .sortQty, .sortTotal { min-width:90px; }
-
-/* footer styles, optional */
-.table-footer { 
-  width: 300px;
-  border-top:1px solid #d2d2d2; padding:0; }
-.table-filter {
-  float:right; 
-  border-left:1px solid #d2d2d2; }
-
-/* pagination styles,  optional */
-.table-pagination {
-  display:table; border-collapse:collapse; 
-  width:156px; float:left; 
-  border-right:1px solid #d2d2d2; 
-  padding:6px; }
-.btn-tablepage { display:table-cell; width:33px; padding:9px; }
-
-.pagination { display:table-cell; text-align:center; list-style:none; margin:0; padding:0; width:90px; }
-.pagination li { display:inline-table;  border:1px solid #eaeaea; }
-
-.page { 
-  display:block; 
-  padding:4px 0; width:22px;
-  text-align:center; 
-  text-decoration:none; 
-  line-height:12px; font-size:12px; 
-  color:#808080;  }
-
-.pagination .disabled { display:none; }
-.pagination .active { border-color:#aaa; }
-.active .page {  background:#aaa; color:#fff; }
-
-
-/* unused */
-
-.table-btn-dropdown { 
-  padding:8px; }
-.btn-with-caret { 
-  position:relative; padding-right:24px; }
-.btn-with-caret:after {
-  content:"";
-  display: block; position:absolute; 
-  top:50%; right:10px; margin-top:-2px;  
-  width: 0;
-  height: 0;
-  border-top: 4px solid #333333;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent; }
-
-
 
   /* Detail page */
 
@@ -889,19 +678,18 @@ tr:last-child td { height:auto; }
   margin-left:auto;
   margin-right:auto;
   margin-bottom:50px;
+  margin-top:50px;
 }
 
 .detailview{
-  border:2px solid #057075;
+  border:2px solid rgb(105,0,210);
   border-radius:5px;
   padding:40px;
-  margin-top:50px;
   max-width:600px;
 
 }
 .detail_info{
   text-align:right;
-  margin-left:50px;
 }
 .detail_title{
   text-align:left;
@@ -910,17 +698,54 @@ tr:last-child td { height:auto; }
 }
 
 #print_status{
-  width:100px;
-  height:50px;
-  background-color:#057075;
+  padding:0.5em;
   border:none;
   color:white;
   border-radius:10px;
-
 }
 
-@media (max-width: 600px) {
+.cancel-button:hover{
+  background-color:rgb(105,0,210);
+}
+
+#point-button, .price-button{
+  border-radius:10px;
+  padding:0.5em;
+  color:black;
+  background-color:white;
+  border:2px solid rgb(105,0,210);
+}
+#point-button:hover, .price-button:hover{
+  color:white;
+  background-color:rgb(105,0,210);
+}
+
+@media (max-width: 767px) {
   .column{
     width:90vw;
   }
+}
+
+.custom-button{
+  padding: 20px 100px;
+  border-radius:10px;
+  border: 3px solid rgb(105,0,210);
+  /* border 색은 지정색*/
+}
+.custom-button:hover{
+  color:white;
+  background-color:rgb(105,0,210);
+  transform-origin:left;
+  transition:width 0.25s ease;
+  z-index:-1;
+}
+
+.custom-button2{
+  padding:20px 50px;
+  border-radius:10px;
+  border:1px solid black;
+}
+.custom-button2:hover{
+  color:white;
+  background-color:rgb(105,0,210);
 }

@@ -9,6 +9,40 @@
   display:none;
 }
 
+header{
+    visibility:hidden;
+}
+
+@media (max-width:767px){
+
+    header{
+        display:none;
+    }
+    .registrationbtn{
+        padding: 5px 0px;
+        width:80%;
+        margin : 0 auto;
+        border: 1px solid black;
+    }
+
+    .container {
+        box-shadow: none;
+        -webkit-box-shadow: none; 
+        -ms-box-shadow: none;
+        border-radius: 0px;
+        -webkit-border-radius: 0px;
+        -o-border-radius: 0px;
+        -ms-border-radius: 0px;
+}
+    figure{
+        display:none;
+    }
+
+    .main{
+        height:100vh;
+        padding:0;
+    }
+}
 
 
 </style>
@@ -67,17 +101,18 @@
 </div> -->
 <div class="main">
         <!-- Sing in  Form -->
+        <div style="margin:auto">
         <section class="sign-in">
             <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="/users/sign_up" class="signup-image-link">회원가입</a>
+                        <figure><img src="/main-image.png" alt="sing up image" style="width:100%"></figure>
+                        <a href="/users/sign_up" class="registrationbtn btn button form-group btn-block">회원가입</a>
                     </div>
 
                     <div class="signin-form">
-                        <h2 class="form-title">Sign up</h2>
+                        <h2 class="form-title">로그인</h2>
                         <form method="POST" class="register-form" id="login-form">
                             <!-- <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -112,7 +147,7 @@
                                 <a href="/users/sign_up"><input type="submit" name="signin" id="signin" class="form-submit register_button" value="Log in"></a>
                             </div> -->
                             <div class="form-actions">
-                                <%= f.button :submit, "로그인" %>
+                                <%= f.button :submit, "로그인", :class => "btn button form-group btn-block" %>
                             </div>
                         </form>
                         
@@ -121,11 +156,7 @@
             </div>
             <% end %>
         </section>
-
     </div>
-
-    <!-- JS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+    </div>
 
 </body>
