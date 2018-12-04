@@ -34,6 +34,7 @@ class HomeController < ApplicationController
   end
 
   def fileupload
+    @user = current_user
     @upload = Upload.new
     @uploads = Upload.where(userid:current_user.userid)
     @ongoing_upload = []
