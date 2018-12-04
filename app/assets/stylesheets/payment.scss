@@ -1,3 +1,51 @@
 // Place all the styles related to the payment controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* 캐시 충전 */
+.charge_cash{
+  background-color:white;
+  border-radius:3px;
+  padding-top:50px;
+
+}
+.charge_cash_box{
+  max-width:600px;
+  min-width:350px;
+  margin: 0 auto;
+  margin-top:50px;
+}
+
+
+.point_box{
+	background-color:rgba(105,0,210,0.2);
+	height:200px;
+	border-radius:10px;
+	width:100%;
+	margin: 0 auto;
+	text-align: center;
+	padding-top:50px;
+	margin-bottom:50px;
+
+}
+
+table, td, th {    
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+}
+tr{
+	border-bottom:1px solid black;
+}
+
+h5{
+	margin-bottom: 10px;
+}

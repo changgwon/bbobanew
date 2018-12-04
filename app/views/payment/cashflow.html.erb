@@ -1,36 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link href="/assets/payment.css" media="screen" rel="stylesheet" />
 
 <style>
-.point_box{
-	background-color:rgb(5,112,117, 0.2);
-	height:200px;
-	border-radius:10px;
-	width:100%;
-	margin: 0 auto;
-	text-align: center;
-	padding-top:50px;
-	margin-bottom:50px;
-
-}
-
-table, td, th {    
-    text-align: left;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th, td {
-    padding: 15px;
-}
-tr{
-	border-bottom:1px solid black;
-}
-
-h5{
-	margin-bottom: 10px;
-}
 
 
 .pheader{
@@ -39,6 +13,8 @@ h5{
 
 
 </style>
+</head>
+<body>
 
 
 <div class="column detailview center">
@@ -46,18 +22,17 @@ h5{
 	<h5>포인트 내역</h5>
 	<div class="point_box">
 		<h4>현재 포인트 : <%= current_user.cur_cash %><br></h4><br>
-		<a href="/payment/new"><button id="print_status">포인트 충전</button></a><br>
+		<a href="/payment/new"><button id="point-button">포인트 충전</button></a><br>
 		<br>
 	</div>
 
-	<div>
 		<h5 style="text-align:left">포인트 충전/사용내역</h5>
 		<div>
 		<table>
 		<% @cashflows.each do |x| %>
 			<tr>
 			<% if x.use_type == '차감' %>
-		    	<td><%= x.real_created_at %></td> <td>[<%=x.use_type%>]</td> <td>-<%=x.amount%></td> <td><%=x.cur_cash%></td>
+		    	<td><%= x.real_created_at.strftime('%F%T') %></td> <td>[<%=x.use_type%>]</td> <td>-<%=x.amount%></td> <td><%=x.cur_cash%></td>
 		    	
 		    <%else%>
 		    	<td><%= x.real_created_at %></td> <td>[<%=x.use_type%>]</td> <td><%=x.amount%></td> <td><%=x.cur_cash%></td>
@@ -69,4 +44,7 @@ h5{
 		<% end %>
 		</table>
 	</div>
+
 </div>
+</body>
+</html>

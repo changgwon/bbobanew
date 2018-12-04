@@ -1,12 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
 
-<div class="column detailview center">
+<link href="/assets/payment.css" media="screen" rel="stylesheet" />
 
-	<h5>포인트 내역</h5>
+<style type="text/css">
+	.pheader{
+		display:none;
+	}
+
+</style>
+</head>
+<body>
+<div class="column detailview">
 	<div class="point_box">
-		현재 포인트 : <%= current_user.cur_cash %><br>
-		<a href="/payment/new">포인트 충전</a><br>
-		**************************************************<br>
+		<h4>현재 포인트 : <%= current_user.cur_cash %><br></h4><br>
+		<a href="/payment/new"><button id="point-button">포인트 충전</button></a><br>
+		<br>
 	</div>
+	<h5>포인트 충전 내역</h5>
 
 	<br>
 	<% if @charges.empty? %>
@@ -18,17 +30,17 @@
 		   충전 일시 : <%=x.created_at%><br>
 		   충전 량 : <%=x.amount%><br>
 		   <%if x.deposit ==false%>
-		   상태 : 충전 대기중<br> &nbsp <%= button_to '충전 신청 취소', "/payment/charge_delete/#{x.id}", method: :delete%>
+		   <p style="color:red">상태 : 충전 대기중 &nbsp <%= button_to '충전 신청 취소', "/payment/charge_delete/#{x.id}", method: :delete %></p>
 		   <% else %>
-		   상태 : 충전완료<br> 
+		   <p style="color:green">상태 : 충전완료</p>
 		   <% end %>
-
-		   ------------------------------------------------------<br>
+		   <hr>
 		<% end %>
 	<% end %>
-	<a href="/">홈으로 돌아가기</a>
+	<a href="/home/main">홈으로 돌아가기</a>
 
 </div>
 
-
+</body>
+</html>
 

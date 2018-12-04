@@ -44,8 +44,13 @@
       color:black;
 
     }
+    header{
+      background-color:white;
+      width:100%;
+    }
     .navbar{
       padding:1.5rem 3rem;
+
     }
     .hidden{
       display:block;
@@ -53,7 +58,15 @@
     .dropdown{
       display:none;
     }
-
+    .go-back{
+      display:none;
+    }
+    .nav-link{
+      text-align:right;
+    }
+    .nav-title{
+      display:none;
+    }
 
   @media (min-width:992px){
     .hidden{
@@ -64,10 +77,17 @@
     }
   }
 
+  @media (max-width:767px){
+    .navbar{
+      padding:1rem 1.5rem; 
+    }
+
+  }
   @media (min-width: 576px){
     .col-sm-4 {
       max-width: 100%;
     }
+}
 
 }
   </style>
@@ -114,11 +134,14 @@
 
  
     <nav class="navbar navbar-expand-lg navbar-light bg-light" >
-      <a class="navbar-brand" href="/home/main.html"><img src="/mainlogo.png" style="height:50px;"></a>
+      <div class="navbar-brand">
+        <a href="/home/main.html"><img class="logo" src="/mainlogo.png" style="height:50px;"></a>
+        <img class="go-back" src="/left-arrow.png" onclick="window.history.back()">
+      </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+      <p class="nav-title"></p>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item hidden">
@@ -150,16 +173,25 @@
           <% end %>
         </form>
       </div>
+
+      
+      
+
     </nav>
 
-        <div class="pheader">
-          <div class="title">뽀바드림</div>
-          <div class="topnav">
-            <a href="/printer/index">[ K관복사대 ]</a>
-            <a href="#">로그아웃</a>
-            <a href="/printer/account">매출관리</a>
-          </div>
-        </div> 
+    <div class="pheader">
+      <div class="title">뽀바드림</div>
+      <div class="topnav">
+        <a href="/printer/index">[ K관복사대 ]</a>
+        <a href="#">로그아웃</a>
+        <a href="/printer/account">매출관리</a>
+      </div>
+    </div> 
+    
+    <div class="mheader">
+
+    </div>
+
     </header>
     <%= yield %>
   

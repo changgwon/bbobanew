@@ -1,52 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
 
+<link href="/assets/home.css" media="screen" rel="stylesheet" />
 
 <style>
+/* 사용자 용 버전일 때*/
 .pheader{
   display:none;
 }
-</style>
 
+
+.main_section{
+	width:50vw; 
+	height:100vh; 
+	max-height:800px;
+}
+
+.image_section{
+	width:50vw; 
+	height:100vh; 
+	max-height:800px;
+}
+.file_upload{
+	height:50%; 
+	width:100%;
+}
+
+.list_point{
+	height:50%; 
+	width:100%;
+	display:flex;
+}
+.filecurrent_li{
+	width:50%; 
+	height:100%;
+	padding:30px;
+	padding-right:0px;
+}
+.point{
+	width:50%; 
+	height:100%; 
+	padding:30px;
+	padding-left:0px;
+}
+.file_upload_text{
+	height:70%;
+	padding-top:3em;
+	
+}
+
+.card-gotolist, .card-gotopoint{
+	height:100%;
+	text-align:center;
+}
+.main-icon{
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-position:center;
+    display: block;
+    width: 60%;
+    max-width:150px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom:20px;
+    font-size:0.9em;
+}
+.main-image{
+	 display:none; 
+	 max-width:100%;
+	 max-height:100%;
+	 margin: 0 auto;
+}
+.badge{
+	padding: 1em 1em;
+}
+
+
+@media (min-width:1024px){
+	.main_section{
+		padding-left:7%;
+	}
+	.filecurrent_li, .point{
+		padding:0;
+	}
+	.main-icon{
+		margin:0;
+	}
+	.list_point{
+		margin-top:50px;
+	}
+
+
+}
+
+@media (max-width:1023px){
+	
+	.image_section{
+		display:none;
+	}
+	.main_section{
+		width:100vw;
+	}
+	.list_point{
+		height:40%;
+	}
+	.main-image{
+		display:block;
+	}
+	.file_upload{
+		height:60%;
+	}
+	.file_upload_link{
+		text-align: center;
+	}
+	.file_upload_text{
+		padding:0;
+	}
+	
+	.main-icon{
+		margin-top:0;
+	}
+	.web-text{
+		display:none;
+	}
+	.file_upload{
+		padding:0;
+	}
+
+}
+@media (max-width:767px){
+	.filecurrent_li, .point{
+		padding:10px;
+	}
+
+
+
+}
+
+</style>
+</head>
+<body>
+<!-- 
 <div>
 	<div class="row">
     <div class="column print_list">
     	<div class="filecurrent_title"><a href="/home/filecurrent">신청 내역 보러가기</a></div>
     		<div class="filecurrent_list">
-		    	<% if @uploads.empty? %>
+		    	<#% if @uploads.empty? %>
 					신청 내역이 없습니다.<br>
-				<% else %>
-					<% @ongoing_upload.each do |x| %>
-					   <a href="filedetail/<%=x.id%>">
+				<#% else %>
+					<#% @ongoing_upload.each do |x| %>
+					   <a href="filedetail/<#%=x.id%>">
 					   <div class="filecurrent_card">
 					   		<div style="text-align:left">
-					   		<b><%= x.pkupdate %><br>
-						   	<%= x.pkuptime %>  
-						   	<%=x.printer%> 관 <br> </b></div>
-						   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
-						   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
+					   		<b><#%= x.pkupdate %><br>
+						   	<#%= x.pkuptime %>  
+						   	<#%=x.printer%> 관 <br> </b></div>
+						   	<#%= URI.decode(x.attachment_url.split('/').last) %><br>
+						   	<#%= x.totalpage %>장 (<#%= x.totalpage*50 %>원)<br>
 						   
-						  	<%=x.progress%><br>
+						  	<#%=x.progress%><br>
 						   
 					   </div></a>
-					<% end %>
-				<% end %>
+					<#% end %>
+				<#% end %>
 			</div>
 
     </div>
      <div class="column print_upload"></a>
 			
-			<%= form_for @upload, url: home_filecreate_path, html: { multipart: true, id: :msform} do |f| %>
-				<%= render partial: "home/fileupload", locals: { upload: @upload, f: f } %>
-			<% end %>
+			<#%= form_for @upload, url: home_filecreate_path, html: { multipart: true, id: :msform} do |f| %>
+				<#%= render partial: "home/fileupload", locals: { upload: @upload, f: f } %>
+			<#% end %>
       </div>
       <div class="column print_advertisement">광고 영역</div>
   
   
-		</div>
+</div>
 </div>
 		
 <div class="footer"></div>
 
-
-
 <a href="/payment/cashflow">포인트 사용 내역</a>
+
+ -->
+
+<div style="display:flex">
+	<div class="main_section">
+		<div class="file_upload">
+			<div class="file_upload_text">
+				<div class="web-text">
+					<h2>인쇄물 예약하고, 대기 없이 픽업하자!</h2><br>
+					<h4>프린트 테이크아웃 서비스 "뽀바드림"</h4>
+				</div>
+				<img src='/main-image.png' class="main-image">
+			</div>
+			<div class="file_upload_link">
+				<a href="/home/fileupload">
+					<button class="custom-button">
+						파일업로드
+					</button>
+				</a>
+			</div>
+		
+		</div>
+
+		<div class="list_point">
+			<div class="filecurrent_li">
+				<a href="/home/filecurrent">
+					<div class="card-gotolist main-icon">
+						<img src='/list.svg' style="margin-bottom:30px">신청내역 &nbsp;&nbsp;&nbsp;<span class="badge badge-danger"">4</span>
+
+					</div>
+				</a>
+			</div>
+			<div class="point">
+				<a href="/payment/cashflow">
+					<div class="card-gotopoint main-icon">
+						<img src='/coins.svg' style="margin-bottom:30px"><p><%= current_user.cur_cash %> 포인트 </p>
+					</div>
+				</a>
+			</div>
+				
+		</div>
+
+
+
+	</div>
+
+	<div class="image_section">
+		<img src='/main-image.png' style="max-width:100%">
+
+	</div>
+</div>
+
+
+
+<!-- <div style="display:flex" class="column">
+	<div class="main_section" style="width:100vw">
+		<div class="file_upload">
+			<div class="file_upload_text"><img src='/main-image.png' class="main-image" style="display:block"></div>
+			<div class="file_upload_link">
+				<a href="/home/fileupload">
+					<button class="custom-button">
+						파일업로드
+					</button>
+				</a>
+			</div>
+		
+		</div>
+		<div class="list_point">
+			<div class="filecurrent_li">
+				<a href="/home/filecurrent">
+					<div class="card-gotolist">
+						<img src='/list.svg' class="main-icon">신청내역 &nbsp;&nbsp;&nbsp;<span class="badge badge-danger"">4</span>
+
+					</div>
+				</a>
+			</div>
+			<div class="point">
+				<a href="/payment/cashflow">
+					<div class="card-gotopoint">
+						<img src='/coins.svg' class="main-icon"><%= current_user.cur_cash %> 포인트 
+					</div>
+				</a>
+			</div>
+				
+		</div>
+	</div>
+
+	
+</div>
+ -->
+
+</body>
+</html>
+
 

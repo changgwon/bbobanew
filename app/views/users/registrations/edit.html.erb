@@ -4,11 +4,47 @@
   display:none;
 }
 
+
+ @media (max-width:767px){
+    .logo{
+      display:none;
+    }
+    .go-back{
+      display:block;
+    }
+    .navbar-toggler{
+      display:none;
+    }
+    .nav-title{
+      display:block;
+    }
+
+    .nav-title:after {
+      visibility: visible;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      text-align: center;
+      margin: auto;
+      content: "비밀번호 수정";
+    }
+    .text-center{
+      visibility:hidden;
+    }
+
+    article[role="signup"]{
+      box-shadow:none;
+      -webkit-box-shadow:none;
+
+    }
+
+  }
+
 </style>
 
 <div class="login-signup">
   <article role="signup">
-    <h5 class="text-center"><i class="fa fa-lock"></i>회원가입</h5>
+    <h5 class="text-center"><i class="fa fa-lock"></i>비밀번호 수정</h5>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -47,8 +83,6 @@
 
 <!-- <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
  -->
-<%= link_to "Back", :back %>
-
 
     <div class="signup"></div>
   </article>
