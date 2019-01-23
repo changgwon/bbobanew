@@ -169,7 +169,7 @@ class HomeController < ApplicationController
   def ownerpage
     @todayuploads = []
     Upload.all.each do |x|
-      if x.pkupdate == Date.today
+      if x.pkupdate >= Date.today
         @todayuploads << x
       end
     end
