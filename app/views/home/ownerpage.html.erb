@@ -1,25 +1,89 @@
-<% if @todayuploads.empty? %>
-	신청 내역이 없습니다.<br>
-<% else %>
-	<% @todayuploads.each do |x| %>
-	<% if x.progress != "인쇄취소" %>
-	   <%= x.stdnum %> <br>
-	   <%= x.pkuptime %> <br>
-	   <%= x.landscape %> <br>
-	   <%= x.doublepg %> <br>
-	   <%= x.split %> <br>
-	   <%= x.color %> <br>
-	   <%= x.pagenum %> <br>
-	   <%= link_to "다운로드받기", x.attachment_url, download: "#{URI.decode(x.attachment_url.split('/').last)}" %> <br>
-	   <% if x.progress == "인쇄대기" %>
-	   <p6> 인쇄승인 버튼을 누르시면 인쇄를 취소하실 수 없습니다. </p6> <br>
-	   <input type="button" value="인쇄승인" onclick="window.location='../home/changeState1/<%=x.id%>'"> <br>
-	   <input type="button" value="인쇄취소" onclick="window.location='../home/changeState2/<%=x.id%>'"> <br>
-	   <% elsif x.progress == "인쇄중" %>
-	   <input type="button" value="인쇄완료" onclick="window.location='../home/changeState3/<%=x.id%>'"> <br>
-	   <% end %>
-	   ------------------------<br>
-	<% end %>
-	<% end %>
-<% end %>
-<a href="/">홈으로 돌아가기</a>
+<style>
+header {
+  display: none;
+}
+</style>
+
+<div class="datetime">
+  <div class="date">
+    <p id="yy"></p>
+    <p id="mm"></p>
+    <p id="dd"></p>
+    <p id="day"></p>
+  </div>
+  <div class="time">
+    <p>현재시각</p>
+    <p id="time"></p>
+  </div>
+  <script>
+    var d = new Date();
+    document.getElementById("yy").innerHTML = d.getFullYear()+"년";
+    document.getElementById("mm").innerHTML = (d.getMonth()+1)+"월";
+    document.getElementById("dd").innerHTML = d.getDate()+"일";
+
+    var weekdays=["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+    document.getElementById("day").innerHTML = weekdays[d.getDay()];
+
+    var hr = d.getHours();
+    var min = d.getMinutes();
+    function hrfunc(hr){
+      if(hr<12) return "(오전)"+hr+":"
+      else if (hr==12) return "(오후)"+hr+":"
+      else return "(오후)"+(hr-12)+":"
+    }
+    document.getElementById("time").innerHTML = hrfunc(hr)+min;
+  </script>
+</div>
+<p6> 인쇄승인 버튼을 누르시면 인쇄를 취소하실 수 없습니다. </p6> <br>
+<div id="tableID" style="margin-top: 100px;">
+  <table class="table-list" data-currentpage="1">
+    <thead>
+	    <th>픽업시간<i class="caret"></i></th>
+	    <th>이름<i class="caret"></i></th>
+	    <th>학번<i class="caret"></i></th>
+	    <th>파일명<i class="caret"></i></th>
+	    <th>인쇄설정<i class="caret"></i></th>
+	    <th>범위(매수)<i class="caret"></i></th>
+	    <th>결제금액<i class="caret"></i></th>
+	    <th>상태<i class="caret"></i></th>
+	    <th>파일다운로드<i class="caret"></i></th>
+    </thead>
+    <!-- IMPORTANT, class="list" must be on tbody -->
+    <tbody class="list">
+      <% if @todayuploads.empty? %>
+        <tr>
+          <td>신청 내역이 없습니다.<br></td>
+        </tr>
+      <% else %>
+        <% @todayuploads.each do |x| %>
+        <% if x.progress != "인쇄취소" %>
+          	<tr>
+	            <td class="minify pickupTime"><%= x.pkuptime.split('~')[0] %></td>
+	            <td class="pickupName"><%= x.userid %></td>
+	            <td class="minify textright pickupID"><%= x.stdnum %></td>
+	            <td class="fileName"><%= URI.decode(x.attachment_url.split('/').last) %></td>
+	            <td class="printSetting"><%= x.landscape %>/<%= x.doublepg %>/<%= x.split %>분할/<%= x.color %></td>
+	            <td class="printPage"><%= x.pagenum %>(<%= x.totalpage %>)</td>
+	            <td class="printFee"><%= x.cost %>원</td>
+	            <td class="printState"><%= x.progress %></td>
+	            <td><%= link_to "다운로드받기", x.attachment_url, download: "#{URI.decode(x.attachment_url.split('/').last)}" %></td>
+	            <% if x.progress == "인쇄대기" %>
+				   <td><input type="button" value="인쇄승인" onclick="window.location='../home/changeState1/<%=x.id%>'"> <br></td>
+				   <td><input type="button" value="인쇄취소" onclick="window.location='../home/changeState2/<%=x.id%>'"> <br></td>
+				<% elsif x.progress == "인쇄중" %>
+				   <td><input type="button" value="인쇄완료" onclick="window.location='../home/changeState3/<%=x.id%>'"> <br></td>
+			   <% end %>
+          	</tr>
+        <% end %>
+        <% end %>
+      <% end %>
+    </tbody>
+    <tfoot>
+    </tfoot>
+
+  </table>
+
+</div>
+
+<div class="footer">
+</div>

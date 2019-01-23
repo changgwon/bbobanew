@@ -44,7 +44,6 @@ class HomeController < ApplicationController
 
   def filecheck
     @upload = Upload.new
-
     pagenum_o = params[:upload][:pagenum]
     @count = 0
     pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
@@ -167,6 +166,9 @@ class HomeController < ApplicationController
   end
 
   def ownerpage
+    if current_user.usertype == "user"
+      redirect_to "/home/main"
+    end
     @todayuploads = []
     Upload.all.each do |x|
       if x.pkupdate >= Date.today
@@ -233,7 +235,11 @@ class HomeController < ApplicationController
 
   def index
     if user_signed_in?
-      redirect_to "/home/category"
+      if current_user.usertype == "admin"
+        redirect_to "/home/ownerpage"
+      else
+        redirect_to "/home/main"
+      end
     else
       redirect_to "/users/sign_in"
     end
