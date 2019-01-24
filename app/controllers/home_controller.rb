@@ -170,9 +170,12 @@ class HomeController < ApplicationController
       redirect_to "/home/main"
     end
     @todayuploads = []
+    @tomorrowuploads = []
     Upload.all.each do |x|
-      if x.pkupdate >= Date.today
+      if x.pkupdate == Date.today
         @todayuploads << x
+      elsif x.pkupdate > Date.today
+        @tomorrowuploads << x
       end
     end
   end
