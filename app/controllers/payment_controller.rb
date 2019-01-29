@@ -30,7 +30,7 @@ class PaymentController < ApplicationController
 
 	def cashflow
 		@cashflows=current_user.cashflows
-
+		@cashflows=@cashflows.reverse
 		
 	end
 

@@ -162,7 +162,7 @@ class HomeController < ApplicationController
       end
     end
     @ongoing_upload =@ongoing_upload.sort_by{|upload| [upload.pkuptime]}.reverse
-    
+    @past_upload =@past_upload.sort_by{|upload| [upload.pkuptime]}.reverse
   end
 
   def ownerpage

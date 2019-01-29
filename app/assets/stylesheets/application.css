@@ -719,6 +719,9 @@ a{
   color:white;
   background-color:rgb(105,0,210);
 }
+.price-button{
+  min-width:100px;
+}
 
 @media (max-width: 767px) {
   .column{

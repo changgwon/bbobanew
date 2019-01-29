@@ -49,3 +49,10 @@ tr{
 h5{
 	margin-bottom: 10px;
 }
+
+@media (max-width:767px){
+
+  th, td {
+    padding:15px 0px;
+  }
+}

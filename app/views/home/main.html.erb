@@ -5,7 +5,18 @@
 <link href="/assets/home.css" media="screen" rel="stylesheet" />
 
 <style>
+.max-page{
+	background-image:url('/mainpage.png');
+	background-size:cover;
+	height:100%;
+}
 
+@media (max-width:1023px){
+	.max-page{
+		background-image:none;
+	}
+
+}
 
 </style>
 </head>
@@ -55,7 +66,7 @@
 
  -->
 
-<div style="display:flex">
+<div style="display:flex" class="max-page">
 	<div class="main_section">
 		<div class="file_upload">
 			<div class="file_upload_text">
@@ -79,7 +90,7 @@
 			<div class="filecurrent_li">
 				<a href="/home/filecurrent">
 					<div class="card-gotolist main-icon">
-						<img src='/list.svg' style="margin-bottom:30px">신청내역 &nbsp;&nbsp;&nbsp;<span class="badge badge-danger"">4</span>
+						<img src='/list.png' style="margin-bottom:30px">신청내역<span class="badge badge-danger""><%= @count %></span>
 
 					</div>
 				</a>
@@ -87,7 +98,7 @@
 			<div class="point">
 				<a href="/payment/cashflow">
 					<div class="card-gotopoint main-icon">
-						<img src='/coins.svg' style="margin-bottom:30px"><p><%= current_user.cur_cash %> 포인트 </p>
+						<img src='/coins.png' style="margin-bottom:30px"><p><%= current_user.cur_cash %> 포인트 </p>
 					</div>
 				</a>
 			</div>
@@ -99,7 +110,6 @@
 	</div>
 
 	<div class="image_section">
-		<img src='/main-image.png' style="max-width:100%">
 
 	</div>
 </div>

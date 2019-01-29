@@ -28,22 +28,22 @@
 
 		<h5 style="text-align:left">포인트 충전/사용내역</h5>
 		<div>
-		<table>
-		<% @cashflows.each do |x| %>
-			<tr>
-			<% if x.use_type == '차감' %>
-		    	<td><%= x.real_created_at.strftime('%F%T') %></td> <td>[<%=x.use_type%>]</td> <td>-<%=x.amount%></td> <td><%=x.cur_cash%></td>
-		    	
-		    <%else%>
-		    	<td><%= x.real_created_at %></td> <td>[<%=x.use_type%>]</td> <td><%=x.amount%></td> <td><%=x.cur_cash%></td>
-		    <%end%>
-		   
-		   	</tr>
-		    
-		    <br>
-		<% end %>
-		</table>
-	</div>
+			<table>
+			<% @cashflows.each do |x| %>
+				<tr>
+				<% if x.use_type == '차감' %>
+			    	<td><%= x.real_created_at.strftime('%F'+' '+'%R') %></td> <td><%=x.use_type%></td> <td>-<%=x.amount%></td> <td><%=x.cur_cash%></td>
+			    	
+			    <%else%>
+			    	<td><%= x.real_created_at.strftime('%F   %R') %></td> <td><%=x.use_type%></td> <td><%=x.amount%></td> <td><%=x.cur_cash%></td>
+			    <%end%>
+			   
+			   	</tr>
+			    
+			    <br>
+			<% end %>
+			</table>
+		</div>
 
 </div>
 </body>

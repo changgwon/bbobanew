@@ -79,9 +79,7 @@
   background-color:#057075;
   color:white;
   border:none;
-  align-items:right;
 }
-
 
 .label{
   color:black;
@@ -91,6 +89,12 @@
   display:none;
 }
 
+.point_row{
+  display: flex;
+  justify-content: space-between;
+  width:80%;
+  margin:auto;
+}
 @media (max-width: 767px){
   .logo{
     display:none;
@@ -120,6 +124,10 @@
     h5{
       display:none;
     }
+    .point_row{
+      width:90%;
+}
+    }
 }
 
 
@@ -132,38 +140,38 @@
     <div class="charge_cash">
 
           <%= form_for @charge, url: "/payment/create" do |f| %>
-            <div style="display:flex; justify-content:space-between;">
+          <div class="point_row">
               <div><%= f.label "10장 충전", :class => "label" %></div>
               <%= f.hidden_field :amount, :value => 10 %>
-              <div><%= f.submit "500원",:class => "price-button" %></div><br><hr>
+              <div><%= f.submit "500원",:class => "price-button" %></div>
           </div>
           <% end %>
-          <br>
+          <hr>
          <%= form_for @charge, url: "/payment/create" do |f| %>
-          <div style="display:flex; justify-content:space-between">
-          <%= f.label "50장 충전", :class => "label" %>
+          <div class="point_row">
+            <div><%= f.label "50장 충전", :class => "label" %></div>
             <%= f.hidden_field :amount, :value => 50 %>
-            <%= f.submit "2500원", :class => "price-button" %><br><hr>
+            <div><%= f.submit "2500원", :class => "price-button" %></div>
           </div>
           <% end %>
         
-          <br>
+          <hr>
           <%= form_for @charge, url: "/payment/create" do |f| %>
-          <div style="display:flex; justify-content:space-between">
-            <%= f.label "100장 충전", :class => "label" %>
+          <div class="point_row">
+            <div><%= f.label "100장 충전", :class => "label" %></div>
             <%= f.hidden_field :amount, :value => 100 %>
-            <%= f.submit "5000원", :class => "price-button" %><br><hr>
+            <div><%= f.submit "5000원", :class => "price-button" %></div>
           </div>
           <% end %>
-          <br>
+          <hr>
           <%= form_for @charge, url: "/payment/create" do |f| %>
-            <div style="display:flex; justify-content:space-between">
-            <%= f.label "200장 충전", :class => "label"%>
+          <div class="point_row">
+            <div><%= f.label "200장 충전", :class => "label"%></div>
             <%= f.hidden_field :amount, :value => 200 %>
-            <%= f.submit "10000원", :class => "price-button" %><br><hr>
-            </div>
+            <div><%= f.submit "10000원", :class => "price-button" %></div>
+          </div>
           <% end %>
-          <br>
+          <hr>
         </div>
 </div>
 </body>
