@@ -46,6 +46,10 @@ body {
     color: black;
 }
 
+.navbar{
+  display:none;
+}
+
 /* Style the content */
 .datetime {
     background-color: #ddd;
@@ -55,6 +59,7 @@ body {
     flex-direction: column;
     font-size: 1.2em;
     font-weight: 600;
+    margin: 0 auto;
 }
 
 .date {
