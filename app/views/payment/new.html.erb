@@ -133,7 +133,7 @@
 
           <%= form_for @charge, url: "/payment/create" do |f| %>
             <div style="display:flex; justify-content:space-between;">
-              <div><%= f.label "10장 충전", :class => "label" %></div>
+              <div><%= f.label "500원 충전", :class => "label" %></div>
               <%= f.hidden_field :amount, :value => 10 %>
               <div><%= f.submit "500원",:class => "price-button" %></div><br><hr>
           </div>
@@ -141,7 +141,7 @@
           <br>
          <%= form_for @charge, url: "/payment/create" do |f| %>
           <div style="display:flex; justify-content:space-between">
-          <%= f.label "50장 충전", :class => "label" %>
+          <%= f.label "2500원 충전", :class => "label" %>
             <%= f.hidden_field :amount, :value => 50 %>
             <%= f.submit "2500원", :class => "price-button" %><br><hr>
           </div>
@@ -150,7 +150,7 @@
           <br>
           <%= form_for @charge, url: "/payment/create" do |f| %>
           <div style="display:flex; justify-content:space-between">
-            <%= f.label "100장 충전", :class => "label" %>
+            <%= f.label "5000원 충전", :class => "label" %>
             <%= f.hidden_field :amount, :value => 100 %>
             <%= f.submit "5000원", :class => "price-button" %><br><hr>
           </div>
@@ -158,7 +158,7 @@
           <br>
           <%= form_for @charge, url: "/payment/create" do |f| %>
             <div style="display:flex; justify-content:space-between">
-            <%= f.label "200장 충전", :class => "label"%>
+            <%= f.label "10000원 충전", :class => "label"%>
             <%= f.hidden_field :amount, :value => 200 %>
             <%= f.submit "10000원", :class => "price-button" %><br><hr>
             </div>

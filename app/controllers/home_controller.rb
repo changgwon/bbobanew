@@ -92,7 +92,7 @@ class HomeController < ApplicationController
     end
 
     @upload.totalpage = @count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
-    @upload.cost = @count #* 50
+    @upload.cost = (@count* 50)
 
     pkupdate = params[:upload][:pkupdate]
     if pkupdate == "오늘"
@@ -112,10 +112,10 @@ class HomeController < ApplicationController
 
     ## 유저 DB 갱신 (캐시 차감)
     @user = current_user
-    if @user.cur_cash < @upload.totalpage
+    if @user.cur_cash < (50 * @upload.totalpage)
       @upload.flag = false
     else
-      @user.cur_cash -= @upload.totalpage
+      @user.cur_cash -= (50 *@upload.totalpage)
       @user.save
       cashflow=Cashflow.new
       cashflow.cur_cash=current_user.cur_cash

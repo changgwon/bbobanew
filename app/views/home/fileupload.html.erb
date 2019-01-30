@@ -37,7 +37,7 @@
                 <br><br>
 
                 <%= f.label "복사대" %>
-                <%= f.select(:printer, ["K", "J", "D"], {}, {:id => "printerop"}) %>
+                <%= f.select(:printer, ["K"], {}, {:id => "printerop"}) %>
                 <br><br>
                 
                 
@@ -181,7 +181,7 @@
                   var val9 = document.getElementById("attachmentop").value.substring(12);
                   
                   total = totalPage(val4, val7);
-                  cur_cash= <%= current_user.cur_cash %>-total;
+                  cur_cash= <%= current_user.cur_cash %>-(50*total);
 
                   sel.innerHTML = "<strong>결제 예정 금액 :  "+ (50*total) +"원</strong><br>"+"잔여 포인트:"+cur_cash+"<hr><br><strong>"+val1+"관 복사대, "+val2+" "+val3+"</strong><br>"+"파일명:"+val9+"<br>"+"인쇄할 페이지:"+val4+"(총"+total+"장)<br><hr><br>";
 
