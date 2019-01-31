@@ -141,16 +141,16 @@
 
           <%= form_for @charge, url: "/payment/create" do |f| %>
           <div class="point_row">
-              <div><%= f.label "10장 충전", :class => "label" %></div>
-              <%= f.hidden_field :amount, :value => 10 %>
+              <div><%= f.label "500원 충전", :class => "label" %></div>
+              <%= f.hidden_field :amount, :value => 500 %>
               <div><%= f.submit "500원",:class => "price-button" %></div>
           </div>
           <% end %>
           <hr>
          <%= form_for @charge, url: "/payment/create" do |f| %>
           <div class="point_row">
-            <div><%= f.label "50장 충전", :class => "label" %></div>
-            <%= f.hidden_field :amount, :value => 50 %>
+            <div><%= f.label "2500원 충전", :class => "label" %></div>
+            <%= f.hidden_field :amount, :value => 2500 %>
             <div><%= f.submit "2500원", :class => "price-button" %></div>
           </div>
           <% end %>
@@ -158,16 +158,16 @@
           <hr>
           <%= form_for @charge, url: "/payment/create" do |f| %>
           <div class="point_row">
-            <div><%= f.label "100장 충전", :class => "label" %></div>
-            <%= f.hidden_field :amount, :value => 100 %>
+            <div><%= f.label "5000원 충전", :class => "label" %></div>
+            <%= f.hidden_field :amount, :value => 5000 %>
             <div><%= f.submit "5000원", :class => "price-button" %></div>
           </div>
           <% end %>
           <hr>
           <%= form_for @charge, url: "/payment/create" do |f| %>
           <div class="point_row">
-            <div><%= f.label "200장 충전", :class => "label"%></div>
-            <%= f.hidden_field :amount, :value => 200 %>
+            <div><%= f.label "10000원 충전", :class => "label"%></div>
+            <%= f.hidden_field :amount, :value => 10000 %>
             <div><%= f.submit "10000원", :class => "price-button" %></div>
           </div>
           <% end %>
