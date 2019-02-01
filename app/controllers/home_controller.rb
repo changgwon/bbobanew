@@ -166,9 +166,11 @@ class HomeController < ApplicationController
   end
 
   def ownerpage
+
     if current_user.usertype == "user"
       redirect_to "/home/main"
     end
+
     @todayuploads = []
     @tomorrowuploads = []
     Upload.all.each do |x|
