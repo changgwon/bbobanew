@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 
-
+gem 'mysql2'
 gem 'fog'
 gem 'activeadmin'
 gem 'simple_form'
