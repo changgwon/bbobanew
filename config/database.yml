@@ -23,7 +23,7 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: Database-Seoul-1
+  database: dbtest2
   username: <%= ENV['RDS_USERNAME'] %>
   password: <%= ENV['RDS_PASSWORD'] %>
   host: <%= ENV['RDS_HOSTNAME'] %>
