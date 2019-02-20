@@ -162,7 +162,9 @@ class HomeController < ApplicationController
       end
     end
     @ongoing_upload =@ongoing_upload.sort_by{|upload| [upload.pkuptime]}.reverse
+    @ongoing_upload =Kaminari.paginate_array(@ongoing_upload).page(params[:page]).per(2)
     @past_upload =@past_upload.sort_by{|upload| [upload.pkuptime]}.reverse
+    @past_upload =Kaminari.paginate_array(@past_upload).page(params[:page]).per(2)
   end
 
   def ownerpage
@@ -181,42 +183,48 @@ class HomeController < ApplicationController
   end
 
   def changeState1
-    upload = Upload.find(params[:id])
-    upload.progress = "인쇄중"
-    upload.save
-
+    if current_user.usertype == "admin"
+      upload = Upload.find(params[:id])
+      upload.progress = "인쇄중"
+      upload.save
+    end
     # redirect_to home_ownerpage_path
     redirect_back(fallback_location: home_ownerpage_path)
   end
 
   def changeState2
-    upload = Upload.find(params[:id])
-    upload.progress = "인쇄취소"
-    upload.save
+      upload = Upload.find(params[:id])
+      if current_user.usertype == "admin" && upload.progress != "인쇄취소"
+      
+      upload.progress = "인쇄취소"
+      refund = upload.totalpage * 50
 
-    # 환불!!!!
-    @user = current_user
-    @user.cur_cash += (upload.totalpage *50)
-    @user.save
+      # 환불!!!!
+      user = upload.user
+      user.cur_cash = (user.cur_cash + refund)
+      user.save
 
-    cashflow=Cashflow.new
-    cashflow.user_id=upload.user_id
-    cashflow.real_created_at = upload.created_at
-    cashflow.amount = upload.cost
-    cashflow.cur_cash=current_user.cur_cash
-    cashflow.use_type = "인쇄취소"
+      cashflow=Cashflow.new
+      cashflow.user_id=upload.user_id
+      cashflow.real_created_at = upload.created_at
+      cashflow.amount = upload.cost
+      cashflow.cur_cash=current_user.cur_cash
+      cashflow.use_type = "인쇄취소"
 
-    cashflow.save
+      cashflow.save
+      upload.save
 
-
+    end
     # redirect_to home_ownerpage_path
     redirect_back(fallback_location: home_ownerpage_path)
   end
 
   def changeState3
-    upload = Upload.find(params[:id])
-    upload.progress = "인쇄완료"
-    upload.save
+    if current_user.usertype == "admin"
+      upload = Upload.find(params[:id])
+      upload.progress = "인쇄완료"
+      upload.save
+    end 
 
     # redirect_to home_ownerpage_path
     redirect_back(fallback_location: home_ownerpage_path)
@@ -224,14 +232,18 @@ class HomeController < ApplicationController
 
   def usercancel
     upload = Upload.find(params[:id])
-    upload.progress = "인쇄취소"
-    upload.save
+    if upload.user==current_user && upload.progress != "인쇄취소" 
+      
+      upload.progress = "인쇄취소"
+      refund=upload.totalpage * 50 
 
-    # 환불!!!!
-    @user = current_user
-    @user.cur_cash += (upload.totalpage *50)
-    @user.save
+      # 환불!!!!
+      user = current_user
 
+      user.cur_cash = (user.cur_cash + refund)
+      user.save
+      upload.save
+    end
     redirect_to '/'
 
   end
@@ -249,6 +261,7 @@ class HomeController < ApplicationController
   end
 
   def filedetail
+
     @upload = Upload.find(params[:id])
   end
 

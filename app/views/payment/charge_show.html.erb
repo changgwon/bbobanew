@@ -8,6 +8,11 @@
 	.pheader{
 		display:none;
 	}
+	.pagination{
+	margin:0 auto;
+	text-align:center;
+	display:block;
+}
 
 </style>
 </head>
@@ -36,6 +41,7 @@
 		   <% end %>
 		   <hr>
 		<% end %>
+		<div class="paginate"><%= paginate @charges %></div>
 	<% end %>
 	<a href="/home/main">홈으로 돌아가기</a>
 
