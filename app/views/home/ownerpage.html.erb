@@ -60,22 +60,16 @@ header {
   </script>
 </div>
 
-<div style="text-align:center; margin-top: 40px">
-	<input type="button" value="미완료 " id="notdone">|
-	<input type="button" value=" 완료 " id="done">|
-	<input type="button" value=" 전체" id="all"> <br>
-</div>
-
 <div id="tableID" style="margin-top: 40px;">
   <table class="table-list" data-currentpage="1">
-    <thead>
+<!--     <thead>
 	  <th><button type="button" class="sort textcenter" data-sort="pickupNum">순번<i class="caret"></i></button></th>
       <th><button type="button" class="sort textcenter" data-sort="pickupTime">픽업시간<i class="caret"></i></button></th>
       <th><button type="button" class="sort textcenter" data-sort="pickupName">이름<i class="caret"></i></button></th>
       <th><button type="button" class="sort textcenter" data-sort="printPage">범위(매수)<i class="caret"></i></button></th>
       <th><button type="button" class="sort textcenter" data-sort="checkDetail">신청내용<i class="caret"></i></button></th>      
       <th><button type="button" class="sort textcenter" data-sort="printState">상태<i class="caret"></i></button></th>
-    </thead>
+    </thead> -->
     <!-- IMPORTANT, class="list" must be on tbody -->
     <tbody id="todaylist">
       <% if @todayuploads.empty? %>
