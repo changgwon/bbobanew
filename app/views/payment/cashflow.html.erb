@@ -11,7 +11,11 @@
 .pheader{
   display:none;
 }
-
+.pagination{
+	margin:0 auto;
+	text-align:center;
+	display:block;
+}
 
 </style>
 </head>
@@ -41,9 +45,12 @@
 			   
 			   	</tr>
 			    
-			    <br>
+			    
 			<% end %>
+
+			
 			</table>
+			<div class="paginate"><%= paginate @cashflows%></div>
 		</div>
 
 </div>
