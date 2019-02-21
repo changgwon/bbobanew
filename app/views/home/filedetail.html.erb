@@ -45,8 +45,7 @@
 	<br>
 	<div style="display:block">
 		<div class="detail_info">
-			
-			결제금액 <%=@upload.cost %>(원)<hr>
+			결제금액 <%=@upload.totalpage*50 %>(원)<hr>
 			파일명 <%=URI.decode(@upload.attachment_url.split('/').last)%><hr>
 			
 			인쇄설정 : <%= @upload.landscape %> <%= @upload.split %>분할, <%= @upload.doublepg %><hr>
