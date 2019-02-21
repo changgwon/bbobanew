@@ -36,7 +36,11 @@
 
 <div class="column detailview center">
 	<div class="detail_title">
-		<%= @upload.pkupdate %><br> <%=@upload.pkuptime%> <%=@upload.printer%> 관
+		<% if @upload.pkuptime == 'canceled' %>
+			취소된 신청
+		<% else %>
+			<%= @upload.pkupdate %><br> <%=@upload.pkuptime%> <%=@upload.printer%> 관
+		<% end %>
 	</div>
 	<br>
 	<div style="display:block">
@@ -46,7 +50,7 @@
 			
 			인쇄설정 : <%= @upload.landscape %> <%= @upload.split %>분할, <%= @upload.doublepg %><hr>
 
-			<% if @upload.progress='인쇄대기'%>
+			<% if @upload.progress=='인쇄대기'%>
 				<button id="print_status" class="status-waiting"><%= @upload.progress %></button>
 				<!-- 수빈이가 추가할 '프린트 취소' -->
 				<button id="print_status" class="cancel-button" value="인쇄취소" onclick="window.location='../usercancel/<%=@upload.id%>'">신청 취소하기</button>

@@ -8,29 +8,32 @@ class HomeController < ApplicationController
     @ongoing_upload = []
     @past_upload = []
     @uploads.each do |upload|
-    if upload.progress != "인쇄취소"
+      if upload.progress != "인쇄취소"
         if upload.pkupdate < Date.today
           @past_upload << upload
 
         elsif upload.pkupdate == Date.today
-          pkuptime_s = upload.pkuptime.split('~')
-          pkuptime_d = pkuptime_s[1].split(':')
-          to_compare = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
-                                pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0)
-        
-          if to_compare >= Time.now
-            @ongoing_upload << upload
+          if upload.pkuptime != "canceled"
+            pkuptime_s = upload.pkuptime.split('~')
+            pkuptime_d = pkuptime_s[1].split(':')
+            to_compare = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
+                                  pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0)
           
-          elsif to_compare < Time.now
-            upload.category = "past"
-            @ongoing_upload << upload
-          # else
-          #   @past_upload << upload
+            if to_compare >= Time.now
+              @ongoing_upload << upload
+            
+            elsif to_compare < Time.now
+              upload.category = "past"
+              @ongoing_upload << upload
+            # else
+            #   @past_upload << upload
+            end
           end
-        
         else
           @ongoing_upload << upload
         end
+      else
+        @past_upload << upload
       end
     end
     @count=@ongoing_upload.count
@@ -129,7 +132,6 @@ class HomeController < ApplicationController
     end
 
     @upload.totalpage = @count # pagenum은 string 형태 그대로 두고 count를 새로운 column에 저장해야 할 것 같아욤 (detail page에 필요)
-    @upload.cost = @count * 50
 
     pkupdate = params[:upload][:pkupdate]
     if pkupdate == "오늘"
@@ -145,6 +147,12 @@ class HomeController < ApplicationController
     @upload.doublepg = params[:upload][:doublepg]
     @upload.split = params[:upload][:split]
     @upload.color = params[:upload][:color]
+
+    if @upload.color == "컬러" 
+      @upload.cost = @count * 200
+    else
+      @upload.cost = @count * 50
+    end
 
 
     ## 유저 DB 갱신 (캐시 차감)
@@ -187,29 +195,30 @@ class HomeController < ApplicationController
     @ongoing_upload = []
     @past_upload = []
     @uploads.each do |upload|
-    if upload.progress != "인쇄취소"
+      if upload.progress != "인쇄취소"
         if upload.pkupdate < Date.today
           @past_upload << upload
 
         elsif upload.pkupdate == Date.today
-          pkuptime_s = upload.pkuptime.split('~')
-          pkuptime_d = pkuptime_s[1].split(':')
-          to_compare = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
-                                pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0)
-        
-          if to_compare >= Time.now
-            @ongoing_upload << upload
+          if upload.pkuptime != "canceled"
+            pkuptime_s = upload.pkuptime.split('~')
+            pkuptime_d = pkuptime_s[1].split(':')
+            to_compare = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
+                                  pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0)
           
-          elsif to_compare < Time.now
-            upload.category = "past"
-            @ongoing_upload << upload
-          # else
-          #   @past_upload << upload
+            if to_compare >= Time.now
+              @ongoing_upload << upload
+            
+            elsif to_compare < Time.now
+              upload.category = "past"
+              @ongoing_upload << upload
+            # else
+            #   @past_upload << upload
+            end
           end
-        
-        else
-          @ongoing_upload << upload
         end
+      else
+        @past_upload << upload
       end
     end
     @ongoing_upload =@ongoing_upload.sort_by{|upload| [upload.pkuptime]}.reverse
@@ -286,6 +295,7 @@ class HomeController < ApplicationController
     if upload.user==current_user && upload.progress != "인쇄취소" 
       
       upload.progress = "인쇄취소"
+      upload.pkuptime = "canceled"
       refund=upload.totalpage * 50 
 
       # 환불!!!!
@@ -312,7 +322,6 @@ class HomeController < ApplicationController
   end
 
   def filedetail
-
     @upload = Upload.find(params[:id])
   end
 

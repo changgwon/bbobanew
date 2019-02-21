@@ -34,13 +34,13 @@
 
                 <div id="area1">
                 <%= f.label "픽업시간1" %>
-                <%= f.select(:pkuptime, ["10:15~10:30 (#{30-@count1}/30)","11:45~12:00 (#{30-@count2}/30)", "13:15~13:30 (#{30-@count3}/30)", "14:45~15:00 (#{30-@count4}/30)","16:15~16:30 (#{30-@count5}/30)"],{}, {:id => "pkuptimeop_1"})%>
+                <%= f.select(:pkuptime, ["10:15~10:30 (#{30-@count1}/30)","11:45~12:00 (#{30-@count2}/30)", "13:15~13:30 (#{30-@count3}/30)", "14:45~15:00 (#{30-@count4}/30)","16:15~16:30 (#{30-@count5}/30)"],{}, {:id => "pkuptimeop"})%>
                 <br><br>
                 </div>
 
                 <div id="area2">
                 <%= f.label "픽업시간2" %>
-                <%= f.select(:pkuptime, ["10:15~10:30 (#{30-@count6}/30)","11:45~12:00 (#{30-@count7}/30)", "13:15~13:30 (#{30-@count8}/30)", "14:45~15:00 (#{30-@count9}/30)","16:15~16:30 (#{30-@count10}/30)"],{}, {:id => "pkuptimeop_2"})%>
+                <%= f.select(:pkuptime, ["10:15~10:30 (#{30-@count6}/30)","11:45~12:00 (#{30-@count7}/30)", "13:15~13:30 (#{30-@count8}/30)", "14:45~15:00 (#{30-@count9}/30)","16:15~16:30 (#{30-@count10}/30)"],{}, {:id => "pkuptimeop"})%>
                 <br><br>
                  </div>
 
@@ -54,6 +54,7 @@
         </fieldset>
 
         <fieldset>
+
           <h2 class="fs-title">파일 업로드</h2>
           <h3 class="fs-subtitle">파일을 업로드하고, 페이지수를 <br>선택하는 단계입니다.</h3>
 
@@ -78,7 +79,7 @@
                 <br>
 
                 <%= f.label "분할" %>
-                <%= f.select(:split, ["2","4","6","9"],{}, {:id => "splitop"})%>
+                <%= f.select(:split, ["1","2","4","6","9"],{}, {:id => "splitop"})%>
                 <br>
 
                 <%= f.label "흑백/컬러" %>
@@ -135,39 +136,28 @@
             var sel = document.getElementById("printerchk");
             var sel2 = document.getElementById("printerchk2");
             var sel3 = document.getElementById("printerchk3");
-            var p_image = document.getElementById("print-image");
-
-            var val1 = document.getElementById("printerop").value;
-            var val3 = document.getElementById("pkupdateop").value;
             
-            var val2 = "";
-            if (val3 == "오늘"){
-              val2 = document.getElementById("pkuptimeop_1").value;
-            }
-            else{
-              val2 = document.getElementById("pkuptimeop_2").value;
-            }
-
-            var val4 = document.getElementById("pagenumop").value;
-            var val5 = document.getElementById("landscapeop").value;
-            var val6 = document.getElementById("doublepgop").value;
-            var val7 = document.getElementById("splitop").value;
-            var val8 = document.getElementById("colorop").value;
-            var val9 = document.getElementById("attachmentop").value.substring(12);
-
-            total = totalPage(val4, val7);
-            cur_cash= <%= current_user.cur_cash %>;
-
 
 
             // When the user clicks the button, open the modal 
             btn.onclick = function() {
-                  var left_money=total*50;
+              val4 = document.getElementById("pagenumop").value;
+              val7 = document.getElementById("splitop").value;
+              val8 = document.getElementById("colorop").value;
+
+              total = totalPage(val4, val7);
+              cur_cash= <%= current_user.cur_cash %>;
+              money_per_page = 50;
+              if (val8=="컬러"){
+                  money_per_page = 200;
+              }
+
+                  left_money=total*money_per_page;
                   if (cur_cash<left_money){
                     alert("포인트가 부족하여 프린트 요청이 불가합니다. 포인트를 충전하러 가시겠습니까?");
                   }
                   else{
-                    var errormsg = empty_check();
+                    errormsg = empty_check();
                     if ( !errormsg ){
                         modal.style.display = "block";
                         print_selected_option();
@@ -196,10 +186,10 @@
             }
 
             function empty_check(){ 
-                  var val4 = document.getElementById("pagenumop").value;
+              val4 = document.getElementById("pagenumop").value;
+              val9 = document.getElementById("attachmentop").value.substring(12);
 
-                  var val9 = document.getElementById("attachmentop").value;
-                  var msg = "";
+                  msg = "";
 
                   if (!val4){
                         msg += "인쇄할 페이지 범위를 반드시 입력해주세요!\n"
@@ -213,7 +203,7 @@
             }
 
             function timeopChange(){
-              var val3 = document.getElementById("pkupdateop").value;
+              val3 = document.getElementById("pkupdateop").value;
               if (val3=="오늘"){
                 todayarea.style.display = "block";
                 tomorrowarea.style.display = "none";
@@ -226,15 +216,34 @@
 
             function print_selected_option(){
 
-            
-                  
+            p_image = document.getElementById("print-image");
+            val1 = document.getElementById("printerop").value;
+            val3 = document.getElementById("pkupdateop").value;
+            val2 = document.getElementById("pkuptimeop").value.substring(0,11);
+            val4 = document.getElementById("pagenumop").value;
+            val5 = document.getElementById("landscapeop").value;
+            val6 = document.getElementById("doublepgop").value;
+            val7 = document.getElementById("splitop").value;
+            val8 = document.getElementById("colorop").value;
+            val9 = document.getElementById("attachmentop").value.substring(12);
 
-                  sel.innerHTML = "<strong>결제 예정 금액 :  "+ (50*total) +"원</strong><br>"+"현재 잔여 포인트:"+cur_cash+"<hr><br><strong>"+val1+"관 복사대, "+val2.substring(0,11)+" "+val3+"</strong><br>"+"파일명:"+val9+"<br>"+"인쇄할 페이지:"+val4+"(총"+total+"장)<br><hr><br>";
+            total = totalPage(val4, val7);
+            cur_cash= <%= current_user.cur_cash %>;
+            money_per_page = 50;
+            if (val8=="컬러"){
+                money_per_page = 200;
+            }
+
+                  sel.innerHTML = "<strong>결제 예정 금액 :  "+ "("+money_per_page+"*"+total+")"+"원</strong><br>"+"현재 잔여 포인트:"+cur_cash+"<hr><br><strong>"+val1+"관 복사대, "+val2+" "+val3+"</strong><br>"+"파일명:"+val9+"<br>"+"인쇄할 페이지:"+val4+"(총"+total+"p)<br><hr><br>";
 
                   sel3.innerHTML = val5+"방향 / "+val7+"분할 / "+val6+" / "+val8+"<br><hr><br>";  
 
                   if (val5=='가로'){
-                    if (val7==2){
+                    if (val7==1){
+                      p_image.src="/hor_1.png";
+
+                    }
+                    else if (val7==2){
                       p_image.src="/hor_2.png";
 
                     }
@@ -256,7 +265,11 @@
                     }
 
                   }else{
-                    if (val7==2){
+                    if (val7==1){
+                      p_image.src="/ver_1.png";
+
+                    }
+                    else if (val7==2){
                       p_image.src="/ver_2.png";
 
                     }
@@ -281,10 +294,10 @@
 
             function totalPage(pagenum, split){
 
-                  var count = 0;
-                  var pagenum_c = pagenum.split(',');
-                  var len = pagenum_c.length;
-                  for (var i=0; i<len; i++){
+                  count = 0;
+                  pagenum_c = pagenum.split(',');
+                  len = pagenum_c.length;
+                  for (i=0; i<len; i++){
 
                         if (pagenum_c[i].includes("-")){
                               pagenum_d = pagenum_c[i].split("-");

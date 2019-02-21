@@ -38,7 +38,7 @@ a:hover{
 	<div style="text-align:center; margin-top:40px">
 		<input type="button" value="전체 보기   " id="category1">|    
 		<input type="button" value="   진행중인 인쇄   " id ="category3">|    
-		<input type="button" value="   완료된 인쇄" id ="category2"> <br>
+		<input type="button" value="   지난 인쇄" id ="category2"> <br>
 	</div>
 	<div class="column" style="margin-top:20px">
 		<div value="category" id="ongoing">
@@ -48,8 +48,13 @@ a:hover{
 		   	<div class="filecurrent_card" style="border:1px solid #057075;">
 			  <div style="text-align:left">
 			   		<b><%= x.pkupdate %><br>
-				   	<%= x.pkuptime %>  
-				   	<%=x.printer%> 관 <br> </b></div>
+			   		<% if x.pkuptime == 'canceled' %>
+						취소된 신청
+					<% else %>
+						<%= x.pkuptime %>
+						<%=x.printer%> 관 <br> 
+					<% end %>
+				   	</b></div>
 				   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
 				   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
 				   
@@ -67,10 +72,14 @@ a:hover{
 		   <a href="filedetail/<%=x.id%>">
 		   	<div class="filecurrent_card">
 			  <div style="text-align:left">
-
 			   		<b><%= x.pkupdate %><br>
-				   	<%= x.pkuptime %>  
-				   	<%=x.printer%> 관 <br> </b></div>
+				   	<% if x.pkuptime == 'canceled' %>
+						취소된 신청
+					<% else %>
+						<%= x.pkuptime %>
+						<%=x.printer%> 관 <br>
+					<% end %> 
+				    </b></div>
 				   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
 				   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
 				   
