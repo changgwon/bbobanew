@@ -42,56 +42,44 @@ class HomeController < ApplicationController
 
   def fileupload
     uploads = Upload.all
-    @count_list = []
-    count1 = 0
-    count2 = 0
-    count3 = 0
-    count4 = 0 
-    count5 = 0
-    count6 = 0
-    count7 = 0
-    count8 = 0
-    count9 = 0 
-    count10 = 0
+    @count1 = 0
+    @count2 = 0
+    @count3 = 0
+    @count4 = 0 
+    @count5 = 0
+    @count6 = 0
+    @count7 = 0
+    @count8 = 0
+    @count9 = 0 
+    @count10 = 0
 
     uploads.each do |x|
       if x.pkupdate == Date.today
         if x.pkuptime == "10:15~10:30"
-          count1+=1
+          @count1+=1
         elsif x.pkuptime == "11:45~12:00"
-          count2+=1
+          @count2+=1
         elsif x.pkuptime == "13:15~13:30"
-          count3+=1
+          @count3+=1
         elsif x.pkuptime == "14:45~15:00"
-          count4+=1
+          @count4+=1
         elsif x.pkuptime == "16:15~16:30"
-          count5+=1
+          @count5+=1
         end
       else
         if x.pkuptime == "10:15~10:30"
-          count6+=1
+          @count6+=1
         elsif x.pkuptime == "11:45~12:00"
-          count7+=1
+          @count7+=1
         elsif x.pkuptime == "13:15~13:30"
-          count8+=1
+          @count8+=1
         elsif x.pkuptime == "14:45~15:00"
-          count9+=1
+          @count9+=1
         elsif x.pkuptime == "16:15~16:30"
-          count10+=1
+          @count10+=1
         end
       end
     end
-
-    @count_list << count1
-    @count_list << count2
-    @count_list << count3
-    @count_list << count4
-    @count_list << count5
-    @count_list << count6
-    @count_list << count7
-    @count_list << count8
-    @count_list << count9
-    @count_list << count10
 
     @upload = Upload.new
   end
