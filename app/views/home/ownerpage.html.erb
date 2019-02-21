@@ -1,5 +1,6 @@
 
-<link href="/assets/printer.css" media="screen" rel="stylesheet" />
+<!-- <link href="/assets/printer.css" media="screen" rel="stylesheet" /> -->
+<%=stylesheet_link_tag "printer"%>
 <style>
 header {
   display: none;
@@ -59,15 +60,11 @@ header {
   </script>
 </div>
 
-<!-- <div style="text-align:center; margin-top: 40px">
-	<input type="button" value="미완료 " id="notdone">|
-	<input type="button" value=" 완료 " id="done">|
-	<input type="button" value=" 전체" id="all"> <br>
-</div> -->
 
 <div id="tableID" style="margin-top: 40px;">
   <table class="table-list" data-currentpage="1">
-    <!-- <thead>
+<!--     <thead>
+
 	  <th><button type="button" class="sort textcenter" data-sort="pickupNum">순번<i class="caret"></i></button></th>
       <th><button type="button" class="sort textcenter" data-sort="pickupTime">픽업시간<i class="caret"></i></button></th>
       <th><button type="button" class="sort textcenter" data-sort="pickupName">이름<i class="caret"></i></button></th>
@@ -260,23 +257,23 @@ header {
 
           }else{
             if (h==2){
-              p_image.src="/var_2.png";
+              p_image.src="/ver_2.png";
 
             }
             else if(h==4){
-              p_image.src="/var_4.png";
+              p_image.src="/ver_4.png";
 
             }
             else if(h==6){
-              p_image.src="/var_6.png";
+              p_image.src="/ver_6.png";
 
             }
             else if(h==9){
-              p_image.src="/var_9.png";
+              p_image.src="/ver_9.png";
 
             }
             else{
-              p_image.src="/var_16.png";
+              p_image.src="/ver_16.png";
 
             }
           }
