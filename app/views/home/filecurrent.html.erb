@@ -32,9 +32,7 @@ a:hover{
 
 <div>
 
-	<% if @uploads.empty? %>
-		신청 내역이 없습니다.<br>
-	<% else %>
+	
 	<div style="text-align:center; margin-top:40px">
 		<input type="button" value="전체 보기   " id="category1">|    
 		<input type="button" value="   진행중인 인쇄   " id ="category3">|    
@@ -43,54 +41,59 @@ a:hover{
 	<div class="column" style="margin-top:20px">
 		<div value="category" id="ongoing">
 		<div class="title"> 진행중인 내역 </div>
-		<% @ongoing_upload.each do |x| %>
-		   <a href="filedetail/<%=x.id%>">
-		   	<div class="filecurrent_card" style="border:1px solid #057075;">
-			  <div style="text-align:left">
-			   		<b><%= x.pkupdate %><br>
-			   		<% if x.pkuptime == 'canceled' %>
-						취소된 신청
-					<% else %>
-						<%= x.pkuptime %>
-						<%=x.printer%> 관 <br> 
-					<% end %>
-				   	</b></div>
-				   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
-				   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
-				   
-				  	<%=x.progress%><br>
-			</div></a>
+		<% if @ongoing_upload.empty? %>
+			신청 내역이 없습니다. <br>
+		<% else %>
+			<% @ongoing_upload.each do |x| %>
+			   <a href="filedetail/<%=x.id%>">
+			   	<div class="filecurrent_card" style="border:1px solid #057075;">
+				  <div style="text-align:left">
+				   		<b><%= x.pkupdate %><br>
+				   		<% if x.pkuptime == 'canceled' %>
+							취소된 신청
+						<% else %>
+							<%= x.pkuptime %>
+							<%=x.printer%> 관 <br> 
+						<% end %>
+					   	</b></div>
+					   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
+					   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
+					   
+					  	<%=x.progress%><br>
+				</div></a>
 
-		<% end %>
-		<div class="paginate"><%= paginate @ongoing_upload %></div>
-      
+			<% end %>
+			<div class="paginate"><%= paginate @ongoing_upload %></div>
+      	<% end %>
 		</div><hr>
 
 		<div value="category" id="past">
 		<div class="title"> 지난 내역 </div>
-		<% @past_upload.each do |x| %>
-		   <a href="filedetail/<%=x.id%>">
-		   	<div class="filecurrent_card">
-			  <div style="text-align:left">
-			   		<b><%= x.pkupdate %><br>
-				   	<% if x.pkuptime == 'canceled' %>
-						취소된 신청
-					<% else %>
-						<%= x.pkuptime %>
-						<%=x.printer%> 관 <br>
-					<% end %> 
-				    </b></div>
-				   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
-				   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
-				   
-				  	<%=x.progress%><br>
-			</div></a>
+		<% if @past_upload.empty? %>
+			신청 내역이 없습니다. <br>
+		<% else %>
+			<% @past_upload.each do |x| %>
+			   <a href="filedetail/<%=x.id%>">
+			   	<div class="filecurrent_card">
+				  <div style="text-align:left">
+				   		<b><%= x.pkupdate %><br>
+					   	<% if x.pkuptime == 'canceled' %>
+							취소된 신청
+						<% else %>
+							<%= x.pkuptime %>
+							<%=x.printer%> 관 <br>
+						<% end %> 
+					    </b></div>
+					   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
+					   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
+					   
+					  	<%=x.progress%><br>
+				</div></a>
+			<% end %>
+			<div class="paginate"><%= paginate @past_upload %></div>
 		<% end %>
-		<div class="paginate"><%= paginate @past_upload %></div>
 		</div>
-
-	<% end %>
-</div>
+	</div>
 </div>
 
 <script>

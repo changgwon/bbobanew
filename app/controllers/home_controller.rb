@@ -42,44 +42,57 @@ class HomeController < ApplicationController
 
   def fileupload
     uploads = Upload.all
-    @count1 = 0
-    @count2 = 0
-    @count3 = 0
-    @count4 = 0 
-    @count5 = 0
-    @count6 = 0
-    @count7 = 0
-    @count8 = 0
-    @count9 = 0 
-    @count10 = 0
+    @count_list = []
+    count1 = 0
+    count2 = 0
+    count3 = 0
+    count4 = 0 
+    count5 = 0
+    count6 = 0
+    count7 = 0
+    count8 = 0
+    count9 = 0 
+    count10 = 0
 
     uploads.each do |x|
       if x.pkupdate == Date.today
         if x.pkuptime == "10:15~10:30"
-          @count1+=1
+          count1+=1
         elsif x.pkuptime == "11:45~12:00"
-          @count2+=1
+          count2+=1
         elsif x.pkuptime == "13:15~13:30"
-          @count3+=1
+          count3+=1
         elsif x.pkuptime == "14:45~15:00"
-          @count4+=1
+          count4+=1
         elsif x.pkuptime == "16:15~16:30"
-          @count5+=1
+          count5+=1
         end
       else
         if x.pkuptime == "10:15~10:30"
-          @count6+=1
+          count6+=1
         elsif x.pkuptime == "11:45~12:00"
-          @count7+=1
+          count7+=1
         elsif x.pkuptime == "13:15~13:30"
-          @count8+=1
+          count8+=1
         elsif x.pkuptime == "14:45~15:00"
-          @count9+=1
+          count9+=1
         elsif x.pkuptime == "16:15~16:30"
-          @count10+=1
+          count10+=1
         end
       end
     end
+
+    @count_list << count1
+    @count_list << count2
+    @count_list << count3
+    @count_list << count4
+    @count_list << count5
+    @count_list << count6
+    @count_list << count7
+    @count_list << count8
+    @count_list << count9
+    @count_list << count10
+
     @upload = Upload.new
   end
 
@@ -142,7 +155,6 @@ class HomeController < ApplicationController
     @upload.pkupdate = pkupdate
 
     @upload.pkuptime = params[:upload][:pkuptime]
-    @upload.pkuptime = @upload.pkuptime[0..10]
     @upload.landscape = params[:upload][:landscape]
     @upload.doublepg = params[:upload][:doublepg]
     @upload.split = params[:upload][:split]
@@ -215,12 +227,12 @@ class HomeController < ApplicationController
           @past_upload << upload
 
         elsif upload.pkupdate == Date.today
+
           if upload.pkuptime != "canceled"
             pkuptime_s = upload.pkuptime.split('~')
             pkuptime_d = pkuptime_s[1].split(':')
             to_compare = Time.utc(upload.pkupdate.year, upload.pkupdate.month, upload.pkupdate.day,
                                   pkuptime_d[0].to_i, pkuptime_d[1].to_i, 0)
-          
             if to_compare >= Time.now
               @ongoing_upload << upload
             
@@ -238,10 +250,11 @@ class HomeController < ApplicationController
         @past_upload << upload
       end
     end
-    @ongoing_upload =@ongoing_upload.sort_by{|upload| [upload.pkuptime]}.reverse
-    @ongoing_upload =Kaminari.paginate_array(@ongoing_upload).page(params[:page]).per(2)
-    @past_upload =@past_upload.sort_by{|upload| [upload.pkuptime]}.reverse
-    @past_upload =Kaminari.paginate_array(@past_upload).page(params[:page]).per(2)
+
+    @ongoing_upload =@ongoing_upload.sort_by{|upload| [upload.pkupdate, upload.pkuptime]}
+    @ongoing_upload =Kaminari.paginate_array(@ongoing_upload).page(params[:page]).per(3)
+    @past_upload =@past_upload.sort_by{|upload| [upload.pkupdate]}.reverse
+    @past_upload =Kaminari.paginate_array(@past_upload).page(params[:page]).per(3)
   end
 
   def ownerpage
@@ -322,7 +335,7 @@ class HomeController < ApplicationController
       user.save
       upload.save
     end
-    redirect_to '/'
+    redirect_to "/home/filecurrent"
 
   end
 
