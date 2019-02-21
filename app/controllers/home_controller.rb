@@ -190,6 +190,21 @@ class HomeController < ApplicationController
     redirect_to '/home/main'
   end
 
+  def ownerpage_tomo
+    if current_user.usertype == "user"
+      redirect_to "/home/main"
+    end
+    @todayuploads = []
+    @tomorrowuploads = []
+    Upload.all.each do |x|
+      if x.pkupdate == Date.today
+        @todayuploads << x
+      elsif x.pkupdate > Date.today
+        @tomorrowuploads << x
+      end
+    end
+  end
+
   def filecurrent
     @uploads = Upload.where(userid:current_user.userid)
     @ongoing_upload = []
@@ -216,6 +231,8 @@ class HomeController < ApplicationController
             #   @past_upload << upload
             end
           end
+        else
+          @ongoing_upload << upload
         end
       else
         @past_upload << upload

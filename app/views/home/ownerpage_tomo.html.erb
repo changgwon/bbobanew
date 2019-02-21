@@ -6,15 +6,15 @@ header {
   display: none;
 }
 #today, #tomorrow, #total{
-	border:none;
-	color:grey;
-	background-color:transparent;
-	margin-bottom:30px;
+  border:none;
+  color:grey;
+  background-color:transparent;
+  margin-bottom:30px;
 }
 
 
 #today:hover, #tomorrow:hover, #total:hover{
-	color:black;
+  color:black;
 }
 
 </style>
@@ -33,13 +33,13 @@ header {
     <p id="time"></p>
   </div>
 
-  <a href="../home/ownerpage_tomo">내일 목록 보기</a>
+  <a href="../home/ownerpage">오늘 목록 보기</a>
 
-<!-- 	<select id="timeSelect" onchange="changeDate()">
-	    <option value="today" selected="selected">오늘 목록 보기</option>
-	    <option value="tomorrow">내일 목록 보기</option>
-	    <option value="total">전체 목록 보기</option>
-	</select> -->
+<!--  <select id="timeSelect" onchange="changeDate()">
+      <option value="today" selected="selected">오늘 목록 보기</option>
+      <option value="tomorrow">내일 목록 보기</option>
+      <option value="total">전체 목록 보기</option>
+  </select> -->
 
   <script>
     var d = new Date();
@@ -67,7 +67,7 @@ header {
   <table class="table-list" data-currentpage="1">
     <thead>
 
-	  <th><button type="button" class="sort textcenter" data-sort="pickupNum">순번<i class="caret"></i></button></th>
+    <th><button type="button" class="sort textcenter" data-sort="pickupNum">순번<i class="caret"></i></button></th>
       <th><button type="button" class="sort textcenter" data-sort="pickupTime">픽업시간<i class="caret"></i></button></th>
       <th><button type="button" class="sort textcenter" data-sort="pickupName">이름<i class="caret"></i></button></th>
       <th><button type="button" class="sort textcenter" data-sort="printPage">범위(매수)<i class="caret"></i></button></th>
@@ -75,36 +75,35 @@ header {
       <th><button type="button" class="sort textcenter" data-sort="printState">상태<i class="caret"></i></button></th>
     </thead>
     <!-- IMPORTANT, class="list" must be on tbody -->
-    <tbody id="todaylist">
-      <% if @todayuploads.empty? %>
+
+    <tbody id="tomorrowlist">
+      <% if @tomorrowuploads.empty? %>
         <tr>
           <td>신청 내역이 없습니다.<br></td>
         </tr>
       <% else %>
-        <% @todayuploads.each do |x| %>
+        <% @tomorrowuploads.each do |x| %>
           <tr>
-          	<td class="minify pickupNum"><%=x.id%></td>
+            <td class="minify pickupNum"><%=x.id%></td>
             <td class="minify pickupTime"><%= x.pkuptime.split('~')[0] %></td>
             <td class="pickupName"><%= User.find_by(userid: x.userid).username %></td>
             <td class="printPage"><%= x.pagenum %>(총 <%= x.totalpage %> 장)</td>
             <td class="checkDetail"><button id="detailBtn" onclick="showDetails('<%=x.pkuptime%>','<%=User.find_by(userid: x.userid).stdnum%>','<%=User.find_by(userid: x.userid).username%>', '<%=URI.decode(x.attachment_url.split('/').last)%>', '<%=x.totalpage%>', '<%=x.landscape%>', '<%=x.doublepg%>', '<%=x.split%>', '<%=x.color%>', '<%=x.attachment_url%>')">상세보기</button></td>
             
             <% if x.progress == "인쇄대기" %>
-            	<td class="printState"><button style="background: green;" onclick="window.location='../home/changeState1/<%=x.id%>'"><%= x.progress %></button></td>
+              <td class="printState"><button style="background: green;" onclick="window.location='../home/changeState1/<%=x.id%>'"><%= x.progress %></button></td>
             <% elsif x.progress == "인쇄중" %>
-            	<td class="printState"><button style="background: blue;" onclick="window.location='../home/changeState3/<%=x.id%>'"><%= x.progress %></button></td>
+              <td class="printState"><button style="background: blue;" onclick="window.location='../home/changeState3/<%=x.id%>'"><%= x.progress %></button></td>
             <% elsif x.progress == "인쇄완료" %>
-            	<td class="printState"><button style="background: grey;"><%= x.progress %></button></td>
-           	<% elsif x.progress == "인쇄취소" %>
-            	<td class="printState"><button style="background: red;"><%= x.progress %></button></td>
-           	<% end %>
+              <td class="printState"><button style="background: grey;"><%= x.progress %></button></td>
+            <% elsif x.progress == "인쇄취소" %>
+              <td class="printState"><button style="background: red;"><%= x.progress %></button></td>
+            <% end %>
 
           </tr>
         <% end %>
       <% end %>
     </tbody>
-
-
 
     <tfoot>
     </tfoot>
@@ -132,7 +131,7 @@ header {
 
 <script type="text/javascript">
 
-	
+
     // Get the modal
     var modal = document.getElementById('mymodal');
 
@@ -155,31 +154,13 @@ header {
         }
     }
 
-   //  function changeDate(){
-
-   //  	var x = document.getElementById("timeSelect").value;
-
-   //  	if (x == 'today'){
-	  //   	todaylist.style.display = 'block';
-			// tomorrowlist.style.display = 'none';
-   //  	}
-   //  	else if (x == 'tomorrow'){
-   //  		todaylist.style.display = 'none';
-			// tomorrowlist.style.display = 'block';
-   //  	}
-   //  	else if (x == 'total'){
-   //  		todaylist.style.display = 'block';
-			// tomorrowlist.style.display = 'block';
-   //  	}
-
-   //  }
 
 
-	/* Modal 띄우기 */
+  /* Modal 띄우기 */
 
     function showDetails(a,b,c,d,e,f,g,h,i,j,k){
 
-    	modal.style.display = "block";
+      modal.style.display = "block";
 
           var sel1 = document.getElementById("detailchk1");
           var sel2 = document.getElementById("detailchk2");
@@ -187,7 +168,7 @@ header {
           var p_image = document.getElementById("print-image");
 
           downloadBtn.onclick = function(){
-          	window.location.assign(j);
+            window.location.assign(j);
           }
 
           printInfo = ""+f+"/"+g+"/"+h+"분할/"+i+"";

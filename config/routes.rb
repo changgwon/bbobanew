@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post 'home/filecheck'
   get 'home/filecurrent'
   get 'home/ownerpage'
+  get 'home/ownerpage_tomo'
   get 'home/changeState1/:id'=>'home#changeState1'
   get 'home/changeState2/:id'=>'home#changeState2'
   get 'home/changeState3/:id'=>'home#changeState3'
