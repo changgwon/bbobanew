@@ -38,6 +38,45 @@ class HomeController < ApplicationController
   end
 
   def fileupload
+    uploads = Upload.all
+    @count1 = 0
+    @count2 = 0
+    @count3 = 0
+    @count4 = 0 
+    @count5 = 0
+    @count6 = 0
+    @count7 = 0
+    @count8 = 0
+    @count9 = 0 
+    @count10 = 0
+
+    uploads.each do |x|
+      if x.pkupdate == Date.today
+        if x.pkuptime == "10:15~10:30"
+          @count1+=1
+        elsif x.pkuptime == "11:45~12:00"
+          @count2+=1
+        elsif x.pkuptime == "13:15~13:30"
+          @count3+=1
+        elsif x.pkuptime == "14:45~15:00"
+          @count4+=1
+        elsif x.pkuptime == "16:15~16:30"
+          @count5+=1
+        end
+      else
+        if x.pkuptime == "10:15~10:30"
+          @count6+=1
+        elsif x.pkuptime == "11:45~12:00"
+          @count7+=1
+        elsif x.pkuptime == "13:15~13:30"
+          @count8+=1
+        elsif x.pkuptime == "14:45~15:00"
+          @count9+=1
+        elsif x.pkuptime == "16:15~16:30"
+          @count10+=1
+        end
+      end
+    end
     @upload = Upload.new
   end
 
@@ -101,28 +140,40 @@ class HomeController < ApplicationController
     @upload.pkupdate = pkupdate
 
     @upload.pkuptime = params[:upload][:pkuptime]
+    @upload.pkuptime = @upload.pkuptime[0..10]
     @upload.landscape = params[:upload][:landscape]
     @upload.doublepg = params[:upload][:doublepg]
     @upload.split = params[:upload][:split]
     @upload.color = params[:upload][:color]
 
-    
 
     ## 유저 DB 갱신 (캐시 차감)
     @user = current_user
     if @user.cur_cash <  @upload.cost
       @upload.flag = false
     else
-      @upload.save
-      @user.cur_cash -=  @upload.cost
-      @user.save
-      cashflow=Cashflow.new
-      cashflow.cur_cash=current_user.cur_cash
-      cashflow.user_id=@upload.user_id
-      cashflow.real_created_at = @upload.created_at
-      cashflow.amount =@upload.cost
-      cashflow.use_type = "차감"
-      cashflow.save
+
+      chkcount = 0
+      Upload.all.each do |x|
+        if x.pkuptime == @upload.pkuptime
+          chkcount +=1
+        end
+      end
+
+      if chkcount <= 30
+        @upload.save
+        @user.cur_cash -=  @upload.cost
+        @user.save
+        cashflow=Cashflow.new
+        cashflow.cur_cash=current_user.cur_cash
+        cashflow.user_id=@upload.user_id
+        cashflow.real_created_at = @upload.created_at
+        cashflow.amount = @upload.cost
+        cashflow.use_type = "차감"
+        cashflow.save
+      else
+
+      end
     
     end
     

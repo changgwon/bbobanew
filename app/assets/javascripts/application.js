@@ -55,13 +55,14 @@ jQuery(document).ready(function($){
                     else{$val3=today+1;}
 
                     if ($val3 == today){
-                      var $pkuptime = $("#pkuptimeop").val().split('~');
-                      var starttime = $pkuptime[1].split(':');
+                      var $pkuptime = ''+$("#pkuptimeop").val()
+                      var $pkuptime_s = $pkuptime.substring(0,11).split('~');
+                      var starttime = $pkuptime_s[0].split(':');
 
                       var comparetime = new Date($val3.getFullYear(), $val3.getMonth(), $val3.getDate(),
                                     parseInt(starttime[0]), parseInt(starttime[1]), 0, 0);
 
-                      if(comparetime<today){
+                      if(today> comparetime-3600000){
                         msg+="신청 가능한 시간이 아닙니다!";
                       }
                     }
