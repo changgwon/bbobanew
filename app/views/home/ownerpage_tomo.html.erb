@@ -33,7 +33,7 @@ header {
     <p id="time"></p>
   </div>
 
-  <a href="../home/ownerpage">오늘 목록 보기</a>
+  <a href="../home/ownerpage">오늘 목록으로 돌아가기</a>
 
 <!--  <select id="timeSelect" onchange="changeDate()">
       <option value="today" selected="selected">오늘 목록 보기</option>
@@ -185,13 +185,16 @@ header {
 
           sel3.innerHTML = "<strong>결제금액 : </strong>"+totalcash+" 원<br><br>";  
 
-          if (f=='가로'){
-            if (h==2){
-              p_image.src="/hor_2.png";
+if (f=='가로'){
+            if (h==1){
+              p_image.src="/hor_1.png";
+            }
+            else if (h==2){
+              p_image.src="/hor_2_new.png";
 
             }
             else if(h==4){
-              p_image.src="/hor_4.png";
+              p_image.src="/hor_4_new.png";
 
             }
             else if(h==6){
@@ -208,7 +211,10 @@ header {
             }
 
           }else{
-            if (h==2){
+            if (h==1){
+              p_image.src="/ver_1.png";
+            }
+            else if (h==2){
               p_image.src="/ver_2.png";
 
             }
