@@ -6,10 +6,21 @@
 <%=stylesheet_link_tag "home"%>
 <style>
 .max-page{
-	background-image:url('/main.png');
-	background-size:contain;
+	background-image:url('/bg-masthead(grad).jpg');
+	background-size:cover;
 	height:100%;
 	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: center;
+}
+
+.main_text{
+	text-align: center;
+	margin-top: 20%
+}
+
+#list_point_button{
+	margin-left: 30%;
 }
 
 @media (max-width:1023px){
@@ -69,14 +80,12 @@
 
 <div style="display:flex" class="max-page">
 	<div class="main_section">
+		<div class="main_text">
+		<h1 class="text-uppercase font-weight-bold">인쇄물 예약하고,<br>대기없이 픽업하자!</h1><br><br>
+          <h2>프린트 테이크아웃 서비스<br>"뽀바드림"</h2>
+      	</div>
 		<div class="file_upload">
-			<div class="file_upload_text">
-				<div class="web-text">
-					<h2>인쇄물 예약하고, 대기 없이 픽업하자!</h2><br>
-					<h4>프린트 테이크아웃 서비스 "뽀바드림"</h4>
-				</div>
-				<img src='/main-image.png' class="main-image">
-			</div>
+			
 			<div class="file_upload_link">
 				<a href="/home/fileupload">
 					<button class="custom-button">
@@ -89,9 +98,19 @@
 
 		<div class="list_point">
 			<div class="filecurrent_li">
+				<a href="/home/filecurrent"><img src='/list_btn.png' height="35%" id="list_point_button">
+					<span class="badge badge-danger"><%= @count %></span></a>
+			</div>
+			<div class="point">
+				<a href="/payment/cashflow"><img src='/point_btn.png' height="35%" id="list_point_button"></a>
+			</div>
+		</div>
+
+		<!--<div class="list_point">
+			<div class="filecurrent_li">
 				<a href="/home/filecurrent">
 					<div class="card-gotolist main-icon">
-						<img src='/list.png' style="margin-bottom:30px">신청내역<span class="badge badge-danger""><%= @count %></span>
+						<img src='/filelist.png' height="50px" style="margin-bottom:30px">신청내역<span class="badge badge-danger""><%= @count %></span>
 
 					</div>
 				</a>
@@ -99,18 +118,16 @@
 			<div class="point">
 				<a href="/payment/cashflow">
 					<div class="card-gotopoint main-icon">
-						<img src='/coins.png' style="margin-bottom:30px"><p><%= current_user.cur_cash %> 포인트 </p>
+						<img src='/point.png' height="50px" style="margin-bottom:30px"><p><%= current_user.cur_cash %> 포인트 </p>
 					</div>
 				</a>
 			</div>
 			
-		</div>
+		</div>-->
 
 
 
 	</div>
-
-	<div class="image_section">
 
 	</div>
 </div>

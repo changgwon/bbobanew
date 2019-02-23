@@ -17,6 +17,11 @@ body {
 
 
 /* main.html */
+.file_upload_link{
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
 .filecurrent_card{
   width:90%;
   height:150px;

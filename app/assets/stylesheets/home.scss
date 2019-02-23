@@ -4,15 +4,17 @@
 
 /* Main Page */
 .custom-button{
+	font-family: Noto Sans KR;
+	color: white;
 	padding: 20px 100px;
 	border-radius:10px;
-	background-color:white;
-    border: 3px solid rgb(105,0,210);
+	background-color: #8350bf;
+	border: 0px;
 	/* border 색은 지정색*/
 }
 .custom-button:hover{
 	color:white;
-	background-color:rgb(105,0,210);
+	background-color:#c081d2;
 	transform-origin:left;
   	transition:width 0.25s ease;
   	z-index:-1;
@@ -27,9 +29,11 @@
 
 
 .main_section{
-	width:50vw; 
+	width:60vw; 
 	height:100vh; 
 	max-height:800px;
+	align-content: center;
+
 }
 
 .image_section{
@@ -38,7 +42,7 @@
 	max-height:800px;
 }
 .file_upload{
-	height:50%; 
+	 
 	width:100%;
 }
 
@@ -46,12 +50,14 @@
 	height:50%; 
 	width:100%;
 	display:flex;
+	justify-content: space-around;
 }
 .filecurrent_li{
 	width:50%; 
 	height:100%;
 	padding:30px;
 	padding-right:0px;
+	align-content: center;
 }
 .point{
 	width:50%; 
@@ -90,6 +96,7 @@
 .badge{
 	padding: 1em 1em;
 }
+
 
 
 @media (min-width:1024px){
