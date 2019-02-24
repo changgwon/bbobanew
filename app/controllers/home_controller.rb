@@ -66,7 +66,7 @@ class HomeController < ApplicationController
         elsif x.pkuptime == "16:15~16:30"
           @count5+=1
         end
-      else
+      elsif x.pkupdate == Date.today + 1 
         if x.pkuptime == "10:15~10:30"
           @count6+=1
         elsif x.pkuptime == "11:45~12:00"
