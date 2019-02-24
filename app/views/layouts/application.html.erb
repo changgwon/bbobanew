@@ -138,7 +138,7 @@
  
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainnav">
       <div class="navbar-brand">
-        <a href="/home/main.html"><img class="logo" src="/logo(horizon).png" style="height:90px;"></a>
+        <a href="/home/main.html"><img class="logo" src="/logo(horizon).png"></a>
         <img class="go-back" src="/left-arrow.png" onclick="window.history.back()">
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -153,7 +153,7 @@
           <li class="nav-item hidden">
             <a class="nav-link" href="#">음료드림</a>
           </li>
-          <li class="nav-item hidden">
+          <li class="nav-item hidden"> 
             <a class="nav-link" href="#">음식드림</a>
           </li>
           <li class="nav-item dropdown">
@@ -169,12 +169,14 @@
           </li> -->
                    
         </ul>
+        <div class="hamburger">
         <form class="form-inline my-2 my-lg-0">
           <% if user_signed_in? %>
             <%= link_to "정보변경", edit_user_registration_path, {:style=>"margin-right:30px"} %>    
             <%= link_to "로그아웃", destroy_user_session_path %>
           <% end %>
         </form>
+      </div>
       </div>
 
       

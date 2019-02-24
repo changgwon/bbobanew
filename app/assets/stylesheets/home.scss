@@ -57,13 +57,14 @@
 	height:100%;
 	padding:30px;
 	padding-right:0px;
-	align-content: center;
+	text-align: center;
 }
 .point{
 	width:50%; 
 	height:100%; 
 	padding:30px;
 	padding-left:0px;
+	text-align: center;
 }
 .file_upload_text{
 	height:70%;
@@ -117,7 +118,9 @@
 }
 
 @media (max-width:1023px){
-	
+	.custom_button{
+		width: 70%;
+	}
 	.image_section{
 		display:none;
 	}
@@ -130,9 +133,7 @@
 	.main-image{
 		display:block;
 	}
-	.file_upload{
-		height:60%;
-	}
+	
 	.file_upload_link{
 		text-align: center;
 	}

@@ -11,11 +11,13 @@
   box-sizing:border-box;
 }
 body { 
-  margin-top: 5%;
   font-family: 'Noto Sans KR', sans-serif;
   background-color:white;
 }
 
+.page {
+  margin-top: 10%;
+}
 
 /* main.html */
 .file_upload_link{
@@ -47,9 +49,29 @@ body {
   height:50px;
   text-align:center;
 }
+.navbar-brand .logo{
+  height:90px;
+}
+
+.navbar{
+  padding-top:0px !important;
+  padding-bottom:0px !important;
+  height:90px;
+}
+.filecurrent_li{
+  position:relative;
+}
+.badge{
+  position:absolute;
+  float:right;
+}
 
 @media (max-width: 767px) {
-  
+ 
+  .navbar{
+    padding-top:0px !important;
+    padding-bottom:0px !important;
+  } 
   .filecurrent_title{
     margin:0 auto;
     width:80%;
@@ -64,6 +86,20 @@ body {
   
   .filecurrent_list{
     display:none;
+  }
+  .filecurrent_li{
+    position:relative;
+  }
+  .badge{
+    position:absolute;
+    float:right;
+  }
+  .navbar-brand{
+    padding-top:0px;
+    padding-bottom:0px;
+  }
+  .navbar-brand .logo{
+    height:70px;
   }
 
 
