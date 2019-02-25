@@ -45,7 +45,7 @@ ko:
               blank: "를 입력해주세요"
             stdnum:
               blank: "을 입력해주세요"
-              taken: "중복된 학번 입니다."
+              # taken: "중복된 학번 입니다."
             phonenum:
               blank: "를 입력해주세요"
             username:

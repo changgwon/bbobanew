@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates_presence_of :userid
   validates_uniqueness_of :userid
   validates_presence_of :stdnum
-  validates_uniqueness_of :stdnum
+  # validates_uniqueness_of :stdnum
   validates_presence_of :phonenum
   validates_presence_of :username
 
