@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 
-
+gem 'devise-i18n'
 gem 'kaminari'
 gem 'mysql2'
 gem 'fog'
