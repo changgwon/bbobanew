@@ -214,6 +214,9 @@ header{
                                 <%= f.button :submit, "로그인", :class => "btn button form-group btn-block" %>
                             </div><br>
                             <button class="btn button form-group btn-block"><a href="/users/sign_up" class="btn">회원가입</a></button>
+                            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= link_to "비밀번호 찾기", new_password_path(resource_name) %><br />
+<% end -%>
                             </div>
                         </form>
                         
