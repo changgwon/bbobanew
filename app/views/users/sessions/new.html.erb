@@ -156,19 +156,22 @@ header{
   </div>
 </div> -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainnav">
-<a href="/home/main.html"><img class="logo" src="/logo(horizon).png"></a>
+<a href="/home/index"><img class="logo" src="/logo(horizon).png"></a>
 </nav>
 <div class="main">
         <!-- Sing in  Form -->
         <div style="margin:auto">
         <section class="sign-in">
             <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+
             <div class="container">
                 
                     
                         <div class="main_text">
                             <h2 class="font-weight-bold" id="main_text">인쇄물 예약하고, 대기없이 픽업하자!</h2><br><br>
                               <h3 id="main_text">프린트 테이크아웃 서비스<br><strong>"뽀바드림"</strong></h3>
+                              <%= devise_error_messages! %>
                         </div>
                 <div class="signin-content">
                         
@@ -176,6 +179,7 @@ header{
 
                     <div class="signin-form">
                         <h4 class="form-title">로그인</h2>
+
                         <form method="POST" class="register-form" id="login-form">
                             <!-- <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -185,6 +189,7 @@ header{
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="your_pass" id="your_pass" placeholder="Password">
                             </div> -->
+
                             <div class="form-group">
                             <%= f.input :userid,
                                 placeholder: '아이디',
