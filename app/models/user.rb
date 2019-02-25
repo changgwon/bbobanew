@@ -6,6 +6,18 @@ class User < ApplicationRecord
   has_many :charges
   has_many :uploads
   has_many :cashflows
+
+  validates_presence_of :email
+  validates_uniqueness_of :email
+  validates_presence_of :userid
+  validates_uniqueness_of :userid
+  validates_presence_of :stdnum
+  validates_uniqueness_of :stdnum
+  validates_presence_of :phonenum
+  validates_presence_of :username
+
+  
+  
          
   def email_required?
    false
