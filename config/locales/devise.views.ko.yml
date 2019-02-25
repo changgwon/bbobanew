@@ -37,10 +37,10 @@ ko:
           attributes:
             userid:
               blank: "를 입력해주세요"
-              taken: "중복된 아이디 입니다."
+              taken: "가 이미 사용중입니다. 다른 아이디를 입력해주세요."
             email:
               blank: "을 입력해주세요"
-              taken: "중복된 이메일 입니다."
+              taken: "이 이미 사용중입니다. 다른 이메일을 입력해주세요."
             password:
               blank: "를 입력해주세요"
             stdnum:
