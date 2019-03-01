@@ -34,7 +34,7 @@ header{
 .main{
     background-image: url('/bg-masthead(grad).jpg');
     background-size:cover;
-    height:100vh;
+    height:100%;
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center;
@@ -59,7 +59,7 @@ header{
     margin-top: 15%;
 }
 
-@media (max-width:767px){
+@media (max-width:1023px){
 
     header{
         display:none;
@@ -98,6 +98,13 @@ header{
         height:100vh;
         padding:0;
     }
+
+    #main_text{
+        font-size: 180%;
+    }
+
+    .main_text{
+        margin-top: 40%;
 }
 
 
@@ -215,8 +222,8 @@ header{
                             </div><br>
                             <button class="btn button form-group btn-block"><a href="/users/sign_up" class="btn">회원가입</a></button>
                             <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "비밀번호 찾기", new_password_path(resource_name) %><br />
-<% end -%>
+                            <%= link_to "비밀번호 찾기", new_password_path(resource_name) %><br />
+                            <% end -%>
                             </div>
                         </form>
                         
