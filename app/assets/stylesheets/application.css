@@ -15,8 +15,16 @@ body {
   background-color:white;
 }
 
+.page {
+  margin-top: 10%;
+}
 
 /* main.html */
+.file_upload_link{
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
 .filecurrent_card{
   width:90%;
   height:150px;
@@ -41,9 +49,32 @@ body {
   height:50px;
   text-align:center;
 }
+.navbar-brand .logo{
+  height:90px;
+}
+
+.navbar{
+  padding-top:0px !important;
+  padding-bottom:0px !important;
+  height:90px;
+}
+.filecurrent_li{
+  position:relative;
+}
+.badge{
+  position:absolute;
+  float:right;
+}
 
 @media (max-width: 767px) {
-  
+  .page {
+  margin-top: 20%;
+  }
+
+  .navbar{
+    padding-top:0px !important;
+    padding-bottom:0px !important;
+  } 
   .filecurrent_title{
     margin:0 auto;
     width:80%;
@@ -58,6 +89,20 @@ body {
   
   .filecurrent_list{
     display:none;
+  }
+  .filecurrent_li{
+    position:relative;
+  }
+  .badge{
+    position:absolute;
+    float:right;
+  }
+  .navbar-brand{
+    padding-top:0px;
+    padding-bottom:0px;
+  }
+  .navbar-brand .logo{
+    height:70px;
   }
 
 
@@ -218,6 +263,7 @@ body {
 		font-size:18px;
 	}	
 }
+
 
 
 
@@ -561,7 +607,7 @@ a{
     padding: 50px 0;
     border: 1px solid #888;
     width: 90%;
-    max-width:400px;
+    max-width:500px;
 }
 
 /* The Close Button */

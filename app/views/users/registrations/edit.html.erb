@@ -4,7 +4,9 @@
   display:none;
 }
 
-
+.page{
+  margin-top: 10%;
+}
  @media (max-width:767px){
     .logo{
       display:none;
@@ -41,13 +43,15 @@
   }
 
 </style>
-
+<div class="page">
 <div class="login-signup">
   <article role="signup">
     <h5 class="text-center"><i class="fa fa-lock"></i>비밀번호 수정</h5>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+<!--   <%= f.error_notification %> -->
+  <%= devise_error_messages! %>
+
 
   <div class="form-inputs">
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -87,4 +91,4 @@
     <div class="signup"></div>
   </article>
 </div>
-
+</div>

@@ -19,7 +19,7 @@ header {
 
 </style>
 
-
+<div class="page">
 <div class="datetime">
   <div class="date">
     <p id="yy"></p>
@@ -34,7 +34,7 @@ header {
   </div>
 
   <a href="../home/ownerpage_tomo">내일 목록 보기</a>
-
+</div>
 <!-- 	<select id="timeSelect" onchange="changeDate()">
 	    <option value="today" selected="selected">오늘 목록 보기</option>
 	    <option value="tomorrow">내일 목록 보기</option>
@@ -204,13 +204,16 @@ header {
 
           sel3.innerHTML = "<strong>결제금액 : </strong>"+totalcash+" 원<br><br>";  
 
-          if (f=='가로'){
-            if (h==2){
-              p_image.src="/hor_2.png";
+if (f=='가로'){
+            if (h==1){
+              p_image.src="/hor_1.png";
+            }
+            else if (h==2){
+              p_image.src="/hor_2_new.png";
 
             }
             else if(h==4){
-              p_image.src="/hor_4.png";
+              p_image.src="/hor_4_new.png";
 
             }
             else if(h==6){
@@ -227,7 +230,10 @@ header {
             }
 
           }else{
-            if (h==2){
+            if (h==1){
+              p_image.src="/ver_1.png";
+            }
+            else if (h==2){
               p_image.src="/ver_2.png";
 
             }
