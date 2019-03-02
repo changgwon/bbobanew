@@ -49,21 +49,17 @@ body {
   height:50px;
   text-align:center;
 }
-.navbar-brand .logo{
-  height:90px;
+.logo{
+  height:70px;
 }
 
 .navbar{
   padding-top:0px !important;
   padding-bottom:0px !important;
-  height:90px;
-}
-.navbar{
-      padding:1.5rem 3rem;
-      display: flex;
-      height: 70px;
-      background-color:rgba(255, 255, 255, 0.6);
-      text-align: center;
+  display: flex;
+  height: 70px;
+  background-color:rgba(255, 255, 255, 0.6);
+  text-align: center;
 }
 
 .badge{
@@ -76,11 +72,10 @@ body {
   margin-top: 20%;
   }
 
-  .navbar{
-    padding-top:0px !important;
-    padding-bottom:0px !important;
-  } 
-
+  .badge{
+    position:absolute;
+    float:right;
+  }
 }
 
 .status-waiting{
@@ -185,9 +180,6 @@ article[role="signup"] p {
   font-size: 11px;
   padding: 5px 15px;
 }
-
-
-
 * {
     box-sizing: border-box;
     margin:0px;
