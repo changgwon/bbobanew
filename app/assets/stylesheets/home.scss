@@ -21,13 +21,6 @@
 }
 
 
-
-/* 사용자 용 버전일 때*/
-.pheader{
-  display:none;
-}
-
-
 .main_section{
 	width:60vw; 
 	height:100vh; 
@@ -152,15 +145,6 @@
 	}
 
 }
-@media (max-width:767px){
-	.filecurrent_li, .point{
-		padding:10px;
-	}
-
-
-
-}
-
 
 
 

@@ -66,9 +66,6 @@ body {
       text-align: center;
 }
 
-.filecurrent_li{
-  position:relative;
-}
 .badge{
   position:absolute;
   float:right;
@@ -83,41 +80,8 @@ body {
     padding-top:0px !important;
     padding-bottom:0px !important;
   } 
-  .filecurrent_title{
-    margin:0 auto;
-    width:80%;
-    max-width:600px;
-    height:200px;
-    background-color:white;
-    border-radius:10px;
-    border-radius: 3px;
-    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-    margin-top:50px;
-  }
-  
-  .filecurrent_list{
-    display:none;
-  }
-  .filecurrent_li{
-    position:relative;
-  }
-  .badge{
-    position:absolute;
-    float:right;
-  }
-  .navbar-brand{
-    padding-top:0px;
-    padding-bottom:0px;
-  }
-  .navbar-brand .logo{
-    height:70px;
-  }
-
 
 }
-
-
-
 
 .status-waiting{
   background-color:rgb(255,205,45);
@@ -179,7 +143,6 @@ body {
   color: #ffffff;
   webkit-transition: all 400ms cubic-bezier(.4,0,.2,1);
   transition: all 400ms cubic-bezier(.4,0,.2,1);
- 
 }
 
 
@@ -222,22 +185,6 @@ article[role="signup"] p {
   font-size: 11px;
   padding: 5px 15px;
 }
-/*
-.login-signup {
-  height:60vh;
-  margin:0 auto;
-  margin-top:10px;
-  max-width:400px;
-}
-
-.signup{
-  font-size:11px;
-}
-
-.form-control{
-  font-size:11px;
-
-}*/
 
 
 
@@ -262,7 +209,6 @@ article[role="signup"] p {
 }
 
 
-
 a{  
   color:white;
 
@@ -277,11 +223,6 @@ a{
   }
 
 }
-
-
-     
-
-     
       /*form styles*/
       #msform {
             max-width: 600px;
