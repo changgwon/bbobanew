@@ -4,6 +4,9 @@ en:
   time:
     formats:
       long: "%Y-%m-%d %H:%M:%S"
+  date:
+    formats:
+      long: "%Y-%m-%d %H:%M:%S"
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
