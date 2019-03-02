@@ -43,10 +43,8 @@
 
     a{
       color:black;
-
     }
-    header{
-      
+    header{   
       width:100%;
     }
     .navbar{
@@ -84,7 +82,6 @@
     .navbar{
       padding:1rem 1.5rem; 
     }
-
   }
   @media (min-width: 576px){
     .col-sm-4 {
@@ -97,45 +94,7 @@
 
 
   <body>
-
-    <header>
-      
-      <!-- <div class="side_menu">
-        <div class="burger_box">
-          <div class="menu-icon-container">
-            <a href="#" class="menu-icon js-menu_toggle closed">
-              <span class="menu-icon_box">
-                <span class="menu-icon_line menu-icon_line--1"></span>
-                <span class="menu-icon_line menu-icon_line--2"></span>
-                <span class="menu-icon_line menu-icon_line--3"></span>
-              </span>
-            </a>
-          </div>
-        </div>
-
-        <div class="container">
-          <h5 class="menu_title">서비스 메인 이름</h5>
-          <ul class="list_load">
-            <li class="list_item"><a href="#">뽀바드림</a></li>
-            <li class="list_item"><a href="#">카페</a></li>
-            <li class="list_item"><a href="#">음식점</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div style="text-align: center">
-        <a href="/"><img src="/mainlogo.png" style="height:80px; position:absolute"></a>
-        <#% if user_signed_in? %>
-          <span class="info">
-            /* <%#= current_user.username %><br><br> */
-            <%#= link_to "로그아웃", destroy_user_session_path %>
-            <%#= link_to "정보변경", edit_user_registration_path %>
-          </span>
-        <#% end %>
-      </div> -->
-
-
- 
+  <header>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainnav">
       <div class="navbar-brand">
         <a href="/home/index"><img class="logo" src="/logo(horizon).png"></a>
@@ -147,27 +106,6 @@
       <p class="nav-title"></p>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-         <!--  <li class="nav-item hidden">
-            <a class="nav-link" href="#">뽀바드림</a>
-          </li>
-          <li class="nav-item hidden">
-            <a class="nav-link" href="#">음료드림</a>
-          </li>
-          <li class="nav-item hidden"> 
-            <a class="nav-link" href="#">음식드림</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              서비스 선택
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">뽀바드림</a>
-              <a class="dropdown-item" href="#">음료드림</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">음식드림</a>
-            </div>
-          </li> -->
-                   
         </ul>
         <div class="hamburger">
         <form class="form-inline my-2 my-lg-0">
@@ -176,30 +114,11 @@
             <%= link_to "로그아웃", destroy_user_session_path %>
           <% end %>
         </form>
+       </div>
       </div>
-      </div>
-
-      
-      
-
     </nav>
-
-    <div class="pheader">
-      <div class="title">뽀바드림</div>
-      <div class="topnav">
-        <a href="/printer/index">[ K관복사대 ]</a>
-        <a href="#">로그아웃</a>
-        <a href="/printer/account">매출관리</a>
-      </div>
-    </div> 
-    
-    <div class="mheader">
-
-    </div>
-
-    </header>
-    <%= yield %>
-  
+  </header>
+  <%= yield %>  
   </body>
 </html>
 
