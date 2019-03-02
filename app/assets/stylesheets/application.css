@@ -15,9 +15,6 @@ body {
   background-color:white;
 }
 
-.page {
-  margin-top: 10%;
-}
 
 /* main.html */
 .file_upload_link{
@@ -82,10 +79,6 @@ body {
 }
 
 @media (max-width: 767px) {
-  .page {
-  margin-top: 20%;
-  }
-
   .badge{
     position:absolute;
     float:right;
@@ -481,7 +474,7 @@ a{
 
 
 
-  /* Detail page */
+/* Detail page */
 
 .column{
   color:black;
