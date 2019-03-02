@@ -213,16 +213,20 @@
 
             function empty_check(){ 
               val4 = document.getElementById("pagenumop").value;
+              val7 = document.getElementById("splitop").value;
               val9 = document.getElementById("attachmentop").value.substring(12);
 
                   msg = "";
 
                   if (!val4){
-                        msg += "인쇄할 페이지 범위를 반드시 입력해주세요!\n"
+                        msg += "인쇄할 페이지 범위를 반드시 입력해주세요!\n";
 
                   }
                   if (!val9){
-                        msg += "인쇄할 문서를 반드시 첨부해주세요!\n"
+                        msg += "인쇄할 문서를 반드시 첨부해주세요!\n";
+                  }
+                  if (totalPage(val4, val7)<=0){
+                    msg += "올바른 페이지 범위가 설정되지 않았습니다!";
                   }
 
                   return msg;
@@ -317,7 +321,12 @@
 
                         if (pagenum_c[i].includes("-")){
                               pagenum_d = pagenum_c[i].split("-");
-                              count += (parseInt(pagenum_d[1]) - parseInt(pagenum_d[0]) +1);
+                              if(parseInt(pagenum_d[1]) - parseInt(pagenum_d[0]) != 0){
+                                count += (parseInt(pagenum_d[1]) - parseInt(pagenum_d[0]) +1);
+                              }
+                              else{
+                                count += (parseInt(pagenum_d[1]) - parseInt(pagenum_d[0]));
+                              }
                         }
                         else{
                               count+=1;
