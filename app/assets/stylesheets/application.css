@@ -67,6 +67,17 @@ body {
   float:right;
 }
 
+.filecurrent_li{
+  position:relative;
+}
+.navbar-brand{
+  padding-top:0px;
+  padding-bottom:0px;
+}
+.navbar-brand .logo{
+  height:70px;
+}
+
 @media (max-width: 767px) {
   .page {
   margin-top: 20%;
@@ -395,22 +406,6 @@ a{
 }
 
 
-
-/* printer style */
-
-.pheader {
-  height: 100px;
-  width: 100%;
-  padding-left: 45px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.pheader .title {
-  font-size: 2.5em;
-  font-weight: bold;
-}
 
 /* Style the top navigation bar */
 .topnav {
