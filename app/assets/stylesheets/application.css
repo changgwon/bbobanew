@@ -77,6 +77,9 @@ body {
 .navbar-brand .logo{
   height:70px;
 }
+.hamburger .my-2{
+  float:right;
+}
 
 @media (max-width: 767px) {
   .page {
