@@ -27,6 +27,9 @@ a:hover{
 	text-align:center;
 	display:block;
 }
+.filecurrent_card{
+	 border:1px solid rgb(105,0,210);;
+}
 
 </style>
 
@@ -46,7 +49,7 @@ a:hover{
 		<% else %>
 			<% @ongoing_upload.each do |x| %>
 			   <a href="filedetail/<%=x.id%>">
-			   	<div class="filecurrent_card" style="border:1px solid #057075;">
+			   	<div class="filecurrent_card"">
 				  <div style="text-align:left">
 				   		<b><%= x.pkupdate %><br>
 				   		<% if x.pkuptime == 'canceled' %>
