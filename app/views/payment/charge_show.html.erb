@@ -33,7 +33,7 @@
 		<% @charges.each do |x| %>
 		   
 		   고유 유저 번호 : <%=x.user_id%><br>
-		   충전 일시 : <%=x.created_at%><br>
+		   충전 일시 : <%=x.created_at.strftime('%F'+' '+'%R')%><br>
 		   충전 량 : <%=x.amount%><br>
 		   <%if x.deposit ==false%>
 		   <p style="color:red">상태 : 충전 대기중 &nbsp <%= button_to '충전 신청 취소', "/payment/charge_delete/#{x.id}", method: :delete %></p>
