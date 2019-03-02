@@ -4,24 +4,73 @@
   display:none;
 }
 
+.page{
+  margin-top: 10%;
+}
+
+.login-signup{
+  text-align: center;
+}
+ @media (max-width:767px){
+    .logo{
+      display:none;
+    }
+    .go-back{
+      display:block;
+    }
+    .navbar-toggler{
+      display:none;
+    }
+    .nav-title{
+      display:block;
+    }
+
+    .nav-title:after {
+      visibility: visible;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      text-align: center;
+      margin: auto;
+      content: "비밀번호 찾기";
+    }
+    .text-center{
+      visibility:hidden;
+    }
+
+    article[role="signup"]{
+      box-shadow:none;
+      -webkit-box-shadow:none;
+
+    }
+
+  }
 </style>
 <div class="page">
-<h2>Forgot your password?</h2>
+  <div class="login-signup">
+  <article role="signup">
+    <h5 class="text-center"><i class="fa fa-lock"></i>비밀번호 찾기</h5>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-<!--   <%= f.error_notification %> -->
-<%= devise_error_messages! %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <!--   <%= f.error_notification %> -->
+    <%= devise_error_messages! %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    label: false,
+                    required: true,
+                    autofocus: true,
+                    placeholder:'이메일 주소',
+                    input_html: { autocomplete: "이메일 주소", class:"form-control" } %><br>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "이메일로 비밀번호 재설정", class: "btn button form-group btn-block" %>
+      </div>
+      <% end %>
+
+      <%= render "users/shared/links"%>
+      </div>
+    </article>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "이메일로 비밀번호 재설정" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
 </div>
+
