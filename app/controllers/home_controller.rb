@@ -311,6 +311,16 @@ class HomeController < ApplicationController
     redirect_back(fallback_location: home_ownerpage_path)
   end
 
+  def changeState4
+    if current_user.usertype == "admin"
+      upload = Upload.find(params[:id])
+      upload.progress = "인쇄대기"
+      upload.save
+    end
+
+    redirect_back(fallback_location: home_ownerpage_path)
+  end
+
   def usercancel
     upload = Upload.find(params[:id])
     if upload.user==current_user && upload.progress != "인쇄취소" 
