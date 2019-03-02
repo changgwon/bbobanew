@@ -203,6 +203,7 @@ class HomeController < ApplicationController
         @tomorrowuploads << x
       end
     end
+    @today = Date.today;
   end
 
   def filecurrent
@@ -258,6 +259,8 @@ class HomeController < ApplicationController
         @tomorrowuploads << x
       end
     end
+
+    @tomorrow = Date.today+1;
   end
 
   def changeState1
@@ -350,5 +353,4 @@ class HomeController < ApplicationController
 
   def category
   end
-
 end

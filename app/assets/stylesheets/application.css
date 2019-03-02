@@ -450,13 +450,11 @@ a{
 .date {
   display: flex;
   justify-content: flex-start;
-  margin-left: 30px;
 }
 
 .time {
   display: flex;
   justify-content: flex-start;
-  margin-left: 30px;
 }
 
 #yy, #mm, #dd, #day {

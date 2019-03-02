@@ -1,67 +1,62 @@
-
 <!-- <link href="/assets/printer.css" media="screen" rel="stylesheet" /> -->
 <%=stylesheet_link_tag "printer"%>
-<style>
-header {
-  display: none;
-}
-#today, #tomorrow, #total{
-  border:none;
-  color:grey;
-  background-color:transparent;
-  margin-bottom:30px;
-}
-
-
-#today:hover, #tomorrow:hover, #total:hover{
-  color:black;
-}
+<style type="text/css">
+  .page{
+    width:100vh;
+  }
+  .linkwrap{
+    padding-top: 5%;
+    width: 100%;
+  }
+  .link{
+    display: flex;
+    justify-content: space-between;
+    width: 780px;
+    margin: auto;
+  }
+  .linkchild{
+  }
 
 </style>
 
-<div class="page">
-<div class="datetime">
-  <div class="date">
-    <p id="yy"></p>
-    <p id="mm"></p>
-    <p id="dd"></p>
-    <p id="day"></p>
+<div class="linkwrap">
+  <div class="link">
+    <div class="linkchild">
+      <div class="date">
+        <p id="yy"></p>
+        <p id="mm"></p>
+        <p id="dd"></p>
+        <p id="day"></p>
+      </div>
+
+      <div class="time">
+        <p>현재시각</p>
+        <p id="time"></p>
+      </div>
+
+      <script>
+        var d = new Date();
+        document.getElementById("yy").innerHTML = d.getFullYear()+"년";
+        document.getElementById("mm").innerHTML = (d.getMonth()+1)+"월";
+        document.getElementById("dd").innerHTML = d.getDate()+"일";
+
+        var weekdays=["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+        document.getElementById("day").innerHTML = weekdays[d.getDay()];
+
+        var hr = d.getHours();
+        var min = d.getMinutes();
+        function hrfunc(hr){
+          if(hr<12) return "(오전)"+hr+":"
+          else if (hr==12) return "(오후)"+hr+":"
+          else return "(오후)"+(hr-12)+":"
+        }
+        document.getElementById("time").innerHTML = hrfunc(hr)+min;
+
+      </script>
+    </div>
+    <div class="linkchild"><br><br><a href="../home/ownerpage">오늘 (<%=@today%>) 목록 보기</a></div>
   </div>
-
-  <div class="time">
-    <p>현재시각</p>
-    <p id="time"></p>
-  </div>
-
-  <a href="../home/ownerpage">오늘 목록으로 돌아가기</a>
 </div>
-<!--  <select id="timeSelect" onchange="changeDate()">
-      <option value="today" selected="selected">오늘 목록 보기</option>
-      <option value="tomorrow">내일 목록 보기</option>
-      <option value="total">전체 목록 보기</option>
-  </select> -->
-
-  <script>
-    var d = new Date();
-    document.getElementById("yy").innerHTML = d.getFullYear()+"년";
-    document.getElementById("mm").innerHTML = (d.getMonth()+1)+"월";
-    document.getElementById("dd").innerHTML = d.getDate()+"일";
-
-    var weekdays=["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
-    document.getElementById("day").innerHTML = weekdays[d.getDay()];
-
-    var hr = d.getHours();
-    var min = d.getMinutes();
-    function hrfunc(hr){
-      if(hr<12) return "(오전)"+hr+":"
-      else if (hr==12) return "(오후)"+hr+":"
-      else return "(오후)"+(hr-12)+":"
-    }
-    document.getElementById("time").innerHTML = hrfunc(hr)+min;
-
-  </script>
-</div>
-
 
 <div id="tableID" style="margin-top: 40px;">
   <table class="table-list" data-currentpage="1">
