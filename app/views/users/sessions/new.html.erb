@@ -9,16 +9,12 @@
 
 
 .navbar{
-      padding:1.5rem 3rem;
       display: flex;
       height: 70px;
       background-color:rgba(255, 255, 255, 0.6);
       text-align: center;
     }
 
-.logo{
-    height: 90px;
-}
 header{
     visibility:hidden;
 }
@@ -43,13 +39,13 @@ header{
 }
 
 
-    .btn{
-        color: #ffffff;
-        padding: 5px 0px;
-        width: 60%;
-        margin: 0 auto;
-        background-color: #8350bf;
-    }
+.btn{
+    color: #ffffff;
+    padding: 5px 0px;
+    width: 60%;
+    margin: 0 auto;
+    background-color: #8350bf;
+}
 
 .main_text{
     text-align: center;
@@ -58,6 +54,12 @@ header{
 
 #main_text{
     font-family: Noto Sans KR;
+}
+.register_password{
+   display:flex; 
+   justify-content: space-between; 
+   padding:0px 10px; 
+   margin-top:30px;
 }
 
 @media (max-width:1023px){
@@ -124,61 +126,55 @@ header{
             <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
 
-            <div class="container">
-                
-                    
-                        <div class="main_text">
-                            <h2 class="font-weight-bold" id="main_text">인쇄물 예약하고,<br>대기없이 픽업하자!</h2><br><br>
-                              <h3 id="main_text" id="main_text">프린트 테이크아웃 서비스<br><strong>"뽀바드림"</strong></h3>
-                              <%= devise_error_messages! %>
-                        </div>
-                <div class="signin-content">
-                        
-                    
-
-                    <div class="signin-form">
-                        <h4 class="form-title">로그인</h2>
-
-                        <form method="POST" class="register-form" id="login-form">
-                        
-
-                            <div class="form-group">
-                            <%= f.input :userid,
-                                placeholder: '아이디',
-                                label: false,
-                                required: false,
-                                autofocus: true,
-                                input_html: { class: "form_input" }
-                                %>
-                            </div>
-                            <div class="form-group">
-                            <%= f.input :password,
-                                placeholder:'비밀번호',
-                                label: false,
-                                required: false,
-                                input_html: { autocomplete: "current-password", class: "form_input"} 
-                                %>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term">
-                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                            </div>
-                           ]
-                            <div class="login_register">
-                            <div class="form-actions">
-                                <%= f.button :submit, "로그인", :class => "btn button form-group btn-block" %>
-                            </div><br>
-                            <button class="btn button form-group btn-block"><a href="/users/sign_up" class="btn">회원가입</a></button>
-                            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-                            <%= link_to "비밀번호 찾기", new_password_path(resource_name) %><br />
-                            <% end -%>
-                            </div>
-                        </form>
-                        
+        <div class="container">            
+            <div class="main_text">
+                <h3 class="font-weight-bold" id="main_text">인쇄물 예약하고,<br>대기없이 픽업하자!</h2><br><br>
+                  <h3 id="main_text" id="main_text">프린트 테이크아웃 서비스<br><strong>"뽀바드림"</strong></h3>
+                  <%= devise_error_messages! %>
+            </div>
+            <div class="signin-content">      
+                <div class="signin-form">
+                    <form method="POST" class="register-form" id="login-form">
+                    <div class="form-group">
+                    <%= f.input :userid,
+                        placeholder: '아이디',
+                        label: false,
+                        required: false,
+                        autofocus: true,
+                        input_html: { class: "form_input" }
+                        %>
                     </div>
+                    <div class="form-group">
+                    <%= f.input :password,
+                        placeholder:'비밀번호',
+                        label: false,
+                        required: false,
+                        input_html: { autocomplete: "current-password", class: "form_input"} 
+                        %>
+                    </div>
+                <!-- <div class="form-group">
+                    <input type="checkbox" name="remember-me" id="remember-me" class="agree-term">
+                    <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                </div> -->
+               
+                    <div class="login_register">
+                        <%= f.button :submit, "로그인", :class => "btn button form-group btn-block" %>
+                        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                        <% end -%>
+                    </div>
+                    <div class="register_password">
+                        <div>
+                            <a href="/users/sign_up">회원가입</a>
+                        </div>
+                        <div>
+                            <%= link_to "비밀번호 찾기", new_password_path(resource_name) %><br>
+                        </div>
+                    </div>
+                    </form> 
                 </div>
             </div>
-            <% end %>
+        </div>
+        <% end %>
         </section>
     </div>
     </div>
