@@ -58,6 +58,14 @@ body {
   padding-bottom:0px !important;
   height:90px;
 }
+.navbar{
+      padding:1.5rem 3rem;
+      display: flex;
+      height: 70px;
+      background-color:rgba(255, 255, 255, 0.6);
+      text-align: center;
+}
+
 .filecurrent_li{
   position:relative;
 }
@@ -125,103 +133,6 @@ body {
 		transition: all 300ms ease-in-out;
 	}
 
-/* MENU CONTAINER ----- */
-/*	.side_menu {
-		background: #057075;
-		height: 100vh;
-		left: -250px;
-		position: fixed;
-		top: 0;
-		width: 250px;
-	}
-	.side_menu .container {
-		padding: 40px 20px 0px 20px ;
-	}
- */
-
-/* HAMBURGER STYLES 
-	.burger_box {
-		display: block;
-		float: right;
-		margin-right: -45px;
-		margin-top:20px;
-	}
-	.burger_box a.menu-icon {
-		display: inline-block;
-		float: none;
-		height: 25px;
-		padding: 10px;
-		opacity: .5;
-		width: 25px;
-		z-index: 100;
-	}
-	.burger_box a.menu-icon:hover,
-	.burger_box a.menu-icon.opened {
-		opacity: 1;
-	}
-	.burger_box a.menu-icon.opened {
-		background: #057075;
-	}
-	.burger_box .menu-icon_box {
-		display: inline-block;
-		height: 25px;
-		position: relative;
-		text-align: left;
-		width: 25px;
-	}
-	.burger_box .menu-icon_line {
-		background: #057075;
-		border-radius: 2px;
-		display: inline-block;
-		height: 3px;
-		position: absolute;
-		width: 100%;
-	}
-	.burger_box .menu-icon_line--1 {
-		top: 2px;
-	}
-	.burger_box .menu-icon_line--2 {
-		top: 10px;
-	}
-	.burger_box .menu-icon_line--3 {
-		top: 18px;
-	}
-	.burger_box .menu-icon_line--1 {
-		transition: top 200ms 250ms, transform 200ms;
-		-webkit-transition: top 200ms 250ms, -webkit-transform 200ms;
-	}
-	.burger_box .menu-icon_line--2 {
-		transition: opacity 0ms 300ms;
-		-webkit-transition: opacity 0ms 300ms;
-	}
-	.burger_box .menu-icon_line--3 {
-		transition: top 100ms 300ms, transform 200ms;
-		-webkit-transition: top 100ms 300ms, -webkit-transform 200ms;
-	}
-	.burger_box .menu-icon.opened .menu-icon_box {
-		transform: scale3d(0.9, 0.9, 0.9);
-		-webkit-transform: scale3d(0.9, 0.9, 0.9);
-	}
-	.burger_box .menu-icon.opened .menu-icon_line {
-		top: 10px;
-	}
-	.burger_box .menu-icon.opened .menu-icon_line--1 {
-		transform: rotate3d(0, 0, 1, 45deg);
-		-webkit-transform: rotate3d(0, 0, 1, 45deg);
-		transition: top 100ms, transform 200ms 250ms;
-		-webkit-transition: top 100ms, -webkit-transform 200ms 250ms;
-	}
-	.burger_box .menu-icon.opened .menu-icon_line--2 {
-		opacity: 0;
-		transition: opacity 200ms;
-		-webkit-transition: opacity 200ms;
-	}
-	.burger_box .menu-icon.opened .menu-icon_line--3 {
-		transform: rotate3d(0, 0, 1, -45deg);
-		-webkit-transform: rotate3d(0, 0, 1, -45deg);
-		transition: top 200ms, transform 200ms 250ms;
-		-webkit-transition: top 200ms, -webkit-transform 200ms 250ms;
-	}*/
 
 /* STAGGER LIST ----- */
 	.list_load {
@@ -253,18 +164,14 @@ body {
 }
 
 
-
 @media (max-width: 767px) {
 	.menu_title{
 		font-size:20px;
-
 	}
 	.list_item{
 		font-size:18px;
 	}	
 }
-
-
 
 
 .btn-block:hover,.btn-block:focus {
@@ -274,7 +181,6 @@ body {
   transition: all 400ms cubic-bezier(.4,0,.2,1);
  
 }
-
 
 
 ul {
@@ -316,13 +222,12 @@ article[role="signup"] p {
   font-size: 11px;
   padding: 5px 15px;
 }
-
+/*
 .login-signup {
   height:60vh;
   margin:0 auto;
   margin-top:10px;
   max-width:400px;
-
 }
 
 .signup{
@@ -332,7 +237,7 @@ article[role="signup"] p {
 .form-control{
   font-size:11px;
 
-}
+}*/
 
 
 
@@ -358,43 +263,6 @@ article[role="signup"] p {
 
 
 
-/*
-.column.print_list{
-/*-webkit-flex: 1;
-   -ms-flex: 1;
-   flex: 1;
-   width:30vw;
-   margin: 30 auto;
-
-}
-
-/* Left and right column 
-.column.print_advertisement{
-   /*-webkit-flex: 1;
-   -ms-flex: 1;
-   flex: 1;
-   width:30vw;
-}
-
-
-/* upload column 
-.column.print_upload {
-    /*-webkit-flex: 2;
-    -ms-flex: 2;
-    flex: 2;
-    width:40vw;
-    padding:10px;
-}
-
-/* Style the footer 
-.footer {
-    text-align: center;
-    height:15vh;
-    bottom:0;
-    width:100%;
-}
-*/
-
 a{  
   color:white;
 
@@ -403,39 +271,7 @@ a{
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media (max-width: 767px) {
-  /*.header{
-     height:15vh;
-  }*/
 
-  /*.row {
-      -webkit-flex-direction: column;
-      flex-direction: column;
-    }
-  .column{
-
-  }
-   
-
-  .column.print_advertisement{
-  display:none;
-  }
-
-  .column.print_list{
-  order:2;
-  width:100%;
-  margin-top:0px;
-  
-  }
-  
-  .column.print_upload{
-  order:1;
-  width:100%;
-  margin: 0 auto;
-  } 
-
-  .info{
-    display:none;
-  }*/
   #progressbar{
     display:none;
   }
