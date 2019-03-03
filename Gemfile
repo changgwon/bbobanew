@@ -12,7 +12,7 @@ gem 'figaro'
 gem 'httparty'
 gem 'iamport'
 gem 'devise'
-gem 'rails_db'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
