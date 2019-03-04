@@ -251,7 +251,7 @@
             val7 = document.getElementById("splitop").value;
             val8 = document.getElementById("colorop").value;
             val9 = document.getElementById("attachmentop").value.substring(12);
-
+            if(val4.slice(-1)==',') val4=val4.slice(0,-1)
             total = totalPage(val4, val7);
             cur_cash= <%= current_user.cur_cash %>;
             money_per_page = 50;
@@ -321,6 +321,7 @@
             function totalPage(pagenum, split){
 
                   count = 0;
+                  if(pagenum.slice(-1)==',') pagenum=pagenum.slice(0,-1)
                   pagenum_c = pagenum.split(',');
                   len = pagenum_c.length;
                   for (i=0; i<len; i++){
@@ -334,6 +335,9 @@
                                 count += (parseInt(pagenum_d[1]) - parseInt(pagenum_d[0]));
                               }
                         }
+
+                        
+                          
                         else{
                               count+=1;
                         }
