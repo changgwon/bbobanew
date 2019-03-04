@@ -1,5 +1,7 @@
 class HomeController < ApplicationController  
-  def new2
+  def refund
+  end
+  def manual
   end
 
   def main
