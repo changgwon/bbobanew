@@ -10,7 +10,7 @@ gem 'activeadmin'
 gem 'simple_form'
 gem 'figaro'
 gem 'httparty'
-gem 'iamport'
+
 gem 'devise'
 
 

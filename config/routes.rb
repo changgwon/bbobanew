@@ -5,7 +5,8 @@ Rails.application.routes.draw do
         sessions: 'users/sessions'
   }
   root 'home#index'
-  get 'home/new2'
+  get 'home/refund'
+  get 'home/manual'
   get 'home/main'
   get 'home/fileupload'
   post 'home/filecreate'
