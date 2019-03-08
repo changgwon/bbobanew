@@ -84,9 +84,7 @@
             <td class="checkDetail" style="text-align: center;"><button id="detailBtn" onclick="showDetails('<%=x.pkuptime%>','<%=User.find_by(userid: x.userid).stdnum%>','<%=User.find_by(userid: x.userid).username%>', '<%=URI.decode(x.attachment_url.split('/').last)%>', '<%=x.totalpage%>', '<%=x.landscape%>', '<%=x.doublepg%>', '<%=x.split%>', '<%=x.color%>', '<%=x.cost%>', '<%=x.id%>', '<%=x.attachment_url%>')">상세보기</button></td>
             
             <% if x.progress == "인쇄대기" %>
-              <td class="printState"><button style="background: green; color:white;" onclick="window.location='../home/changeState1/<%=x.id%>'"><%= x.progress %></button></td>
-            <% elsif x.progress == "인쇄중" %>
-              <td class="printState"><button style="background: blue;  color:white;" onclick="window.location='../home/changeState3/<%=x.id%>'"><%= x.progress %></button></td>
+              <td class="printState"><button style="background: green; color:white;" onclick="window.location='../home/changeState3/<%=x.id%>'"><%= x.progress %></button></td>
             <% elsif x.progress == "인쇄완료" %>
               <td class="printState"><button style="background: grey;  color:white;" onclick="returnState('<%=x.id%>')"><%= x.progress %></button></td>
             <% elsif x.progress == "인쇄취소" %>
