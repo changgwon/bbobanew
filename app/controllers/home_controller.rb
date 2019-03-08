@@ -208,6 +208,11 @@ class HomeController < ApplicationController
       end
     end
     @today = Date.today;
+    @total_money=0
+    @completes=Upload.where(["progress = ?", "인쇄완료"])
+    @completes.each do |x|
+       @total_money +=x.cost
+    end
   end
 
   def filecurrent
@@ -265,6 +270,13 @@ class HomeController < ApplicationController
     end
 
     @tomorrow = Date.today+1;
+
+    @total_money=0
+    @completes=Upload.where(["progress = ?", "인쇄완료"])
+    @completes.each do |x|
+       @total_money +=x.cost
+    end
+    puts @total_money
   end
 
   def changeState1
