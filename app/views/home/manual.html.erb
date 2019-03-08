@@ -1,29 +1,114 @@
-<h1>이용방법</h1>
+<style>
+.manual_main {
+	width: 50%;
+	margin: 0 auto;
+}
 
-<h1>뽀바드림에 오신 것을 환영합니다!</h1>
-<br>
-<h3>뽀바드림의 이용방법은 다음과 같습니다.</h3>
+.highlight-pink {
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+.highlight-pink::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: -3px;
+	right: -3px;
+	z-index: -1;
+	display: inline-block;
+	height: 60%;
+	background-color: rgba(239, 194, 207, 0.6);
+}
+
+.highlight-purple {
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+.highlight-purple::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: -3px;
+	right: -3px;
+	z-index: -1;
+	display: inline-block;
+	height: 60%;
+	background-color: rgba(191, 158, 221, 0.5);
+}
+
+.custom-button{
+	font-family: Noto Sans KR;
+	color: white;
+	padding: 20px 100px;
+	border-radius:10px;
+	background-color: rgba(191, 158, 221, 1);
+	border: 0px;
+	height: 80%;
+	/* border 색은 지정색*/
+}
+.custom-button:hover{
+	color:white;
+	background-color: rgba(239, 194, 207, 1);
+	transform-origin:left;
+  	transition:width 0.25s ease;
+  	z-index:-1;
+}
+
+.welcome {
+	margin-top: 10px;
+	text-align: center;
+	color: #7a4baa;
+	height: 70px;
+}
+
+.main {
+	font-size: 1.5rem;
+}
+
+.explain {
+	background-color: #f4f3f4;
+	border-radius: 20px;
+	text-align: center;
+}
+
+</style>
+
+
+<div class="manual_main">
+<br><h2 class="highlight-purple">이용방법</h2>
+
+<div class="welcome">
+<h4>뽀바드림에 오신 것을 환영합니다!</h4>
+<h4>뽀바드림의 이용방법은 다음과 같습니다.</h4></div>
 <br><br>
 
-<h3>1. 회원가입을 해주세요.</h3>
+
+<h5 class="highlight-pink">1.</h5><p class="main">회원가입을 해주세요.</p>
 <br>
 
-<h3>2. 입력하신 이메일로 가서 계정을 인증합니다.</h3>
+<h5 class="highlight-pink">2.</h5> <p class="main">입력하신 이메일로 가서 계정을 인증합니다.</p>
 <br>
 
-<h3>3. 축하합니다! 회원 가입이 완료되었습니다.
-<br>이제 뽀바드림의 모든 서비스를 이용하실 수 있습니다.</h3>
+<h5 class="highlight-pink">3.</h5><p class="main">축하합니다! 회원 가입이 완료되었습니다.</p>
+<p class="main">이제 뽀바드림의 모든 서비스를 이용하실 수 있습니다.</p>
 <br>
 
-<h3>4. 프린트 테이크아웃을 신청하기 전, 인쇄 신청을 위한 포인트를 충전합니다.</h3>
+<h5 class="highlight-pink">4.</h5> <p class="main">프린트 테이크아웃을 신청하기 전,</br>인쇄 신청을 위한 포인트를 충전합니다.</p>
 <br>
+<div class="explain">
+	<br>
 <p>'포인트'에 들어가서 '포인트 충전' 신청 후 관리자의 승인을 기다립니다.
-<br>* 입금 처리는 낮 11시와 밤 11시에 이루어집니다.</p>
+<br>* 입금 처리는 낮 11시와 밤 11시에 이루어집니다.</p><br></div>
 <br>
 
-<h3>5. 충전이 완료되면 파일을 업로드할 수 있습니다.</h3>
+<h5 class="highlight-pink">5.</h5> <p class="main">충전이 완료되면 파일을 업로드할 수 있습니다.</p>
 <br>
 
+<div class="explain"><br>
 <h6>(1) 픽업과 관련된 정보를 설정합니다.</h6>
 <br>
 <p>원하는 픽업날짜, 픽업시간, 복사대 정보를 입력합니다.
@@ -42,19 +127,22 @@
 <p>가로/세로, 단면/양면, 분할, 흑백/컬러 정보를 입력합니다.
 <br>* 위의 설정 이외의 인쇄 양식은 컴퓨터 기본 설정에 따릅니다.
 <br>* 단면 인쇄는 1장에 50원, 양면 인쇄는 1장에 100원입니다.
-<br>** 흑백 인쇄는 1장에 50원, 컬러 인쇄는 200원입니다.</p>
+<br>** 흑백 인쇄는 1장에 50원, 컬러 인쇄는 200원입니다.</p><br></div>
 <br>
 
-<h3>6. 앞에서 입력한 프린트 설정을 체크합니다.
-<br>입력한 내용과 일치하면 확인 완료!를 클릭해 주세요.</h3>
+<h5 class="highlight-pink">6.</h5> <p class="main">앞에서 입력한 프린트 설정을 체크합니다.</p>
+<p class="main">입력한 내용과 일치하면 확인 완료!를 클릭해 주세요.</p>
 <br>
 
-<h3>7. '신청 내역'에서 현재 진행중인 신청 내역을 확인합니다.</h3>
+<h5 class="highlight-pink">7.</h5> <p class="main">'신청 내역'에서 현재 진행중인 신청 내역을 확인합니다.</p>
 <br>
 
-<h3>8. 신청한 내역의 상태가 '인쇄 완료'가 되면 신청한 픽업 시간에 복사대를 방문하여 프린트를 수령합니다.</h3>
+<h5 class="highlight-pink">8.</h5> <p class="main">신청한 내역의 상태가 '인쇄 완료'가 되면 신청한 픽업 시간에</br>복사대를 방문하여 프린트를 수령합니다.</p>
 <br>
 
 
 
- <a href="/home/main">뽀바 이용하러 홈으로 가기!</a>
+ <center><a href="/home/main"><button class="custom-button">뽀바 이용하러 홈으로 가기!</button></a></center><br>
+
+</div>
+
