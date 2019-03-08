@@ -1,4 +1,56 @@
-<h2>Resend confirmation instructions</h2>
+<style>
+
+.pheader{
+  display:none;
+}
+
+.page{
+  margin-top: 10%;
+}
+
+.login-signup{
+  text-align: center;
+}
+ @media (max-width:767px){
+    .logo{
+      display:none;
+    }
+    .go-back{
+      display:block;
+    }
+    .navbar-toggler{
+      display:none;
+    }
+    .nav-title{
+      display:block;
+    }
+
+    .nav-title:after {
+      visibility: visible;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      text-align: center;
+      margin: auto;
+      content: "비밀번호 찾기";
+    }
+    .text-center{
+      visibility:hidden;
+    }
+
+    article[role="signup"]{
+      box-shadow:none;
+      -webkit-box-shadow:none;
+
+    }
+
+  }
+</style>
+
+<div class="page">
+  <div class="login-signup">
+  <article role="signup">
+    <h5 class="text-center"><i class="fa fa-lock"></i>비밀번호 변경 재요청</h5><br>
 
 <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
@@ -6,15 +58,21 @@
 
   <div class="form-inputs">
     <%= f.input :email,
+                label: false,
                 required: true,
                 autofocus: true,
                 value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
-                input_html: { autocomplete: "email" } %>
-  </div>
+                placeholder: '이메일 주소',
+                input_html: { autocomplete: "이메일 주소", class:"form-control" } %>
+  </div><br>
 
   <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
+    <%= f.button :submit, "이메일 재전송", class: "btn button form-group btn-block" %>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+    <%= render "users/shared/links" %>
+    </article>
+  </div>
+</div>
+
