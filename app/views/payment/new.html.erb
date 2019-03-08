@@ -72,36 +72,36 @@
     <h5>포인트 충전</h5>
     <div class="charge_cash">
 
-          <%= form_for @charge, url: "/payment/create", html: { id: "myForm" } do |f| %>
+          <%= form_for @charge, url: "/payment/create", html: { id: "myForm1" } do |f| %>
           <div class="point_row">
               <div><%= f.label "500원 충전", :class => "label" %></div>
               <%= f.hidden_field :amount, :value => 500 %>
-              <div><input type="button" value="500원" class="price-button" onclick="showAccount(500)"></div>
+              <div><input type="button" id="1" value="500원" class="price-button" onclick="showAccount(this.id)"></div>
           </div>
           <% end %>
           <hr>
-         <%= form_for @charge, url: "/payment/create", html: { id: "myForm" }  do |f| %>
+         <%= form_for @charge, url: "/payment/create", html: { id: "myForm2" }  do |f| %>
           <div class="point_row">
             <div><%= f.label "2500원 충전", :class => "label" %></div>
             <%= f.hidden_field :amount, :value => 2500 %>
-            <div><input type="button" value="2500원" class="price-button" onclick="showAccount(2500)"></div>
+            <div><input type="button" id="2" value="2500원" class="price-button" onclick="showAccount(this.id)"></div>
           </div>
           <% end %>
         
           <hr>
-          <%= form_for @charge, url: "/payment/create", html: { id: "myForm" }  do |f| %>
+          <%= form_for @charge, url: "/payment/create", html: { id: "myForm3" }  do |f| %>
           <div class="point_row">
             <div><%= f.label "5000원 충전", :class => "label" %></div>
             <%= f.hidden_field :amount, :value => 5000 %>
-            <div><input type="button" value="5000원" class="price-button" onclick="showAccount(5000)"></div>
+            <div><input type="button" id="3" value="5000원" class="price-button" onclick="showAccount(this.id)"></div>
           </div>
           <% end %>
           <hr>
-          <%= form_for @charge, url: "/payment/create", html: { id: "myForm" }  do |f| %>
+          <%= form_for @charge, url: "/payment/create", html: { id: "myForm4" }  do |f| %>
           <div class="point_row">
             <div><%= f.label "10000원 충전", :class => "label"%></div>
             <%= f.hidden_field :amount, :value => 10000 %>
-            <div><input type="button" value="10000원" class="price-button" onclick="showAccount(10000)"></div>
+            <div><input type="button" id="4" value="10000원" class="price-button" onclick="showAccount(this.id)"></div>
           </div>
           <% end %>
           <hr>
@@ -137,12 +137,27 @@
   var howmuch = document.getElementById('howmuch');
   var span = document.getElementsByClassName("close")[0];
   var btnClose = document.getElementById('btnClose');
+  var flag = 0;
 
   span.onclick = function() {
       modal.style.display = "none";
   }
   btnClose.onclick = function(){
-    document.getElementById("myForm").submit();
+    var formnum = "";
+    if (flag==1){
+      formnum = "myForm1";
+    }
+    else if (flag==2){
+      formnum = "myForm2";
+    }
+    else if (flag==3){
+      formnum = "myForm3";
+    }
+    else{
+      formnum = "myForm4";
+    }
+
+    document.getElementById(formnum).submit();
     modal.style.display = "none";
   }
    window.onclick = function(event) {
@@ -151,7 +166,23 @@
       }
   }
 
-  function showAccount(value){
+
+  function showAccount(clicked_id){
+    var value = 0;
+    flag = clicked_id;
+
+    if (clicked_id == 1){
+      value = 500;
+    }
+    else if (clicked_id == 2){
+      value = 2500;
+    }
+    else if (clicked_id == 3){
+      value = 5000;
+    }
+    else{
+      value = 10000;
+    }
     howmuch.innerHTML = "구매 금액 : "+value +"원";
     modal.style.display = "block";
   }
