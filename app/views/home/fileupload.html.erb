@@ -23,20 +23,22 @@
       <input type="hidden" value="<%= form_authenticity_token() %>" name="authenticity_token"/>
         <!-- progressbar -->
         <ul id="progressbar">
-          <li class="active">복사대 선택</li>
+          <li class="active">픽업 설정</li>
           <li>파일 업로드</li>
           <li>파일 상세 설정</li>
         </ul>
         <!-- fieldsets -->
         <fieldset>
-          <h2 class="fs-title">복사대 설정</h2>
-          <h3 class="fs-subtitle">프린트물을 찾아갈 장소와 시간을<br> 정하는 단계입니다.</h3><br>
+          <h2 class="fs-title">픽업 설정</h2>
+          <h3 class="fs-subtitle">프린트물을 픽업할 장소와 시간을<br> 정하는 단계입니다.</h3><br>
           <div class="input_text">
                 <%= f.label "픽업날짜" %>
                 <%= f.select(:pkupdate, ["오늘","내일"],{}, {:id => "pkupdateop", :onchange => "timeopChange()"})%>
                 <br><br>
 
-                <a href="#" onclick="possibleRequest()" style="color:red;"><%= f.label "픽업시간" %></a>
+                <a href="#" onclick="possibleRequest()" style="color:red;">
+                  <%= f.label "픽업시간" %></a><br>
+                  <%= f.label "(클릭하여 신청가능한 픽업시간을 Check!)" %>
                 <%= f.select(:pkuptime, ["10:15~10:30","11:45~12:00", "13:15~13:30", "14:45~15:00","16:15~16:30"],{}, {:id => "pkuptimeop"})%>
                 <br><br>
 
@@ -119,7 +121,7 @@
           <!-- Modal content -->
           <div class="modal-content" style="color:black;padding:50px;padding-top:20px">
             <span class="close" id="close2">&times;</span>
-            <h3>잔여 신청 현황</h3><br>
+            <h3>잔여 신청 현황<br>(잔여석/전체) </h3><br>
             <p><%= Date.today %> | 10:15~10:30 |&nbsp; <%=30-@count1%> / 30</p>
             <p><%= Date.today %> | 11:45~12:00 |&nbsp; <%=30-@count2%> / 30</p>
             <p><%= Date.today %> | 13:15~13:30 |&nbsp; <%=30-@count3%> / 30</p>
