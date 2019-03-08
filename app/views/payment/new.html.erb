@@ -76,7 +76,7 @@
           <div class="point_row">
               <div><%= f.label "500원 충전", :class => "label" %></div>
               <%= f.hidden_field :amount, :value => 500 %>
-              <div><input type="button" value="500원" class="price-button" onclick="showAccount()"></div>
+              <div><input type="button" value="500원" class="price-button" onclick="showAccount(500)"></div>
           </div>
           <% end %>
           <hr>
@@ -84,7 +84,7 @@
           <div class="point_row">
             <div><%= f.label "2500원 충전", :class => "label" %></div>
             <%= f.hidden_field :amount, :value => 2500 %>
-            <div><input type="button" value="2500원" class="price-button" onclick="showAccount()"></div>
+            <div><input type="button" value="2500원" class="price-button" onclick="showAccount(2500)"></div>
           </div>
           <% end %>
         
@@ -93,7 +93,7 @@
           <div class="point_row">
             <div><%= f.label "5000원 충전", :class => "label" %></div>
             <%= f.hidden_field :amount, :value => 5000 %>
-            <div><input type="button" value="5000원" class="price-button" onclick="showAccount()"></div>
+            <div><input type="button" value="5000원" class="price-button" onclick="showAccount(5000)"></div>
           </div>
           <% end %>
           <hr>
@@ -101,7 +101,7 @@
           <div class="point_row">
             <div><%= f.label "10000원 충전", :class => "label"%></div>
             <%= f.hidden_field :amount, :value => 10000 %>
-            <div><input type="button" value="10000원" class="price-button" onclick="showAccount()"></div>
+            <div><input type="button" value="10000원" class="price-button" onclick="showAccount(10000)"></div>
           </div>
           <% end %>
           <hr>
@@ -151,8 +151,7 @@
       }
   }
 
-  function showAccount(){
-    var value = document.getElementById('myForm').value;
+  function showAccount(value){
     howmuch.innerHTML = "구매 금액 : "+value +"원";
     modal.style.display = "block";
   }
