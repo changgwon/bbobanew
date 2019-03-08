@@ -1,23 +1,89 @@
-<h1> 환불규정</h1>
-<h3>환불 시점은 다음과 같습니다.</h3>
-<p>
-&nbsp; &nbsp; &nbsp; &nbsp;1. 사용자의 환불 요청 시<br>
-&nbsp; &nbsp; &nbsp; &nbsp;2. 서비스 종료 시<br>
-&nbsp; &nbsp; &nbsp; &nbsp;3. 기타 환불이 필요하다고 판단 될 경우
-</p>
-<h3>환불 방법은 다음과 같습니다.</h3>
-<p>
-	<h5>&nbsp; &nbsp; &nbsp; &nbsp;사용자의 환불 요청 시</h5>
-	&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-	 사용자의 은행, 계좌번호, 이름, 환불 액수, 고유 아이디 번호 ( <%= current_user.id%> )를 
-		bbobadream1004@gmail.com 으로 보내주세요! 환불은 신청일 기준 일주일 내에 처리됩니다. <br>
+<style>
+.refund_main {
+	width: 50%;
+	margin: 0 auto;
+}
 
-	<h5>&nbsp; &nbsp; &nbsp; &nbsp; 서비스 종료 시 & 기타 환불 시</h5>
-	&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+.highlight-pink {
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+.highlight-pink::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: -3px;
+	right: -3px;
+	z-index: -1;
+	display: inline-block;
+	height: 60%;
+	background-color: rgba(239, 194, 207, 0.6);
+}
+
+.highlight-purple {
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+}
+
+.highlight-purple::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: -3px;
+	right: -3px;
+	z-index: -1;
+	display: inline-block;
+	height: 60%;
+	background-color: rgba(191, 158, 221, 0.5);
+}
+
+.custom-button{
+	font-family: Noto Sans KR;
+	color: white;
+	padding: 20px 100px;
+	border-radius:10px;
+	background-color: rgba(191, 158, 221, 1);
+	border: 0px;
+	height: 80%;
+	/* border 색은 지정색*/
+}
+.custom-button:hover{
+	color:white;
+	background-color: rgba(239, 194, 207, 1);
+	transform-origin:left;
+  	transition:width 0.25s ease;
+  	z-index:-1;
+}
+
+</style>
+
+
+<div class="refund_main">
+<br><h2 class="highlight-purple">환불규정</h2><br>
+<center><h4 class="highlight-pink">환불 시점은 다음과 같습니다.</h4></center>
+<p>
+1. 사용자의 환불 요청 시<br>
+2. 서비스 종료 시<br>
+3. 기타 환불이 필요하다고 판단 될 경우
+</p><br><br>
+<center><h4 class="highlight-pink">환불 방법은 다음과 같습니다.</h4></center>
+<p>
+	<h6>1. 사용자의 환불 요청 시</h6>
+	
+	 사용자의 은행, 계좌번호, 이름, 환불 액수, 고유 아이디 번호 ( <%= current_user.id%> )를 
+		bbobadream1004@gmail.com 으로 보내주세요! 환불은 신청일 기준 일주일 내에 처리됩니다. <br><br><br>
+
+	<h6>2. 서비스 종료 시 & 기타 환불 시</h6>
+	
 	서비스 제공자가 bbobadream1004@gmail.com을 통해 일괄적으로 사용자가 기존에 등록했던 email이나 전화번호로 사용자의 환불계좌를 조사하여 환불처리합니다. 환불은 신청일 기준 일주일 내에 처리됩니다.
 		
-</p>
+</p><br>
 
 
 
- <a href="/home/main">메인 페이지로 이동</a>
+ <center><a href="/home/main"><button class="custom-button">메인 페이지로 이동</button></a></center><br>
+
+</div>
