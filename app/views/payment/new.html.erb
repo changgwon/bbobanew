@@ -28,6 +28,28 @@
   width:80%;
   margin:auto;
 }
+
+.highlight-pink {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.highlight-pink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -3px;
+  right: -3px;
+  z-index: -1;
+  display: inline-block;
+  height: 60%;
+  background-color: rgba(239, 194, 207, 0.6);
+}
+
+.modal_content{
+  text-align: center;
+}
 @media (max-width: 767px){
   .logo{
     display:none;
@@ -115,14 +137,14 @@
           <div class="modal-content" style="color:black;padding:50px;padding-top:20px">
             <span class="close">&times;</span>
             
-            <p>나의 고유 번호  : <%= current_user.id%> </p>
-            <p id="howmuch"></p> <!--이 코드는 밑의 showAccount(value) 에서 id로 값을 받아온다 따라서 다른 tag를 쓰고 id는 howmuch 쓰면 변경가능-->
-            <p>
-              신한은행 110-382-635029 하창권 으로 입금해주세요!<br>
-              입금시 반드시 받는통장표시내용에 이름과 위의 고유번호를 함께 써주세요.<br>
-              예) <%= current_user.username%>(<%= current_user.id%>)<br>
-              입금된 금액이나 고유번호가 신청된 내용과 다를 경우 입금 처리되지 않습니다.<br> 
-              입금 처리는 낮 11시와 밤 11시에 이루어집니다. 
+            <br><center><h5 class="highlight-pink">나의 고유 번호  : <%= current_user.id%></h5></center>
+            <center><h5 class="highlight-pink" id="howmuch"></h5></center><br> <!--이 코드는 밑의 showAccount(value) 에서 id로 값을 받아온다 따라서 다른 tag를 쓰고 id는 howmuch 쓰면 변경가능-->
+            <p class="modal_content">
+              <strong><신한은행 110-382-635029 하창권></strong> 으로 입금해주세요!<br><br>
+              입금시 반드시 받는 통장 표시내용에 이름과<br>위의 고유번호를 함께 써주세요.<br>
+              예) <%= current_user.username%>(<%= current_user.id%>)<br><br>
+              입금된 금액이나 고유번호가 신청된 내용과 다를 경우<br>입금 처리되지 않습니다.<br><br>
+              *입금 처리는 낮 11시와 밤 11시에 이루어집니다.<br>
 
            </p>
             <button class="btn button form-group btn-block" id="btnClose">확인 완료!</button>
