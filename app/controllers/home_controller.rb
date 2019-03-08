@@ -3,6 +3,8 @@ class HomeController < ApplicationController
   end
   def manual
   end
+  def after_registration
+  end
 
   def main
     #count 를 위한 비효율적인 코드
@@ -290,7 +292,7 @@ class HomeController < ApplicationController
       cashflow=Cashflow.new
       cashflow.user_id=upload.user_id
       cashflow.real_created_at = upload.created_at
-      cashflow.amount = upload.cost
+      cashflow.amount = refund
       cashflow.cur_cash=current_user.cur_cash
       cashflow.use_type = "인쇄취소"
 
@@ -337,6 +339,13 @@ class HomeController < ApplicationController
       user.cur_cash = (user.cur_cash + refund)
       user.save
       upload.save
+      cashflow=Cashflow.new
+      cashflow.cur_cash=current_user.cur_cash
+      cashflow.user_id=current_user.id
+      cashflow.real_created_at = Time.now
+      cashflow.amount = refund
+      cashflow.use_type = "인쇄취소"
+      cashflow.save
     end
     redirect_to "/home/filecurrent"
 

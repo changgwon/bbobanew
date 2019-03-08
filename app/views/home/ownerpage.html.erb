@@ -18,6 +18,7 @@
 
 </style>
 
+
 <div class="linkwrap">
   <div class="link">
     <div class="linkchild">
@@ -52,6 +53,10 @@
         document.getElementById("time").innerHTML = hrfunc(hr)+min;
 
       </script>
+                <% if user_signed_in? %>
+            <%= link_to "정보변경", edit_user_registration_path, {:style=>"margin-right:30px"} %>    
+            <%= link_to "로그아웃", destroy_user_session_path %>
+          <% end %>
     </div>
     <div class="linkchild"><br><br><a href="../home/ownerpage_tomo">내일 (<%=@tomorrow%>) 목록 보기</a></div>
   </div>
