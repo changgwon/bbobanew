@@ -53,6 +53,10 @@
         document.getElementById("time").innerHTML = hrfunc(hr)+min;
 
       </script>
+                <% if user_signed_in? %>
+            <%= link_to "정보변경", edit_user_registration_path, {:style=>"margin-right:30px"} %>    
+            <%= link_to "로그아웃", destroy_user_session_path %>
+          <% end %>
     </div>
     <div class="linkchild"><br><br><a href="../home/ownerpage">오늘 (<%=@today%>) 목록 보기</a></div>
   </div>
