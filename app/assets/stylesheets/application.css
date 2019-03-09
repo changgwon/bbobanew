@@ -504,12 +504,16 @@ a{
 #print_status{
   padding:0.5em;
   border:none;
-  color:white;
+  color: white;
   border-radius:10px;
 }
 
+.cancel-button {
+  background-color: #be9ddd;
+}
+
 .cancel-button:hover{
-  background-color:rgb(105,0,210);
+  background-color: #efc2cf;
 }
 
 #point-button, .price-button{
@@ -536,12 +540,12 @@ a{
 .custom-button{
   padding: 20px 100px;
   border-radius:10px;
-  border: 3px solid rgb(105,0,210);
+  border: 3px solid #be9ddd;
   /* border 색은 지정색*/
 }
 .custom-button:hover{
   color:white;
-  background-color:rgb(105,0,210);
+  background-color:#be9ddd;
   transform-origin:left;
   transition:width 0.25s ease;
   z-index:-1;
@@ -554,5 +558,5 @@ a{
 }
 .custom-button2:hover{
   color:white;
-  background-color:rgb(105,0,210);
+  background-color:#be9ddd;
 }
