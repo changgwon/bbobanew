@@ -117,6 +117,9 @@
           <% if user_signed_in? %>
             <%= link_to "정보변경", edit_user_registration_path, {:style=>"margin-right:30px"} %>    
             <%= link_to "로그아웃", destroy_user_session_path %>
+            <%= link_to "포인트 충전", "/payment/cashflow" %>
+            <%= link_to "메인페이지", "/home/main" %>
+            <%= link_to "신청내역", "/home/filecurrent" %>
           <% end %>
         </form>
        </div>
