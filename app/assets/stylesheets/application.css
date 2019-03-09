@@ -141,7 +141,7 @@ body {
 
 
 .btn-block:hover,.btn-block:focus {
-  background-color: rgb(105,0,210);
+  background-color: #be9ddd;
   color: #ffffff;
   webkit-transition: all 400ms cubic-bezier(.4,0,.2,1);
   transition: all 400ms cubic-bezier(.4,0,.2,1);
@@ -268,7 +268,7 @@ a{
       /*buttons*/
       #msform .action-button {
             width: 100px;
-            background: rgb(105,0,210);
+            background: #be9ddd;
             font-weight: bold;
             color: white;
             border: 0 none;
@@ -348,7 +348,7 @@ a{
       /*marking active/completed steps green*/
       /*The number of the step and the connector before it = green*/
       #progressbar li.active:before,  #progressbar li.active:after{
-            background: rgb(105,0,210);
+            background: #be9ddd;
             color: white;
       }
 
@@ -486,7 +486,7 @@ a{
 }
 
 .detailview{
-  border:2px solid rgb(105,0,210);
+  border:2px solid #edc0cf;
   border-radius:5px;
   padding:40px;
   max-width:600px;
@@ -517,11 +517,11 @@ a{
   padding:0.5em;
   color:black;
   background-color:white;
-  border:2px solid rgb(105,0,210);
+  border:2px solid #be9ddd;
 }
 #point-button:hover, .price-button:hover{
   color:white;
-  background-color:rgb(105,0,210);
+  background-color: #be9ddd;
 }
 .price-button{
   min-width:100px;
