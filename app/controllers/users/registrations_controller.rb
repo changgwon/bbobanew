@@ -53,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     #배포용
-    'https://www.bbobadream.com/home/after_registration/'
+    'http://www.bbobadream.com/home/after_registration/'
 
     #개발용
       # 'http://localhost:3000/home/after_registration/'
@@ -64,7 +64,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
     #배포용
-    'https://www.bbobadream.com/home/after_registration/'
+    'http://www.bbobadream.com/home/after_registration/'
 
     #개발용
       # 'http://localhost:3000/home/after_registration/'
