@@ -15,7 +15,7 @@
   }
   .linkchild{
   }
-
+  
 </style>
 
 
@@ -58,7 +58,7 @@
             <%= link_to "로그아웃", destroy_user_session_path %>
           <% end %>
     </div>
-    <div class="linkchild"><br><br><a href="../home/ownerpage_tomo">내일 (<%=@tomorrow%>) 목록 보기</a><br> 현재까지 판매 금액: <%=@total_money%></div>
+    <div class="linkchild"><br><br><a href="../home/ownerpage_tomo">내일 (<%=@tomorrow%>) 목록 보기</a><br> 이번 주 판매 금액: <%=@total_money%></div>
 
 
   </div>
@@ -100,7 +100,11 @@
 
           </tr>
         <% end %>
+
       <% end %>
+
+
+
     </tbody>
 
 
@@ -111,7 +115,7 @@
   </table>
 
 </div>
-
+<div class="paginate"><%= paginate @todayuploads%></div>
 <!-- The Modal -->
 <div id="mymodal" class="modal">
 

@@ -201,18 +201,19 @@ class HomeController < ApplicationController
     @todayuploads = []
     @tomorrowuploads = []
     Upload.all.each do |x|
-      if x.pkupdate == Date.today
-        @todayuploads << x
-      elsif x.pkupdate > Date.today
+      if x.pkupdate > Date.today
         @tomorrowuploads << x
+     
+       
       end
     end
     @today = Date.today;
     @total_money=0
-    @completes=Upload.where(["progress = ?", "인쇄완료"])
+    @completes=Upload.where(["progress = ? and created_at >=?", "인쇄완료",Time.now.beginning_of_week])
     @completes.each do |x|
        @total_money +=x.cost
     end
+    @tomorrowuploads =Kaminari.paginate_array(@tomorrowuploads).page(params[:page]).per(3)
   end
 
   def filecurrent
@@ -264,19 +265,19 @@ class HomeController < ApplicationController
     Upload.all.each do |x|
       if x.pkupdate == Date.today
         @todayuploads << x
-      elsif x.pkupdate > Date.today
-        @tomorrowuploads << x
+    
       end
+       
     end
-
+    @todayuploads =Kaminari.paginate_array(@todayuploads).page(params[:page]).per(3)
     @tomorrow = Date.today+1;
 
     @total_money=0
-    @completes=Upload.where(["progress = ?", "인쇄완료"])
+    @completes=Upload.where(["progress = ? and created_at >=?", "인쇄완료",Time.now.beginning_of_week])
     @completes.each do |x|
        @total_money +=x.cost
     end
-    puts @total_money
+  
   end
 
   def changeState1
