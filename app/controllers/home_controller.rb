@@ -213,7 +213,7 @@ class HomeController < ApplicationController
     @completes.each do |x|
        @total_money +=x.cost
     end
-    @tomorrowuploads =Kaminari.paginate_array(@tomorrowuploads).page(params[:page]).per(3)
+    @tomorrowuploads =Kaminari.paginate_array(@tomorrowuploads).page(params[:page]).per(20)
   end
 
   def filecurrent
@@ -269,7 +269,7 @@ class HomeController < ApplicationController
       end
        
     end
-    @todayuploads =Kaminari.paginate_array(@todayuploads).page(params[:page]).per(3)
+    @todayuploads =Kaminari.paginate_array(@todayuploads).page(params[:page]).per(20)
     @tomorrow = Date.today+1;
 
     @total_money=0
