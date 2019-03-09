@@ -15,6 +15,18 @@
   }
   .linkchild{
   }
+
+  .paginate {
+    text-align: center;
+  }
+
+  .pagination {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+  }
+
   
 </style>
 
@@ -113,9 +125,9 @@
     </tfoot>
 
   </table>
-
+    <div class="paginate"><%= paginate @todayuploads%></div>
 </div>
-<div class="paginate"><%= paginate @todayuploads%></div>
+
 <!-- The Modal -->
 <div id="mymodal" class="modal">
 

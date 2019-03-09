@@ -1,9 +1,7 @@
 <!-- <link href="/assets/printer.css" media="screen" rel="stylesheet" /> -->
 <%=stylesheet_link_tag "printer"%>
 <style type="text/css">
-  .page{
-    width:100vh;
-  }
+  
   .linkwrap{
     padding-top: 5%;
     width: 100%;
@@ -15,6 +13,17 @@
     margin: auto;
   }
   .linkchild{
+  }
+
+  .paginate {
+    text-align: center;
+  }
+
+  .pagination {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
   }
 
 </style>
@@ -102,15 +111,17 @@
           </tr>
         <% end %>
       <% end %>
-      <div class="paginate"><%= paginate @tomorrowuploads%></div>
+      
     </tbody>
 
     <tfoot>
+      
     </tfoot>
 
   </table>
-
+  <div class="paginate"><%= paginate @tomorrowuploads%></div>
 </div>
+
 
 <!-- The Modal -->
 <div id="mymodal" class="modal">
