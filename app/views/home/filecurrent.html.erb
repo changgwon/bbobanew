@@ -6,7 +6,7 @@ a:hover{
 }
 #category1, #category2, #category3{
 	border:none;
-	color:grey;
+	color: grey;
 	background-color:transparent;
 	margin-bottom:30px;
 }
@@ -28,7 +28,7 @@ a:hover{
 	display:block;
 }
 .filecurrent_card{
-	 border:1px solid rgb(105,0,210);;
+	 border:1px solid #d0abd8;
 }
 
 </style>
@@ -58,11 +58,11 @@ a:hover{
 							<%= x.pkuptime %>
 							<%=x.printer%> 관 <br> 
 						<% end %>
-					   	</b></div>
+					   	</b>
 					   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
 					   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
 					   
-					  	<%=x.progress%><br>
+					  	<%=x.progress%><br></div>
 				</div></a>
 
 			<% end %>

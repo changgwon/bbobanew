@@ -24,7 +24,7 @@ body {
 }
 .filecurrent_card{
   width:90%;
-  height:150px;
+  height:100%;
   border-radius:10px;
   color:black;
   margin: 0 auto;
@@ -34,7 +34,7 @@ body {
   padding:20px;
 }
 .filecurrent_card:hover{
-  box-shadow: 0 4px 8px 0 rgba(0,0,0, 0.2), 0 6px 20px 0 rgba(0,0,0, 0.59);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0, 0.2), 0 6px 20px 0 rgba(0,0,0, 0.5);
 }
 
 .print_list a{
