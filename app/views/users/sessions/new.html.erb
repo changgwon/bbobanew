@@ -59,6 +59,7 @@
     background: #f7f7f7;
     text-align: center;
     width: 100%;
+    margin-top: 15px;
 }
 
 @media (max-width:1023px){
@@ -109,16 +110,17 @@
 <body>
 
 <div class="main">
-        <!-- Sing in  Form -->
+        <!-- Sign in  Form -->
   <div style="margin:auto">
-    <section class="sign-in">
+    <div class="sign-in">
             <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
 
       <div class="container">            
             <div class="main_text">
                 <h3 class="font-weight-bold" id="main_text">인쇄물 예약하고,<br>대기없이 픽업하자!</h2><br><br>
-                  <h3 id="main_text" id="main_text">프린트 테이크아웃 서비스<br><strong>"뽀바드림"</strong></h3>
+                  <h3 id="main_text" id="main_text">프린트 테이크아웃 서비스<br><strong>"뽀바드림"</strong></h3><br>
+                  <p>*뽀바드림은 크롬에 최적화 되어 있습니다.</p>
                   <%= devise_error_messages! %>
             </div>
             <div class="signin-content">      
@@ -164,7 +166,7 @@
             </div> <!--signin content-->
         </div> <!--container-->
         <% end %>
-        </section>
+        </div>
     </div>
 
       <div class="footer font-small unique-color-dark">
