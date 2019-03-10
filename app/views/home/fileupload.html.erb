@@ -27,7 +27,8 @@
       <div class="column">
       <!-- multistep form -->
 
-      <%= form_for @upload, url: home_filecreate_path, :autenticity_token => true, method:"post", :remote => true, html: { multipart: true, id: :msform} do |f| %>
+      <%= form_for @upload, url: home_filecreate_path, :autenticity_token => true, method:"post", :remote => true, html: { multipart: true, id: :msform, onkeydown:"return captureReturnKey(event)"} do |f| %>
+
       <input type="hidden" value="<%= form_authenticity_token() %>" name="authenticity_token"/>
         <!-- progressbar -->
         <ul id="progressbar">
@@ -424,6 +425,13 @@
           
           function possibleRequest(){
             modal2.style.display = "block";
+          }
+
+        /*엔터(keyCode=13) 파악해서 form 제출 안되게 하는 함수.
+        단, 글 입력하는 textarea일땐 빼고(우린 textarea 없어서 필요는 없지만)*/
+          function captureReturnKey(e) { 
+              if(e.keyCode==13 && e.srcElement.type != 'textarea') 
+              return false;
           }
 
 
