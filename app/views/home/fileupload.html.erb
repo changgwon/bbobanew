@@ -27,7 +27,7 @@
       <div class="column">
       <!-- multistep form -->
 
-      <%= form_for @upload, url: home_filecreate_path, :autenticity_token => true, method:"post", :remote => true, html: { multipart: true, id: :msform, onsubmit:"return false;"} do |f| %>
+      <%= form_for @upload, url: home_filecreate_path, :autenticity_token => true, method:"post", :remote => true, html: { multipart: true, id: :msform} do |f| %>
       <input type="hidden" value="<%= form_authenticity_token() %>" name="authenticity_token"/>
         <!-- progressbar -->
         <ul id="progressbar">
@@ -246,10 +246,10 @@
                   msg = "";
                   if(!regexp.test(test)) msg+= "인쇄할 페이지를 정해진 양식대로 입력해주세요!\n";
                 
-                  // if (!val4){
-                  //       msg += "인쇄할 페이지 범위를 반드시 입력해주세요!\n";
+                  if (!val4){
+                        msg += "인쇄할 페이지 범위를 반드시 입력해주세요!\n";
 
-                  // }
+                  }
                   if (!val9){
                         msg += "인쇄할 문서를 반드시 첨부해주세요!\n";
                   }
