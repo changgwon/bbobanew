@@ -148,9 +148,13 @@
               예) <%= current_user.username%>(<%= current_user.id%>)<br><br>
               입금된 금액이나 고유번호가 신청된 내용과 다를 경우<br>입금 처리되지 않습니다.<br><br>
               *입금 처리는 낮 11시와 밤 11시에 이루어집니다.<br>
+              *아래의 <span style="color:red">'확인 완료'</span> 버튼을 눌러야 신청이 완료됩니다!<br>
 
            </p>
-            <button class="btn button form-group btn-block" id="btnClose">확인 완료!</button>
+           <div class="btnarea" style="text-align: center">
+           <button class="btn button form-group" id="btnCancel" style="width:40%; display: inline;">신청 취소</button>
+            <button class="btn button form-group" id="btnClose" style="width:40%; display: inline;">확인 완료!</button>
+          </div>
           </div>
 
         </div>
@@ -162,10 +166,15 @@
   var howmuch = document.getElementById('howmuch');
   var span = document.getElementsByClassName("close")[0];
   var btnClose = document.getElementById('btnClose');
+  var btnCancel = document.getElementById('btnCancel');
   var flag = 0;
 
   span.onclick = function() {
       modal.style.display = "none";
+  }
+
+  btnCancel.onclick = function(){
+    modal.style.display = "none";
   }
   btnClose.onclick = function(){
     var formnum = "";
@@ -190,6 +199,7 @@
           modal.style.display = "none";
       }
   }
+
 
 
   function showAccount(clicked_id){
