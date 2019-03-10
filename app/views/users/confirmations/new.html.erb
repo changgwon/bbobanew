@@ -53,7 +53,7 @@
     <h5 class="text-center"><i class="fa fa-lock"></i>인증 메일 재요청</h5><br>
 
 <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+  
   <%= f.full_error :confirmation_token %>
 
   <div class="form-inputs">

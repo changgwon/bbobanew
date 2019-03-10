@@ -56,7 +56,9 @@ ko:
             username:
               blank: "을 입력해주세요"
             password_confirmation:
-              confirmation: "해주세요."                                        
+              confirmation: "해주세요."  
+            current_password: 
+              blank: "를 입력해주세요"                                      
                      
     models:
       user: 사용자

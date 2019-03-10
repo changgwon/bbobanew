@@ -61,11 +61,11 @@
           <h2 class="fs-title">파일 업로드</h2>
           <h3 class="fs-subtitle">파일을 업로드하고, 인쇄할 페이지 범위를 <br>선택하는 단계입니다.<br></h3>
 
-          <%= f.file_field :attachment, accept: 'appprincation/pdf, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/haansofthwp', placeholder: "첨부파일" , :id => "attachmentop" %><br>
+          <%= f.file_field :attachment, accept: 'application/pdf, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/haansofthwp', placeholder: "첨부파일" , :id => "attachmentop" %><br>
           
           <%= f.text_field :pagenum, placeholder: "인쇄 페이지 범위  ex) 1-33, 35", :id => "pagenumop" %><br>
 
-          <h3 class="input_text" style="text-align: left">*첨부가능한 파일 형식은 워드, 한글, PPT, PDF입니다.<br>*첨부파일이 'pdf'형식일 경우, 옵션을 <span style="color:red">'모든 파일'</span>로 설정하여 첨부해 주세요.<br></h3>
+          <h3 class="input_text" style="text-align: left">*첨부가능한 파일 형식은 워드, 한글, PPT, PDF입니다.</h3>
           <input type="button" name="previous" class="previous action-button" value="Previous" />
           <input type="button" id="checkpage" name="next" class="next action-button" value="Next" />
         </fieldset>
@@ -228,6 +228,8 @@
               val4 = document.getElementById("pagenumop").value;
               val7 = document.getElementById("splitop").value;
               val9 = document.getElementById("attachmentop").value.substring(12);
+              val3 = document.getElementById("pkupdateop").value;
+              val2 = document.getElementById("pkuptimeop").value;
 
               var regexp = /^((\d+-\d+|\d+),?)+$/ ;
               var test = document.getElementById("pagenumop").value;
@@ -244,7 +246,36 @@
                   if (totalPage(val4, val7)<=0){
                     msg += "올바른 페이지 범위가 설정되지 않았습니다!";
                   }
-
+                  if(val3 == "오늘" && val2=="10:15~10:30"){
+                    if(<%=@count1%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                  }
+                  else if (val3 == "오늘" && val2=="11:45~12:00"){
+                    if(<%=@count2%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                  }
+                  else if (val3 == "오늘" && val2=="13:15~13:30"){
+                    if(<%=@count3%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                  }
+                  else if (val3 == "오늘" && val2=="14:45~15:00"){
+                    if(<%=@count4%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                  }
+                  else if (val3 == "오늘" && val2=="16:15~16:30"){
+                    if(<%=@count5%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                  }
+                  else if (val3 == "내일" && val2=="10:15~10:30"){
+                    if(<%=@count6%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                  }
+                  else if (val3 == "내일" && val2=="11:45~12:00"){
+                    if(<%=@count7%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                  }
+                  else if (val3 == "내일" && val2=="13:15~13:30"){
+                    if(<%=@count8%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                  }
+                  else if (val3 == "내일" && val2=="14:45~15:00"){
+                    if(<%=@count9%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                  }
+                  else if (val3 == "내일" && val2=="16:15~16:30"){
+                    if(<%=@count10%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                  }
                   return msg;
             }
 
@@ -269,7 +300,7 @@
                 money_per_page = 200;
             }
 
-                  sel.innerHTML = "<strong>결제 예정 금액 :  "+(money_per_page*total)+"원</strong><br>"+"현재 잔여 포인트:"+cur_cash+"<hr><br><strong>"+val1+"관 복사대, "+val2+" "+val3+"</strong><br>"+"파일명:"+val9+"<br>"+"인쇄할 페이지:"+val4+"(총"+total+"p)<br><hr><br>";
+                  sel.innerHTML = "<strong>결제 예정 금액 :  "+(money_per_page*total)+"원</strong><br>"+"현재 잔여 포인트:"+cur_cash+"<br>결제 후 잔여 포인트:"+(cur_cash-(money_per_page*total))+"<hr><br><strong>"+val1+"관 복사대, "+val2+" "+val3+"</strong><br>"+"파일명:"+val9+"<br>"+"인쇄할 페이지:"+val4+"(총"+total+"p)<br><hr><br>";
 
                   sel3.innerHTML = val5+"방향 / "+val7+"분할 / "+val6+" / "+val8+"<br><hr><br>";  
 
@@ -342,7 +373,7 @@
                                 count += (parseInt(pagenum_d[1]) - parseInt(pagenum_d[0]) +1);
                               }
                               else {
-                                count -= 9999;
+                                count -= Number.MIN_SAFE_INTEGER;
                               }
                         }
 
