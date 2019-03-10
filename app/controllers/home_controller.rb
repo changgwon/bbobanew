@@ -70,7 +70,7 @@ class HomeController < ApplicationController
         elsif x.pkuptime == "16:15~16:30"
           @count5+=1
         end
-      else
+      elsif x.pkupdate == Date.today + 1 
         if x.pkuptime == "10:15~10:30"
           @count6+=1
         elsif x.pkuptime == "11:45~12:00"
@@ -122,6 +122,7 @@ class HomeController < ApplicationController
     pagenum_o = params[:upload][:pagenum]
     @count = 0
     pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
+  
     pagenum_c.each do |x|
       if x.include? "-"
         pagenum_d = x.split('-')
@@ -191,7 +192,7 @@ class HomeController < ApplicationController
     
 
 
-    redirect_to '/home/main'
+    redirect_to '/home/filecurrent'
   end
 
   def ownerpage_tomo
