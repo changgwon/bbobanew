@@ -7,6 +7,14 @@
   font-size: 1.8vh;
 }
 
+#notice{
+  font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 </style>
 
 <div class="page">
@@ -116,7 +124,8 @@
           <!-- Modal content -->
           <div class="modal-content" style="color:black;padding:50px;padding-top:20px">
             <span class="close">&times;</span>
-            <div id ="printerchk" style="margin-top:50px"></div>
+            <div id ="notice"></div>
+            <div id ="printerchk"></div>
             <div id ="printerchk2"><img src="/" id="print-image" style="max-width:100%"></div>
             <div id = "printerchk3"></div>
             <button onclick="$('form').submit()" class="btn button form-group btn-block">확인 완료!</button>
@@ -158,6 +167,7 @@
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
             var span2 = document.getElementById("close2");
+            var notice = document.getElementById("notice");
             var sel = document.getElementById("printerchk");
             var sel2 = document.getElementById("printerchk2");
             var sel3 = document.getElementById("printerchk3");
@@ -299,7 +309,7 @@
             if (val8=="컬러"){
                 money_per_page = 200;
             }
-
+                  notice.innerHTML = "*팝업 창 가장 아래의 <span style='color:red'>'확인 완료!'</span> 버튼을 눌러야 신청이 완료됩니다!<br>";
                   sel.innerHTML = "<strong>결제 예정 금액 :  "+(money_per_page*total)+"원</strong><br>"+"현재 잔여 포인트:"+cur_cash+"<br>결제 후 잔여 포인트:"+(cur_cash-(money_per_page*total))+"<hr><br><strong>"+val1+"관 복사대, "+val2+" "+val3+"</strong><br>"+"파일명:"+val9+"<br>"+"인쇄할 페이지:"+val4+"(총"+total+"p)<br><hr><br>";
 
                   sel3.innerHTML = val5+"방향 / "+val7+"분할 / "+val6+" / "+val8+"<br><hr><br>";  
@@ -373,7 +383,7 @@
                                 count += (parseInt(pagenum_d[1]) - parseInt(pagenum_d[0]) +1);
                               }
                               else {
-                                count -= Number.MIN_SAFE_INTEGER;
+                                count -= 9999;
                               }
                         }
 
