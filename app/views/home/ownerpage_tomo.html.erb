@@ -96,8 +96,13 @@
             <td class="minify pickupTime"><%= x.pkuptime.split('~')[0] %></td>
             <td class="pickupName"><%= User.find_by(userid: x.userid).username %></td>
             <td class="printPage"><%= x.pagenum %>(총 <%= x.totalpage %> 장)</td>
-            <td class="checkDetail" style="text-align: center;"><button id="detailBtn" onclick="showDetails('<%=x.pkuptime%>','<%=User.find_by(userid: x.userid).stdnum%>','<%=User.find_by(userid: x.userid).username%>', '<%=URI.decode(x.attachment_url.split('/').last)%>', '<%=x.totalpage%>', '<%=x.landscape%>', '<%=x.doublepg%>', '<%=x.split%>', '<%=x.color%>', '<%=x.cost%>', '<%=x.id%>', '<%=x.attachment_url%>')">상세보기</button></td>
             
+            <% if x.progress == "인쇄취소" %>
+              <td class="checkDetail" style="text-align: center;"><button id="detailBtn" unabled>상세보기</button></td>
+            <% else %>
+              <td class="checkDetail" style="text-align: center;"><button id="detailBtn" onclick="showDetails('<%=x.pkuptime%>','<%=User.find_by(userid: x.userid).stdnum%>','<%=User.find_by(userid: x.userid).username%>', '<%=URI.decode(x.attachment_url.split('/').last)%>', '<%=x.totalpage%>', '<%=x.landscape%>', '<%=x.doublepg%>', '<%=x.split%>', '<%=x.color%>', '<%=x.cost%>', '<%=x.id%>', '<%=x.attachment_url%>')">상세보기</button></td>
+            <% end %>
+
             <% if x.progress == "인쇄대기" %>
               <td class="printState"><button style="background: green;  color:white;" onclick="window.location='../home/changeState3/<%=x.id%>'"><%= x.progress %></button></td>
             <% elsif x.progress == "인쇄완료" %>
