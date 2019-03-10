@@ -56,17 +56,19 @@
    margin-top:30px;
 }
 
-
-.page-footer{
-    position: absolute;
-    margin-bottom: 0;
-    right: 0;
-    left: 0;
+.footer{
+    position: relative;
+    bottom: 0;
     display: inline-block;
     padding: 0 0 60px;
     background: #f7f7f7;
     text-align: center;
     width: 100%;
+}
+
+.fixed {
+  position: relative;
+  bottom: 0;
 }
 
 @media (max-width:1023px){
@@ -107,17 +109,20 @@
         font-family: Noto Sans KR;
     }
 
-    .page-footer{
-    position: absolute;
-    margin-bottom: 0;
-    right: 0;
-    left: 0;
+   .footer{
+    position: relative;
+    bottom: 0;
     display: inline-block;
     padding: 0 0 60px;
     background: #f7f7f7;
     text-align: center;
     width: 100%;
-  }
+    }
+
+    .fixed {
+      position: relative;
+      bottom: 0;
+    }
 }
 
 
@@ -187,73 +192,9 @@
         </section>
     </div>
     </div>
-<footer class="page-footer font-small unique-color-dark">
-
-    
-
-    <!-- Footer Links -->
-    <div class="footer_container text-center text-md-left mt-5">
-
-      <!-- Grid row -->
-      <div class="row mt-3">
-
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-          <!-- Content -->
-          <h6 class="text-uppercase font-weight-bold">뽀바드림</h6>
-          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>뽀바드림은 짧은 쉬는 시간에 복사대에 대기하는 학생들이 몹시 많다는 문제를 해결하고자 프린트 테이크아웃 서비스를 제공합니다.</p>
-
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-          <!-- Links -->
-          <h6 class="text-uppercase font-weight-bold">도움말</h6>
-          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>
-            <a href="/home/manual">이용방법</a>
-          </p>
-          <p>
-            <a href="/home/refund">환불규정</a>
-          </p>
-
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-          <!-- Links -->
-          <h6 class="text-uppercase font-weight-bold">문의처</h6>
-          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>
-            이메일 : bbobadream1004@gmail.com
-          </p>
-          <p>
-            오픈 카카오톡 문의 : <a href="https://open.kakao.com/o/s74FL2gb">https://open.kakao.com/o/s74FL2gb </a>
-          </p>
-          
-
-        </div>
-        <!-- Grid column -->
-
-      </div>
-      <!-- Grid row -->
-
-    </div>
-    <!-- Footer Links -->
-
-  </footer>
 </body>
 
-  
-
-<!--
-<footer class="page-footer font-small unique-color-dark">
+<footer class="footer fixed font-small unique-color-dark">
 
     <div class="footer_container text-center text-md-left mt-5">
 
@@ -294,4 +235,20 @@
 
     </div>
 
-  </footer> -->
+  </footer>
+
+  <script>
+    $(document).ready(function() {
+      var _originalSize = $(window).width() + $(window).height()
+      $(window).resize(function() {
+        if ($(window).width() + $(window).height() != _originalSize) {
+          console.log("keyboard active");
+          $(".footer").removeClass("fixed");
+        } else {
+          console.log("keyboard closed");
+          $(".footer").addClass("fixed");
+        }
+      });
+    });
+
+</script>
