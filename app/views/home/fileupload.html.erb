@@ -244,7 +244,7 @@
               var regexp = /^((\d+-\d+|\d+),?)+$/ ;
               var test = document.getElementById("pagenumop").value;
                   msg = "";
-                  if(!regexp.test(test)) msg+= "인쇄할 페이지를 주어진 양식대로 입력해주세요";
+                  if(!regexp.test(test)) msg+= "인쇄할 페이지를 정해진 양식대로 입력해주세요!\n";
                 
                   // if (!val4){
                   //       msg += "인쇄할 페이지 범위를 반드시 입력해주세요!\n";
@@ -253,40 +253,57 @@
                   if (!val9){
                         msg += "인쇄할 문서를 반드시 첨부해주세요!\n";
                   }
+                  if (!fileValidation(val9)){
+                    m = val9+"는 첨부가능한 파일 형식이 아닙니다!";
+                    msg+=m;
+                  }
                   if (totalPage(val4, val7)<=0){
-                    msg += "올바른 페이지 범위가 설정되지 않았습니다!";
+                    msg += "올바른 페이지 범위가 설정되지 않았습니다!\n";
                   }
                   if(val3 == "오늘" && val2=="10:15~10:30"){
-                    if(<%=@count1%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                    if(<%=@count1%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.\n";
                   }
                   else if (val3 == "오늘" && val2=="11:45~12:00"){
-                    if(<%=@count2%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                    if(<%=@count2%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.\n";
                   }
                   else if (val3 == "오늘" && val2=="13:15~13:30"){
-                    if(<%=@count3%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                    if(<%=@count3%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.\n";
                   }
                   else if (val3 == "오늘" && val2=="14:45~15:00"){
-                    if(<%=@count4%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                    if(<%=@count4%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.\n";
                   }
                   else if (val3 == "오늘" && val2=="16:15~16:30"){
-                    if(<%=@count5%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                    if(<%=@count5%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.\n";
                   }
                   else if (val3 == "내일" && val2=="10:15~10:30"){
-                    if(<%=@count6%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                    if(<%=@count6%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.\n";
                   }
                   else if (val3 == "내일" && val2=="11:45~12:00"){
-                    if(<%=@count7%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                    if(<%=@count7%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.\n";
                   }
                   else if (val3 == "내일" && val2=="13:15~13:30"){
-                    if(<%=@count8%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                    if(<%=@count8%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.\n";
                   }
                   else if (val3 == "내일" && val2=="14:45~15:00"){
-                    if(<%=@count9%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                    if(<%=@count9%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.\n";
                   }
                   else if (val3 == "내일" && val2=="16:15~16:30"){
-                    if(<%=@count10%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.";
+                    if(<%=@count10%>>30) msg+="30명이 넘어 더 이상 신청할 수 없습니다.\n";
                   }
+
+
                   return msg;
+            }
+
+            function fileValidation(fileName){
+              able = ["pptx", "ppt", "doc", "docx", "hwp", "pdf"];
+              whichFile = fileName.split(".")[1];
+              for (i=0; i<able.length; i++){
+                if(whichFile==able[i]){
+                  return true;
+                }
+              }
+              return false;
             }
 
 
