@@ -297,7 +297,8 @@
 
             function fileValidation(fileName){
               able = ["pptx", "ppt", "doc", "docx", "hwp", "pdf"];
-              whichFile = fileName.split(".")[1];
+              whichFileRaw = fileName.split(".");
+              whichFile = whichFileRaw[whichFileRaw.length-1];
               for (i=0; i<able.length; i++){
                 if(whichFile==able[i]){
                   return true;
