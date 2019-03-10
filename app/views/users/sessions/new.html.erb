@@ -53,14 +53,20 @@
 }
 
 
-.page-footer{
+.footer{
     position: relative;
+    bottom: 0;
     display: inline-block;
     margin: 0;
     padding: 0 0 60px;
     background: #f7f7f7;
     text-align: center;
     width: 100%;
+}
+
+.fixed {
+  position: relative;
+  bottom: 0;
 }
 
 @media (max-width:1023px){
@@ -176,7 +182,7 @@
  <!-- Footer -->
 
 
-<footer class="page-footer font-small unique-color-dark">
+<footer class="footer fixed font-small unique-color-dark">
 
     
 
@@ -237,3 +243,19 @@
     <!-- Footer Links -->
 
   </footer>
+
+  <script>
+    $(document).ready(function() {
+      var _originalSize = $(window).width() + $(window).height()
+      $(window).resize(function() {
+        if ($(window).width() + $(window).height() != _originalSize) {
+          console.log("keyboard active");
+          $(".footer").removeClass("fixed");
+        } else {
+          console.log("keyboard closed");
+          $(".footer").addClass("fixed");
+        }
+      });
+    });
+
+</script>
