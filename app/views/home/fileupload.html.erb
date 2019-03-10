@@ -331,11 +331,11 @@
 
                         if (pagenum_c[i].indexOf("-")!= -1){
                               pagenum_d = pagenum_c[i].split("-");
-                              if(parseInt(pagenum_d[1]) - parseInt(pagenum_d[0]) != 0){
+                              if(parseInt(pagenum_d[1]) - parseInt(pagenum_d[0]) >= 0){
                                 count += (parseInt(pagenum_d[1]) - parseInt(pagenum_d[0]) +1);
                               }
-                              else{
-                                count += (parseInt(pagenum_d[1]) - parseInt(pagenum_d[0]));
+                              else {
+                                count -= 9999;
                               }
                         }
 
