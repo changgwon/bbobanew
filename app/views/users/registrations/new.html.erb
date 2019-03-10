@@ -20,6 +20,13 @@
     text-align: center;
     margin: auto;*/
   }
+
+  .notice{
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+  }
   
 
   @media (max-width:767px){
@@ -102,6 +109,12 @@
 
         <div class="field form-group">
           <%= f.text_field :stdnum, autofocus: true, class:'form-control', placeholder:'학번' %>
+        </div>
+
+        <div class="notice">
+          ※ 최초 가입인데 <span style="color:red">'이미 있는 아이디/이메일 오류'</span>가 뜰 경우,<br>
+          입력한 이메일로 가서 메일함을 확인해 주세요!!<br>
+          그럼에도 메일이 없을 경우 오픈 카카오로 문의 부탁드립니다.
         </div>
 
           <%= f.submit "가입하기", class:'btn button form-group btn-block'  %>  
