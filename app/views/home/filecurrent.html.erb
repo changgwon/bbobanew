@@ -60,7 +60,7 @@ a:hover{
 						<% end %>
 					   	</b>
 					   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
-					   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
+					   	<%= x.totalpage %>장 (<%= x.cost%>원)<br>
 					   
 					  	<%=x.progress%><br></div>
 				</div></a>
@@ -88,7 +88,7 @@ a:hover{
 						<% end %> 
 					    </b></div>
 					   	<%= URI.decode(x.attachment_url.split('/').last) %><br>
-					   	<%= x.totalpage %>장 (<%= x.totalpage*50 %>원)<br>
+					   	<%= x.totalpage %>장 (<%= x.cost %>원)<br>
 					   
 					  	<%=x.progress%><br>
 				</div></a>
