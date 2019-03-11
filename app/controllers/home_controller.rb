@@ -154,7 +154,7 @@ class HomeController < ApplicationController
     @upload.color = params[:upload][:color]
 
     if @upload.color == "컬러" 
-      @upload.cost = @count * 200
+      @upload.cost = @count * 400
     else
       @upload.cost = @count * 50
     end
