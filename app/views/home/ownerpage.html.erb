@@ -108,7 +108,7 @@
             <% end %>
             
             <% if x.progress == "인쇄대기" %>
-              <td class="printState"><button style="background: green; color:white;" onclick="window.location='../home/changeState2/<%=x.id%>'"><%= x.progress %></button></td>
+              <td class="printState"><button style="background: green; color:white;" onclick="window.location='../home/changeState3/<%=x.id%>'"><%= x.progress %></button></td>
             <% elsif x.progress == "인쇄완료" %>
               <td class="printState"><button style="background: grey;  color:white;" onclick="returnState('<%=x.id%>')"><%= x.progress %></button></td>
             <% elsif x.progress == "인쇄취소" %>
