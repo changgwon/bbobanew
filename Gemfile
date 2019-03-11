@@ -10,7 +10,7 @@ gem 'activeadmin'
 gem 'simple_form'
 gem 'figaro'
 gem 'httparty'
-
+gem 'yomu', '>= 0.2.4'
 gem 'devise'
 
 
