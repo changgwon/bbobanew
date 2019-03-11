@@ -5,6 +5,7 @@ class HomeController < ApplicationController
   end
   def after_registration
   end
+ 
 
   def main
     #count 를 위한 비효율적인 코드
@@ -118,7 +119,11 @@ class HomeController < ApplicationController
     @upload.attachment = params[:upload][:attachment]
     @upload.printer = params[:upload][:printer]
     @upload.pagenum = params[:upload][:pagenum]
-
+    # require 'yomu'
+    # yomu = Yomu.new params[:upload][:attachment]
+    # metadata = yomu.metadata
+    # puts "*"
+    # puts metadata
     pagenum_o = params[:upload][:pagenum]
     @count = 0
     pagenum_c = pagenum_o.split(',') # ,에 대해서도  if x.include? "," 추가해주세용 '3'
@@ -154,7 +159,7 @@ class HomeController < ApplicationController
     @upload.color = params[:upload][:color]
 
     if @upload.color == "컬러" 
-      @upload.cost = @count * 400
+      @upload.cost = @count * 200
     else
       @upload.cost = @count * 50
     end
@@ -296,7 +301,7 @@ class HomeController < ApplicationController
       if current_user.usertype == "admin" && upload.progress != "인쇄취소"
       
       upload.progress = "인쇄취소"
-      refund = upload.cost
+      refund = upload.totalpage * 50
 
       # 환불!!!!
       user = upload.user
@@ -345,7 +350,7 @@ class HomeController < ApplicationController
       
       upload.progress = "인쇄취소"
       upload.pkuptime = "canceled"
-      refund=upload.cost
+      refund=upload.totalpage * 50 
 
       # 환불!!!!
       user = current_user
