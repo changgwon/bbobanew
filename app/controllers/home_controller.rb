@@ -296,7 +296,7 @@ class HomeController < ApplicationController
       if current_user.usertype == "admin" && upload.progress != "인쇄취소"
       
       upload.progress = "인쇄취소"
-      refund = upload.totalpage * 50
+      refund = upload.cost
 
       # 환불!!!!
       user = upload.user
@@ -345,7 +345,7 @@ class HomeController < ApplicationController
       
       upload.progress = "인쇄취소"
       upload.pkuptime = "canceled"
-      refund=upload.totalpage * 50 
+      refund=upload.cost
 
       # 환불!!!!
       user = current_user
