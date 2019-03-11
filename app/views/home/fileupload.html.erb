@@ -99,7 +99,7 @@
                 <%= f.select(:color, ["흑백","컬러"],{}, {:id => "colorop"})%>
                 <br><br>
 
-                <h3 class="input_text" style="text-align: left">*위의 설정 이외의 인쇄 양식은 컴퓨터 기본 설정에 따릅니다.<br>*흑백 단면 인쇄는 1장에 50원, 흑백 양면 인쇄는 1장에 100원입니다.<br>*컬러 단면 인쇄는 한 장에 200원, 컬러 양면 인쇄는 1장에 400원입니다.<br></h3>
+                <h3 class="input_text" style="text-align: left">*위의 설정 이외의 인쇄 양식은 컴퓨터 기본 설정에 따릅니다.<br>*흑백 단면 인쇄는 1장에 50원, 흑백 양면 인쇄는 1장에 100원입니다.<br>*컬러 단면 인쇄는 한 장에 400원, 컬러 양면 인쇄는 1장에 800원입니다.<br></h3>
           </div>
 
           <input type="button" name="previous" class="previous action-button" value="Previous" />
@@ -185,7 +185,7 @@
               cur_cash= <%= current_user.cur_cash %>;
               money_per_page = 50;
               if (val8=="컬러"){
-                  money_per_page = 200;
+                  money_per_page = 400;
               }
 
                   left_money=total*money_per_page;
@@ -326,7 +326,7 @@
             cur_cash= <%= current_user.cur_cash %>;
             money_per_page = 50;
             if (val8=="컬러"){
-                money_per_page = 200;
+                money_per_page = 400;
             }
                   notice.innerHTML = "*팝업 창 가장 아래의 <span style='color:red'>'확인 완료!'</span> 버튼을 눌러야 신청이 완료됩니다!<br>";
                   sel.innerHTML = "<strong>결제 예정 금액 :  "+(money_per_page*total)+"원</strong><br>"+"현재 잔여 포인트:"+cur_cash+"<br>결제 후 잔여 포인트:"+(cur_cash-(money_per_page*total))+"<hr><br><strong>"+val1+"관 복사대, "+val2+" "+val3+"</strong><br>"+"파일명:"+val9+"<br>"+"인쇄할 페이지:"+val4+"(총"+total+"p)<br><hr><br>";
