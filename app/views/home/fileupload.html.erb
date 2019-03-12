@@ -96,10 +96,11 @@
                 <br>
 
                 <%= f.label "흑백/컬러" %>
-                <%= f.select(:color, ["흑백","컬러"],{}, {:id => "colorop"})%>
+<!--                 <%= f.select(:color, ["흑백","컬러"],{}, {:id => "colorop"})%> -->
+                <%= f.select(:color, ["흑백"],{}, {:id => "colorop"})%>
                 <br><br>
 
-                <h3 class="input_text" style="text-align: left">*위의 설정 이외의 인쇄 양식은 컴퓨터 기본 설정에 따릅니다.<br>*흑백 단면 인쇄는 1장에 50원, 흑백 양면 인쇄는 1장에 100원입니다.<br>*컬러 단면 인쇄는 한 장에 400원, 컬러 양면 인쇄는 1장에 800원입니다.<br></h3>
+                <h3 class="input_text" style="text-align: left">*위의 설정 이외의 인쇄 양식은 컴퓨터 기본 설정에 따릅니다.<br>*흑백 단면 인쇄는 1장에 50원, 흑백 양면 인쇄는 1장에 100원입니다.<br>*컬러 인쇄는 현재 복사대의 요청에 의해 불가능 합니다.<br></h3>
           </div>
 
           <input type="button" name="previous" class="previous action-button" value="Previous" />
