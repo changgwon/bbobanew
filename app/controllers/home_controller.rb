@@ -171,14 +171,7 @@ class HomeController < ApplicationController
       @upload.flag = false
     else
 
-      chkcount = 0
-      Upload.all.each do |x|
-        if (x.pkupdate == @upload.pkupdate) && (x.pkuptime == @upload.pkuptime)
-          chkcount +=1
-        end
-      end
-
-      if chkcount <= 30
+     
 
         @upload.save
         @user.cur_cash -=  @upload.cost
@@ -190,7 +183,6 @@ class HomeController < ApplicationController
         cashflow.amount = @upload.cost
         cashflow.use_type = "차감"
         cashflow.save
-     else
     
     end
     
