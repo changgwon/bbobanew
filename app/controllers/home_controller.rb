@@ -214,7 +214,7 @@ class HomeController < ApplicationController
     end
     @today = Date.today;
     @total_money=0
-    @completes=Upload.where(["progress = ? and created_at >=?", "인쇄완료",Time.now.beginning_of_week])
+    @completes=Upload.where(["progress = ? and updated_at >=?", "인쇄완료",Time.now.beginning_of_week])
     @completes.each do |x|
        @total_money +=x.cost
     end
@@ -278,7 +278,7 @@ class HomeController < ApplicationController
     @tomorrow = Date.today+1;
 
     @total_money=0
-    @completes=Upload.where(["progress = ? and created_at >=?", "인쇄완료",Time.now.beginning_of_week])
+    @completes=Upload.where(["progress = ? and updated_at >=?", "인쇄완료",Time.now.beginning_of_week])
     @completes.each do |x|
        @total_money +=x.cost
     end
