@@ -174,7 +174,7 @@ class HomeController < ApplicationController
 
       chkcount = 0
       Upload.all.each do |x|
-        if x.pkuptime == @upload.pkuptime
+        if (x.pkupdate == @upload.pkupdate) && (x.pkuptime == @upload.pkuptime)
           chkcount +=1
         end
       end
@@ -190,7 +190,7 @@ class HomeController < ApplicationController
         cashflow.amount = @upload.cost
         cashflow.use_type = "차감"
         cashflow.save
-      else
+      
 
       end
     
@@ -216,7 +216,7 @@ class HomeController < ApplicationController
     end
     @today = Date.today;
     @total_money=0
-    @completes=Upload.where(["progress = ? and created_at >=?", "인쇄완료",Time.now.beginning_of_week])
+     @completes=Upload.where(["progress = ? and updated_at >=?", "인쇄완료",Time.now.beginning_of_week])
     @completes.each do |x|
        @total_money +=x.cost
     end
@@ -280,7 +280,7 @@ class HomeController < ApplicationController
     @tomorrow = Date.today+1;
 
     @total_money=0
-    @completes=Upload.where(["progress = ? and created_at >=?", "인쇄완료",Time.now.beginning_of_week])
+    @completes=Upload.where(["progress = ? and updated_at >=?", "인쇄완료",Time.now.beginning_of_week])
     @completes.each do |x|
        @total_money +=x.cost
     end
