@@ -5,7 +5,9 @@ Rails.application.routes.draw do
         sessions: 'users/sessions',
         registrations: 'users/registrations'
   }
-  root 'home#index'
+  # root 'home#index'
+  root 'home#close'
+  get 'home/close'
   get 'home/after_registration'
   get 'home/refund'
   get 'home/manual'
@@ -38,4 +40,5 @@ Rails.application.routes.draw do
   get 'payment/charge_show'
   delete 'payment/charge_delete/:charge_id' => 'payment#charge_delete'
   get 'payment/cashflow'
+
 end

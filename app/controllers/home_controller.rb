@@ -5,7 +5,8 @@ class HomeController < ApplicationController
   end
   def after_registration
   end
- 
+  def closed
+  end
 
   def main
     #count 를 위한 비효율적인 코드
@@ -179,7 +180,6 @@ class HomeController < ApplicationController
       end
 
       if chkcount <= 30
-
         @upload.save
         @user.cur_cash -=  @upload.cost
         @user.save
@@ -190,7 +190,9 @@ class HomeController < ApplicationController
         cashflow.amount = @upload.cost
         cashflow.use_type = "차감"
         cashflow.save
-     end
+      
+
+      end
     
     end
     
@@ -214,7 +216,7 @@ class HomeController < ApplicationController
     end
     @today = Date.today;
     @total_money=0
-    @completes=Upload.where(["progress = ? and updated_at >=?", "인쇄완료",Time.now.beginning_of_week])
+     @completes=Upload.where(["progress = ? and updated_at >=?", "인쇄완료",Time.now.beginning_of_week])
     @completes.each do |x|
        @total_money +=x.cost
     end
