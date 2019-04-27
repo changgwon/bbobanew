@@ -5,8 +5,8 @@ Rails.application.routes.draw do
         sessions: 'users/sessions',
         registrations: 'users/registrations'
   }
-  # root 'home#index'
-  root 'home#close'
+  root 'home#index'
+  # root 'home#close'
   get 'home/close'
   get 'home/after_registration'
   get 'home/refund'
